@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:43:40 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/03 16:13:19 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:33:25 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ class	Harl
 	void	error(void);
 	public:
 		void	complain( std::string level);
+		Harl() { };
 };
 #endif
