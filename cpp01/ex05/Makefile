@@ -6,11 +6,11 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/08/09 15:39:23 by eschussl         ###   ########.fr        #
+#    Updated: 2024/08/09 17:22:33 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	 Harl
+NAME		=	 	Harl
 
 CC 			=		c++
 CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g
