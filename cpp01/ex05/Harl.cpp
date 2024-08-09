@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:47:30 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 16:24:53 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:15:35 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	Harl::info(void)
 }
 void	Harl::warning(void)
 {
-	std::cout << "I think I deserve to have some extra bacon for free. I’ve been comingfor years whereas you started working here since last month." << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
 }
 void	Harl::error(void)
 {
@@ -32,6 +32,13 @@ void	Harl::error(void)
 void	Harl::complain( std::string level)
 {
 	std::string str = " DEBUG INFO   WARNINGERROR";
-	void	(Harl::*function[4])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	function[(str.find(level) / 7) - 1]();
+	(this->*fonction[(str.find(level) / 7)])();
+}
+
+Harl::Harl()
+{
+	fonction[0] = &Harl::debug;
+	fonction[1] = &Harl::info;
+	fonction[2] = &Harl::warning;
+	fonction[3] = &Harl::error;
 }

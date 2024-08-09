@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 15:43:40 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 17:12:05 by eschussl         ###   ########.fr       */
+/*   Created: 2024/08/09 18:28:49 by eschussl          #+#    #+#             */
+/*   Updated: 2024/08/09 18:32:05 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-#include <string>
-
-class	Harl
+class Fixed
 {
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-	void	(Harl::*fonction[4])(void);
-	public:
-		void	complain( std::string level);
-		Harl();
+private:
+	int					integer;
+	static const int	fract;
+public:
+	Fixed(/* args */);
+	~Fixed();
+	int	getRawBits( void ) const;
+	void	setRawBits( int const raw);
 };
+
+
+
 #endif

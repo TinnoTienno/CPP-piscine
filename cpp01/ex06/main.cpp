@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 15:43:40 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 17:12:05 by eschussl         ###   ########.fr       */
+/*   Created: 2024/08/09 17:38:51 by eschussl          #+#    #+#             */
+/*   Updated: 2024/08/09 17:39:49 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-#include <string>
-
-class	Harl
+int	main(int argc, char **argv)
 {
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-	void	(Harl::*fonction[4])(void);
-	public:
-		void	complain( std::string level);
-		Harl();
-};
-#endif
+	if (argc != 2)
+		return (1);
+	Harl harly;
+	harly.filter(argv[1]);
+}
