@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 18:30:18 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/10 15:03:46 by eschussl         ###   ########.fr       */
+/*   Created: 2024/08/10 15:12:38 by eschussl          #+#    #+#             */
+/*   Updated: 2024/08/10 17:44:13 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -19,16 +20,29 @@ Fixed::Fixed()
 	integer = 0;
 }
 
-int	Fixed::getRawBits() const
+Fixed::Fixed( const int val )
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (0);
+	std::cout << "Int constructor called" << std::endl;
+	int res = val << fract;
+	integer = res;
 }
 
-Fixed::Fixed (Fixed& t)
+Fixed::Fixed( const float val )
+{
+	std::cout << "Float constructor called" << std::endl;
+	int res = (int)(roundf(val * ( 1 << fract)));
+	integer = res;
+}
+int	Fixed::getRawBits() const
+{
+	// std::cout << "getRawBits member function called" << std::endl;
+	return (integer);
+}
+
+Fixed::Fixed (const Fixed &t)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	integer = t.getRawBits();
+	*this = t;
 }
 
 void	Fixed::setRawBits( int const raw)
@@ -49,4 +63,20 @@ Fixed& Fixed::operator=( const Fixed& f)
 		return (*this);
 	integer = f.getRawBits();
 	return (*this);
+}
+
+float	Fixed::toFloat ( void ) const
+{
+	return (float(integer) / float(1 << fract));
+}
+
+std::ostream&	Fixed::operator<<( std::ostream& os)
+{
+	os << toFloat();
+	return (os);
+}
+
+int		Fixed::toInt ( void ) const
+{
+	return (integer >> fract);
 }
