@@ -5,24 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 10:08:25 by eschussl          #+#    #+#             */
-/*   Updated: 2024/07/25 12:35:10 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/21 14:21:40 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/21 16:25:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "Contact.hpp"
+# include "Contact.hpp"
 
-class PhoneBook {
-	Contact	*_head;
-	int		_size;	
-public:
-	PhoneBook();
-	void	add_cont();
-	void	display();
-	~PhoneBook();
-};
-
+class PhoneBook
+{
+	private :
+		Contact		_Contacts[8];
+		int			_index;
+	public :
+		PhoneBook();
+		~PhoneBook();
+		void Add();
+		void Search();
+}	;
 #endif

@@ -5,25 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 09:57:54 by eschussl          #+#    #+#             */
-/*   Updated: 2024/07/25 12:35:39 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/21 14:34:46 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/21 16:49:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
-#include <stdlib.h>
 
-Contact::Contact(std::string a, std::string b, std::string c, std::string d, std::string e, void *ptr, int indexnum)
+Contact::Contact()
 {
-	_first_name = a;
-	_last_name = b;
-	_nick_name = c;
-	_phonenumber = d;
-	_secret = e;
-	index = indexnum;
-	next = (Contact *) ptr;
+	_FirstName = "";
+	_LastName = "";
+	_NickName = "";
+	_PhoneNumber = "";
+	_Secret = "";
+};
+
+Contact::~Contact()
+{
+	
+};
+void Contact::AddData(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5)
+{
+	_FirstName = s1;
+	_LastName = s2;
+	_NickName = s3;
+	_PhoneNumber = s4;
+	_Secret = s5;
 }
+
 void	print_data(std::string str, std::string end)
 {
 	if (str.size() > 10)
@@ -33,23 +44,21 @@ void	print_data(std::string str, std::string end)
 		unsigned long i = 11;
 		while (--i > str.size())
 			std::cout << " ";
-		std::cout << str;
-		std::cout << end;
+		std::cout << str << end;
 	}
 }
-void Contact::print_cont()
+void	Contact::DisplayTab()
 {
-	std::cout << "         " << index << "|";
-	print_data(_first_name, "|");
-	print_data(_last_name, "|");
-	print_data(_nick_name, "\n");
+	print_data(_FirstName, "|");
+	print_data(_LastName, "|");
+	print_data(_NickName, "\n");
 }
 
-void	Contact::display_info()
+void	Contact::Display()
 {
-	std::cout << "First name :" << _first_name << std::endl;
-	std::cout << "Last name :" << _last_name << std::endl; 
-	std::cout << "Nick name :" << _nick_name << std::endl; 
-	std::cout << "Phone number :" << _phonenumber << std::endl; 
-	std::cout << "Darkest secret :" << _secret << std::endl; 
+	std::cout << "First Name :" << _FirstName << std::endl;
+	std::cout << "Last Name :" << _LastName << std::endl;
+	std::cout << "Nick Name :" << _NickName << std::endl;
+	std::cout << "Phone Number :" << _PhoneNumber << std::endl;
+	std::cout << "Secret :" << _Secret << std::endl << std::endl;
 }

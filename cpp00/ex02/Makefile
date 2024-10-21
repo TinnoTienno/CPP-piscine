@@ -6,30 +6,32 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/07/25 12:22:16 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/21 16:56:06 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	 R_Ingeneering
+NAME		=	 Phonebook
 
 CC 			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
+CFLAGS		=	 -Wall -Wextra -Werror -std=c++98 -g 
+SRCS		=	Phonebook.cpp Contact.cpp main.cpp
 
-SRCS		=		tests.cpp\
-					Account.cpp\
+OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
-OBJS		=		$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
+all : $(NAME)
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
 
-%.o: %.c
-	$(CC) -c $< -o $@
+.obj/%.o: src/%.cpp
+	@mkdir -p .obj
+	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/
 
 clean :
-	rm -rf *.o
+	@rm -rf .obj
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean $(NAME)
+	
 	
