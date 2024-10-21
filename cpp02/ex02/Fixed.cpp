@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:12:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/10 18:03:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:41:04 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	Fixed::setRawBits( int const raw)
 
 float	Fixed::toFloat ( void ) const
 {
-	return (float(integer) / float(1 << fract));
+	return (float(integer) / (float)(1 << fract));
 }
 
 int		Fixed::toInt ( void ) const
@@ -67,34 +67,32 @@ int		Fixed::toInt ( void ) const
 	return (integer >> fract);
 }
 
-
-
-bool	Fixed::operator<( const Fixed& f2)
+bool	Fixed::operator<( const Fixed& f2) const
 {
 	return (integer < f2.integer);
 }
 
-bool	Fixed::operator>=( const Fixed& f2)
+bool	Fixed::operator>=( const Fixed& f2) const
 {
 	return !(integer < f2.integer);
 }
 
-bool	Fixed::operator>( const Fixed& f2)
+bool	Fixed::operator>( const Fixed& f2) const
 {
 	return (integer > f2.integer);
 }
 
-bool	Fixed::operator<=( const Fixed& f2)
+bool	Fixed::operator<=( const Fixed& f2) const
 {
 	return !(integer > f2.integer);
 }
 
-bool	Fixed::operator==( const Fixed& f2)
+bool	Fixed::operator==( const Fixed& f2) const
 {
 	return (integer == f2.integer);
 }
 
-bool	Fixed::operator!=( const Fixed& f2)
+bool	Fixed::operator!=( const Fixed& f2) const
 {
 	return !(integer == f2.integer);
 }
@@ -111,35 +109,35 @@ Fixed& Fixed::operator=( const Fixed& f)
 Fixed&	Fixed::operator+( const Fixed& f2 )
 {
 	integer += f2.integer;
-	return (this);
+	return (*this);
 }
 
 Fixed&	Fixed::operator-( const Fixed& f2 )
 {
 	integer -= f2.integer;
-	return (this);
+	return (*this);
 }
 
 Fixed&	Fixed::operator*( const Fixed& f2 )
 {
 	integer *= f2.integer;
-	integer << f2.fract;
-	return (this);
+	integer >>= f2.fract;
+	return (*this);
 }
 
 Fixed&	Fixed::operator/( const Fixed& f2 )
 {
 	integer /= f2.integer;
-	return (this);
+	return (*this);
 }
 
 Fixed&	Fixed::operator++()
 {
-	integer += (1 << fract);
+	integer += 1;
 	return (*this);
 }
 
-Fixed&	Fixed::operator++( int )
+Fixed	Fixed::operator++( int )
 {
 	Fixed Old = *this;
 	operator++();
@@ -148,19 +146,36 @@ Fixed&	Fixed::operator++( int )
 
 Fixed&	Fixed::operator--()
 {
-	integer -= (1 << fract);
+	integer -= 1;
 	return (*this);
 }
 
-Fixed&	Fixed::operator--( int )
+Fixed	Fixed::operator--( int )
 {
 	Fixed Old = *this;
 	operator--();
 	return (Old);
 }
 
-std::ostream&	Fixed::operator<<( std::ostream& os)
+std::ostream&	operator<<( std::ostream& os, const Fixed &F)
 {
-	os << toFloat();
+	os << F.toFloat();
 	return (os);
+}
+
+Fixed&	Fixed::min( Fixed& F1, Fixed &F2 )
+{
+	return (F1 <= F2 ? F1 : F2);
+}
+const Fixed&	Fixed::min( const Fixed& F1, const Fixed &F2 )
+{
+	return (F1 <= F2 ? F2: F1);
+}
+Fixed&	Fixed::max( Fixed& F1, Fixed &F2 )
+{
+	return (F1 >= F2 ? F1: F2);
+}
+const Fixed&	Fixed::max( const Fixed& F1, const Fixed &F2 )
+{
+	return (F1 >= F2 ? F1: F2);
 }
