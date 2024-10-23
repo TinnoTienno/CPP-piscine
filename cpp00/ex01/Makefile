@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 13:39:01 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/21 16:58:08 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/21 17:39:10 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRCS		=	Phonebook.cpp Contact.cpp main.cpp
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
-# -include $(OBJS:.o=.d)
 
 all : $(NAME)
 
@@ -37,3 +36,4 @@ fclean : clean
 
 re : fclean $(NAME)
 	
+-include $(OBJS:.o=.d)

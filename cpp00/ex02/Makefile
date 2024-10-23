@@ -6,15 +6,15 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/21 16:56:06 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/21 17:43:38 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	 Phonebook
+NAME		=	 Reverse_Engineering
 
 CC 			=	c++
 CFLAGS		=	 -Wall -Wextra -Werror -std=c++98 -g 
-SRCS		=	Phonebook.cpp Contact.cpp main.cpp
+SRCS		=	Account.cpp tests.cpp
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
@@ -33,5 +33,7 @@ fclean : clean
 	@rm -f $(NAME)
 
 re : fclean $(NAME)
-	
+
+-include $(OBJS:.o=.d)
+
 	

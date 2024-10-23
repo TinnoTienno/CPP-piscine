@@ -6,29 +6,16 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:34:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/21 16:49:38 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:47:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-Contact::Contact()
-{
-	_FirstName = "";
-	_LastName = "";
-	_NickName = "";
-	_PhoneNumber = "";
-	_Secret = "";
-};
-
-Contact::~Contact()
-{
-	
-};
 void Contact::AddData(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5)
 {
-	_FirstName = s1;
+	_firstName = s1;
 	_LastName = s2;
 	_NickName = s3;
 	_PhoneNumber = s4;
@@ -49,14 +36,14 @@ void	print_data(std::string str, std::string end)
 }
 void	Contact::DisplayTab()
 {
-	print_data(_FirstName, "|");
+	print_data(_firstName, "|");
 	print_data(_LastName, "|");
 	print_data(_NickName, "\n");
 }
 
 void	Contact::Display()
 {
-	std::cout << "First Name :" << _FirstName << std::endl;
+	std::cout << "First Name :" << _firstName << std::endl;
 	std::cout << "Last Name :" << _LastName << std::endl;
 	std::cout << "Nick Name :" << _NickName << std::endl;
 	std::cout << "Phone Number :" << _PhoneNumber << std::endl;

@@ -6,29 +6,35 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/07/26 15:05:33 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/21 18:01:36 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	 This_Is_Brain
 
 CC 			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 
+SRCS		=	main.cpp
 
-SRCS		=		main.cpp\
+OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
-OBJS		=		$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
+
+all : $(NAME)
+
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
 
-%.o: %.c
-	$(CC) -c $< -o $@
+.obj/%.o: src/%.cpp
+	@mkdir -p .obj
+	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/
 
 clean :
-	rm -rf *.o
+	@rm -rf .obj
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean $(NAME)
+	
+-include $(OBJS:.o=.d)
 	

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:44:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/21 16:52:40 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:47:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ PhoneBook::PhoneBook()
 {
 	_index = -1;
 };
-PhoneBook::~PhoneBook()
-{
-	
-};
+
 std::string prompt(std::string ask)
 {
 	std::string line;

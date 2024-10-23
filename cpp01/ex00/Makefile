@@ -6,33 +6,35 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/07/26 12:24:08 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/21 17:55:32 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Brainz
 
 CC 			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 
+SRCS		=	main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
-SRCS		=		main.cpp\
-					newZombie.cpp\
-					randomChump.cpp\
-					Zombie.cpp\
+OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
-OBJS		=		$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
+
+all : $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
 
-%.o: %.c
-	$(CC) -c $< -o $@
+.obj/%.o: src/%.cpp
+	@mkdir -p .obj
+	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/
 
 clean :
-	rm -rf *.o
+	@rm -rf .obj
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean $(NAME)
+	
+-include $(OBJS:.o=.d)
 	

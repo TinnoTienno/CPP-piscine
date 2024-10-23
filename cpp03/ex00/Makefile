@@ -5,19 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/21 17:58:07 by eschussl         ###   ########.fr        #
+#    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
+#    Updated: 2024/10/23 17:32:43 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	MoarBrainz
+NAME		=	Opener
 
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 
-SRCS		=	main.cpp zombieHorde.cpp Zombie.cpp
+SRCS		=	ClapTrap.cpp main.cpp
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
-
 
 all : $(NAME)
 
@@ -35,6 +34,5 @@ fclean : clean
 	@rm -f $(NAME)
 
 re : fclean $(NAME)
-	
+
 -include $(OBJS:.o=.d)
-	

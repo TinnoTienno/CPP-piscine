@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 14:21:40 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/21 17:47:25 by eschussl         ###   ########.fr       */
+/*   Created: 2024/07/26 15:24:31 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/21 18:14:56 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Weapon.hpp"
 
-# include "Contact.hpp"
-
-class PhoneBook
+class HumanB
 {
-	private :
-		Contact		_Contacts[8];
-		int			_index;
+	Weapon		*weapon;
+	std::string	name;
 	public :
-		PhoneBook();
-		void Add();
-		void Search();
-}	;
-#endif
+		void	attack(); 	
+		HumanB (std::string str) : weapon(NULL), name(str) { };
+		void	setWeapon(Weapon * );
+		void	setWeapon(Weapon & );
+		// ~HumanB();
+};

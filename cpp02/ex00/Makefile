@@ -6,31 +6,33 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/08/10 14:56:46 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/22 15:31:40 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	 	Fixed-point
+NAME		=	fixedPoint
 
-CC 			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g
+CC 			=	c++
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 
+SRCS		=	main.cpp Fixed.cpp
 
-SRCS		=		main.cpp\
-					Fixed.cpp\
+OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
-OBJS		=		$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
+all : $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
 
-%.o: %.c
-	$(CC) -c $< -o $@
+.obj/%.o: src/%.cpp
+	@mkdir -p .obj
+	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/
 
 clean :
-	rm -rf *.o
+	@rm -rf .obj
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean $(NAME)
-	
+
+-include $(OBJS:.o=.d)
