@@ -6,19 +6,21 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/23 17:36:58 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:11:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
-	ClapTrap p1("Tienno");
-	ClapTrap p2("Noda");
-	p1.attack("Noda");
-	p2.takeDamage(5);
-	p2.beRepaired(5);
-	p1.attack("Noda");
-	p2.takeDamage(15);
+	ScavTrap Character("Noda");
+	ScavTrap Ennemy("Minion");
+
+	Character.attack("Minion");
+	Ennemy.takeDamage(20);
+	Ennemy.guardGate();
+	Character.attack("Minion");
+	Ennemy.takeDamage(10);
 }

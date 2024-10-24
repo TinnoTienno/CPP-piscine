@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:13:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 13:47:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:06:45 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #define CLAPTRAP_HPP
 #include <string>
 
+class ScavTrap;
+
 class ClapTrap
 {
-	private :
+	protected :
 		std::string name;
 		int	hitPoint;
 		int	energyPoint;
