@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/23 17:36:58 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:05:13 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,40 @@
 
 int main()
 {
-	ClapTrap p1("Tienno");
-	ClapTrap p2("Noda");
-	p1.attack("Noda");
-	p2.takeDamage(5);
-	p2.beRepaired(5);
-	p1.attack("Noda");
-	p2.takeDamage(15);
+	ClapTrap Character("Noda");
+	ClapTrap Ennemy("Minion");
+
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	Character.attack("Minion");
+	Ennemy.takeDamage(2);
+	Ennemy.beRepaired(1);
+	ClapTrap newEnnemy;
+	newEnnemy = Character;
+	newEnnemy.attack("Noda");
+	Character.takeDamage(2);
+	Character.attack("Noda's shadow");
+	newEnnemy.takeDamage(2);
 }

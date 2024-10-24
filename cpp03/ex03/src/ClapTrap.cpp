@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:00:46 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:29:28 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap()
 }
 ClapTrap::ClapTrap(const ClapTrap &c)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = c;
 }
 ClapTrap::ClapTrap(std::string str)
@@ -98,4 +98,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	hitPoint += amount;
 	std::cout << "ClapTrap " << name << " repairs himself for " << amount << " hit points. He now has " << hitPoint << " hit points." << std::endl;
 }
+
+
+
 

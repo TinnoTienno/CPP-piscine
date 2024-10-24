@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:12:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/23 14:38:44 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:03:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@ Fixed::Fixed()
 Fixed::Fixed( const int val )
 {
 	std::cout << "Int constructor called" << std::endl;
-	int res = val << fract;
-	integer = res;
+	integer = val << fract;
 }
 
 Fixed::Fixed( const float val )
 {
 	std::cout << "Float constructor called" << std::endl;
-	int res = (int)(roundf(val * ( 1 << fract)));
-	integer = res;
+	integer = (int)(roundf(val * ( 1 << fract)));
 }
 int	Fixed::getRawBits() const
 {

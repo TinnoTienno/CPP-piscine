@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:00:59 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:18:13 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/24 17:36:56 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
-
 #include "ClapTrap.hpp"
-#include <string>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class ScavTrap : public ClapTrap
+int main()
 {
-    public :
-        ScavTrap();
-        ScavTrap(std::string);
-        ScavTrap(const ScavTrap&);
-        ~ScavTrap();
-        ScavTrap operator= (const ScavTrap&);
-        void guardGate();
-        void attack(const std::string&);
-};
+	ScavTrap Character("Noda");
+	ScavTrap Ennemy("Minion");
+	FragTrap Pnj("PeaceMaker");
 
-#endif
+	Character.attack("Minion");
+	Ennemy.takeDamage(20);
+	Ennemy.guardGate();
+	Character.attack("Minion");
+	Ennemy.takeDamage(10);
+	Pnj.highFivesGuys();
+}

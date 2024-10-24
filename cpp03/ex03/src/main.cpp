@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:00:59 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:18:13 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/24 18:33:02 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
-
 #include "ClapTrap.hpp"
-#include <string>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-class ScavTrap : public ClapTrap
+int main()
 {
-    public :
-        ScavTrap();
-        ScavTrap(std::string);
-        ScavTrap(const ScavTrap&);
-        ~ScavTrap();
-        ScavTrap operator= (const ScavTrap&);
-        void guardGate();
-        void attack(const std::string&);
-};
+	DiamondTrap Character("Michel");
 
-#endif
+	Character.whoAmI();
+	Character.attack("his reality");
+	DiamondTrap clone;
+	clone = Character;
+	clone.attack("Michel");
+}

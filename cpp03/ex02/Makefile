@@ -6,15 +6,15 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/24 17:37:39 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/24 17:37:20 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrap
+NAME		=	FragTrap
 
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 
-SRCS		=	ClapTrap.cpp main.cpp
+SRCS		=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
