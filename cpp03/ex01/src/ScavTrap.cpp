@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:13:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/23 17:37:52 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/24 12:00:49 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/24 13:57:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
-#include <string>
+#include "ScavTrap.hpp"
+#include <iostream>
 
-class ClapTrap
+ScavTrap::ScavTrap() : ClapTrap()
 {
-	private :
-		std::string name;
-		int	hitPoint;
-		int	energyPoint;
-		int	attackDamage;
-	public :
-		ClapTrap(std::string);
-		~ClapTrap();
-		void	attack(const std::string&);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
-};
+    std::cout << "ScavTrap default constructor called" << std::endl;
+    ClapTrap::hitPoint = 100;
+}
 
-#endif
+ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
+{
+    std::cout << "ScavTrap string constructor called" << std::endl;
+}
+
+ScavTrap::~ScavTrap()
+{
+    std::cout << "ScavTrap destructor called" << std::endl;
+    
+}
