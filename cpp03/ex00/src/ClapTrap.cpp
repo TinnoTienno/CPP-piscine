@@ -6,26 +6,28 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:00:46 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:03:06 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() //Default constructor
 {
+	name = "Default";
 	hitPoint = 10;
 	energyPoint = 10;
 	attackDamage = 0;
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
-ClapTrap::ClapTrap(const ClapTrap &c)
+
+ClapTrap::ClapTrap(const ClapTrap &c) //Copy Constructor
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = c;
 }
-ClapTrap::ClapTrap(std::string str)
+ClapTrap::ClapTrap(std::string str) //Constructor from string
 {
 	name = str;
 	hitPoint = 10;
@@ -34,12 +36,12 @@ ClapTrap::ClapTrap(std::string str)
 	std::cout << "ClapTrap string constructor called" << std::endl;
 }
 
-ClapTrap::~ClapTrap(void)
+ClapTrap::~ClapTrap(void) //Destructor
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
-ClapTrap& ClapTrap::operator = (const ClapTrap& c)
+ClapTrap& ClapTrap::operator = (const ClapTrap& c) // Copy Assignement Operator
 {
     std::cout << "ClapTrap copy assignement operator called" << std::endl;
 	if (this == &c)
@@ -51,7 +53,7 @@ ClapTrap& ClapTrap::operator = (const ClapTrap& c)
 	return (*this);
 }
 
-void	ClapTrap::attack(const std::string& target)
+void	ClapTrap::attack(const std::string& target) // Attacker
 {
 	if (!energyPoint)
 	{
@@ -97,5 +99,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	hitPoint += amount;
 	std::cout << "ClapTrap " << name << " repairs himself for " << amount << " hit points. He now has " << hitPoint << " hit points." << std::endl;
+}
+bool	ClapTrap::hasEnergyPoint(void)
+{
+	
+}
+bool	ClapTrap::hasHealthPoint(void)
+{
+	
 }
 

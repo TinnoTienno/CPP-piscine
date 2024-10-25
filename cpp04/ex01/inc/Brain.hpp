@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:20 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/25 16:42:51 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/25 17:41:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-int main()
+#include <string>
+
+class	Brain
 {
-	DiamondTrap Character;
-
-	Character.whoAmI();
-	Character.attack("his reality");
-	DiamondTrap clone;
-	clone = Character;
-	clone.attack("Michel");
-}
+	private :
+	std::string ideas[100];
+	public :
+		Brain();
+		Brain(const Brain&);
+		~Brain();
+		Brain& operator= (const Brain&);
+		
+		void setIdea(const int, const std::string);
+		std::string getIdea(const int) const; 
+}	;
+#endif

@@ -6,22 +6,24 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:20 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:42:08 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#include	"Animal.hpp"
+#include	"Dog.hpp"
+#include	"Cat.hpp"
+#include	<iostream>
 
 int main()
 {
-	DiamondTrap Character;
+	Animal	*Zoo[50];
+	for (int i = 0; i < 25; i++)
+		Zoo[i] = new Dog();
+	for (int i = 25; i < 50; i++)
+		Zoo[i] = new Cat();
 
-	Character.whoAmI();
-	Character.attack("his reality");
-	DiamondTrap clone;
-	clone = Character;
-	clone.attack("Michel");
+	Zoo[2]
+	for (int i = 0; i < 50; i++)
+		delete (Zoo[i]);
 }

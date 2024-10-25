@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:29:28 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:40:26 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 ClapTrap::ClapTrap()
 {
-	hitPoint = 10;
-	energyPoint = 10;
-	attackDamage = 0;
+	name = "Default";
+	setAD();
+	setEP();
+	setHP();
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 ClapTrap::ClapTrap(const ClapTrap &c)
@@ -28,9 +29,9 @@ ClapTrap::ClapTrap(const ClapTrap &c)
 ClapTrap::ClapTrap(std::string str)
 {
 	name = str;
-	hitPoint = 10;
-	energyPoint = 10;
-	attackDamage = 0;
+	setAD();
+	setEP();
+	setHP();
 	std::cout << "ClapTrap string constructor called" << std::endl;
 }
 
@@ -98,6 +99,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	hitPoint += amount;
 	std::cout << "ClapTrap " << name << " repairs himself for " << amount << " hit points. He now has " << hitPoint << " hit points." << std::endl;
 }
+void ClapTrap::setHP(void)	{hitPoint = 10;}
+void ClapTrap::setEP(void)	{energyPoint = 10;}
+void ClapTrap::setAD(void)	{attackDamage = 0;}
 
 
 

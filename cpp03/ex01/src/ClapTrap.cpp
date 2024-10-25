@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:29:28 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:55:08 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 ClapTrap::ClapTrap()
 {
+	name = "Default";
 	hitPoint = 10;
 	energyPoint = 10;
 	attackDamage = 0;

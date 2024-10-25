@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:00:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:34:19 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:38:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+    setAD();
+	setEP();
+	setHP();
     std::cout << "ScavTrap default constructor called" << std::endl;
-    ClapTrap::hitPoint = 100;
-    ClapTrap::energyPoint = 50;
-    ClapTrap::attackDamage = 20;
 }
 ScavTrap::ScavTrap(const ScavTrap &s) : ClapTrap()
 {
@@ -27,10 +27,10 @@ ScavTrap::ScavTrap(const ScavTrap &s) : ClapTrap()
 }
 ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
 {
+	setAD();
+	setEP();
+	setHP();
     std::cout << "ScavTrap string constructor called" << std::endl;
-    hitPoint = 100;
-    energyPoint = 50;
-    attackDamage = 20;
 }
 
 ScavTrap::~ScavTrap()
@@ -81,3 +81,7 @@ void ScavTrap::attack(const std::string& target)
 	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage !" << std::endl;
 	energyPoint--;
 }
+
+void ScavTrap::setHP(void)	{hitPoint = 100;}
+void ScavTrap::setEP(void)	{energyPoint = 50;}
+void ScavTrap::setAD(void)	{attackDamage = 20;}

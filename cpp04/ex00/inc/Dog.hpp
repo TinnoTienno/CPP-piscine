@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:20 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/25 14:49:14 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/25 17:32:11 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-int main()
+#include "Animal.hpp"
+
+class	Dog : public Animal
 {
-	DiamondTrap Character;
-
-	Character.whoAmI();
-	Character.attack("his reality");
-	DiamondTrap clone;
-	clone = Character;
-	clone.attack("Michel");
-}
+	public :
+		Dog();
+		Dog(const Dog&);
+		~Dog();
+		Dog& operator=(const Dog&);
+		
+		void	makeSound(void) const;
+}	;
+#endif

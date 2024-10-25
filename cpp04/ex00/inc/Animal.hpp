@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:20 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/25 17:32:20 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+#include <string>
 
-int main()
+class Animal
 {
-	DiamondTrap Character;
+	public :
+		Animal();
+		Animal(const Animal&);
+		virtual ~Animal();
+		Animal& operator=(const Animal&);
 
-	Character.whoAmI();
-	Character.attack("his reality");
-	DiamondTrap clone;
-	clone = Character;
-	clone.attack("Michel");
-}
+		std::string	getType(void) const;
+		virtual void	makeSound(void) const;
+	protected :
+		std::string	type;
+}	;
+#endif

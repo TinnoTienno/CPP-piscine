@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:00:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 18:34:36 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:44:08 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 DiamondTrap::DiamondTrap()
 {
-    ClapTrap::name = "_clap_name";
-    hitPoint = FragTrap::hitPoint;
-	energyPoint = ScavTrap::energyPoint;
-	attackDamage = FragTrap::attackDamage;
-    std::cout << attackDamage << " Fragtrap : " << FragTrap::attackDamage << std::endl;
+    ClapTrap::name += "_clap_name";
+	name = "Default";
+	FragTrap::setHP();
+	ScavTrap::setEP();
+	FragTrap::setAD();
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 DiamondTrap::DiamondTrap(std::string str)
 {
     name = str;
     ClapTrap::name = str + "_clap_name";
-    hitPoint = FragTrap::hitPoint;
-	energyPoint = ScavTrap::energyPoint;
-	attackDamage = FragTrap::attackDamage;
+    FragTrap::setHP();
+	ScavTrap::setEP();
+	FragTrap::setAD();
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 DiamondTrap::DiamondTrap(const DiamondTrap& d) : ClapTrap(), FragTrap(), ScavTrap()
@@ -56,9 +56,4 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap&d)
 void    DiamondTrap::whoAmI()
 {
     std::cout << "DiamondTrap's name is both " << name << " and " << ClapTrap::name << std::endl;
-}
-
-void    DiamondTrap::attack(const std::string target)
-{
-    ScavTrap::attack(target);
 }

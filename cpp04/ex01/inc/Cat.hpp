@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:20 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/25 14:49:45 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/25 17:42:27 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
 
-int main()
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Cat : public Animal
 {
-	DiamondTrap Character;
+	public :
+		Cat();
+		Cat(const Cat&);
+		~Cat();
+		Cat& operator=(const Cat&);
 
-	Character.whoAmI();
-	Character.attack("his reality");
-	DiamondTrap clone;
-	clone = Character;
-	clone.attack("Michel");
-}
+		void	makeSound() const;
+		void	
+	private :
+		Brain *brain;
+}	;
+#endif
