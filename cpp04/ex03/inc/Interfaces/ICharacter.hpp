@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:49:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 13:14:54 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/28 16:27:08 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/28 17:08:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
+#include <string>
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-
-class Cat : public Animal
+class ICharacter
 {
-	public :
-		Cat();
-		Cat(const Cat&);
-		~Cat();
-		Cat& operator=(const Cat&);
+    public:
+        virtual ~ICharacter() {}
+        virtual std::string const & getName() const = 0;
+        virtual void equip(AMateria* m) = 0;
+        virtual void unequip(int idx) = 0;
+        virtual void use(int idx, ICharacter& target) = 0;
+};
 
-		void	makeSound() const;
-		std::string	getIdea(const int) const;
-		void		setIdea(const int, const std::string);
-	private :
-		Brain *brain;
-}	;
 #endif

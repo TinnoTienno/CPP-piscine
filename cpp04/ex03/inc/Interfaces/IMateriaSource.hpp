@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   ImateraiSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:49:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 13:14:54 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/28 16:38:49 by eschussl          #+#    #+#             */
+/*   Updated: 2024/10/28 16:43:00 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+#include <string>
+#include "AMateria.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-
-class Cat : public Animal
+class IMateriaSource
 {
-	public :
-		Cat();
-		Cat(const Cat&);
-		~Cat();
-		Cat& operator=(const Cat&);
+    public:
+        virtual ~IMateriaSource() {}
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
-		void	makeSound() const;
-		std::string	getIdea(const int) const;
-		void		setIdea(const int, const std::string);
-	private :
-		Brain *brain;
-}	;
 #endif
