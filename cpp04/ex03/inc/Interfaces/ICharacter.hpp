@@ -6,15 +6,15 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:27:08 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 17:08:33 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:53:31 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP
 #include <string>
+
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 
 class ICharacter
 {

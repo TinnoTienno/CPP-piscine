@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ImateraiSource.hpp                                 :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:38:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 16:43:00 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:37:36 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
+
 #include <string>
 #include "AMateria.hpp"
 
