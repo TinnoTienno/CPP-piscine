@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/28 20:57:11 by eschussl         ###   ########.fr        #
+#    Updated: 2024/10/29 14:10:57 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,25 @@ NAME		=	Materia
 
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
-ABS			=	Abstracts/
-CON			=	Concretes/
-INT			=	interfaces/
-SRCS		=	main.cpp\
-				$(addprefix($(CON), Character.cpp Ice.cpp MateriaSource.cpp))\
-				$(addprefix($(INT), ICharacter.cpp IMateriasource.cpp))\
-				$(addprefix($(ABS), AMateria.cpp))
+ABS_PATH	=	Abstracts/
+CON_PATH	=	Concretes/
+INT_PATH	=	interfaces/
+SRCS		=	main.cpp \
+				$(addprefix $(ABS_PATH),AMateria.cpp)\
+				$(addprefix $(CON_PATH),Character.cpp Ice.cpp MateriaSource.cpp Cure.cpp)\
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
 all : $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/Abstracts -Iinc/Concretes -Iinc/Interfaces/
 
 .obj/%.o: src/%.cpp
 	@mkdir -p .obj
+	@mkdir -p .obj/$(ABS_PATH)
+	@mkdir -p .obj/$(CON_PATH)
+	@mkdir -p .obj/$(INT_PATH)
 	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/Abstracts -Iinc/Concretes -Iinc/Interfaces/
 
 clean :

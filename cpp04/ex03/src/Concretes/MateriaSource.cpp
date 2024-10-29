@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:35:01 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 19:47:49 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:40:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 MateriaSource::MateriaSource()
 {
+	for (int i = 0; i < 4; i++)
+		this->Inventory[i] = NULL;
 	std::cout << "MateriaSource default constructor called" << std::endl;
 }
 MateriaSource::MateriaSource(const MateriaSource &obj)
 {
+	for (int i = 0; i < 4; i++)
+		this->Inventory[i] = NULL;
 	std::cout << "MateriaSource copy constructor called" << std::endl;
 	*this = obj;
 }
@@ -33,6 +37,8 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &obj)
 }
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < 4; i++)
+		delete (Inventory[i]);
 	std::cout << "MateriaSource destructor called" << std::endl;
 }
 void 		MateriaSource::learnMateria(AMateria *M)
@@ -43,6 +49,7 @@ void 		MateriaSource::learnMateria(AMateria *M)
 	if (i == 4)
 		return ;
 	Inventory[i] = M;
+	std::cout << "Materia of type " << M->getType() << " was learnt." << std::endl;
 }
 
 AMateria* 	MateriaSource::createMateria(const std::string &type)
@@ -54,9 +61,12 @@ AMateria* 	MateriaSource::createMateria(const std::string &type)
 	{
 		if (Inventory[i] && Inventory[i]->getType() == type)
 		{
-			res = Inventory[i];
+			res = Inventory[i]->clone();
+			std::cout << "Materia of type " << type << " has been created" << std::endl;
 			return (res);
 		}
 		i--;
 	}
+	std::cout << "Couldnt create the materia " << type << ". Got to learn it first" << std::endl;
+	return (NULL);
 }

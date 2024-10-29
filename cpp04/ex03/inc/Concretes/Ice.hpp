@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:28:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 19:57:39 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:55:27 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Ice : public AMateria
         ~Ice();
         
         void    use(ICharacter&);
-        Ice&    clone();
+        AMateria*    clone() const;
 }   ;
 
 #endif

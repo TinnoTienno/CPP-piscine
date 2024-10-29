@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:25:50 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 19:48:25 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:37:14 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ const std::string& AMateria::getType() const //Returns the materia type
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "Materia undefined, I cant use it on " << target << std::endl;
+	std::cout << "Materia undefined, I cant use it on " << target.getName() << std::endl;
 }

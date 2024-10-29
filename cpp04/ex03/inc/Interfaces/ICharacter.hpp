@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:27:08 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 20:53:31 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:00:13 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ICHARACTER_HPP
 #include <string>
 
-#include "AMateria.hpp"
+class AMateria;
 
 class ICharacter
 {
