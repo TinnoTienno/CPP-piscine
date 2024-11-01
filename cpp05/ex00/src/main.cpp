@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/31 16:56:25 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:13:24 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
 {
 	try
 	{
-		Bureaucrat John("John", 151);
+		Bureaucrat John("John", 151); // Test a grade thats too low at definition
 	}
 	catch (std::exception &e)
 	{

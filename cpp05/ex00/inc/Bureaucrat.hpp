@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/31 16:56:10 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:08:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,32 @@
 
 class Bureaucrat
 {
-	private :
+	private : 
+	
 		const std::string	_name;
 		int					_grade;
 	public :
 		Bureaucrat();
-		Bureaucrat(const Bureaucrat&);
-		Bureaucrat(const std::string&);
 		Bureaucrat(const std::string&, const int&);
-		~Bureaucrat();
+		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
-
-		std::ostream& operator<<(std::ostream& os);
-		void setGrade(const int&);
-		int	getGrade()	const;
-		std::string	getName() const;
-		void increment();
-		void decrement();
-		class GradeTooHighException : public std::exception
+		~Bureaucrat();
+		
+		const std::string& getName()const ;
+		const int& getGrade()const ;
+		void	setGrade(const int &);
+		
+		void	increment();
+		void	decrement();
+		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			virtual const char *what() const throw();
+			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	GradeTooHighException;
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	GradeTooLowException;
 }	;
+
+std::ostream& operator<<(std::ostream&, Bureaucrat const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 #endif
