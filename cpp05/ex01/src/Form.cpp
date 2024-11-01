@@ -5,66 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 17:26:22 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/31 18:07:18 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/01 13:24:56 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/01 14:24:01 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-#include <iostream>
-
-Form::Form() : _name("Default"), _sign(0), _signingGrade(1), _executingGrade(1)
+#include "Bureaucrat.hpp"
+		
+Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExec(1) // By default, sets the form to the highest grade
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
-Form::Form(const Form &obj) : _name(obj.getName()), _signingGrade(obj.getSigning()), _executingGrade(obj.getExec())
+Form::Form(const std::string &str, const int &i1, const int &i2) : _name(str), _isSigned(false), _gradeToSign(i1), _gradeToExec(i2)
 {
-	*this = obj;
-	std::cout << "Form copy constructor called" << std::endl;
-}
-Form::Form(const std::string &name, const int &signing, const int &executing) : _name(name), _sign(0), _signingGrade(signing), _executingGrade(executing)
-{
-	if (_signingGrade > 150 || _executingGrade > 150)
+	if (_gradeToExec > 150 || _gradeToSign > 150)
 		throw(Form::GradeTooLowException);
-	else if (_signingGrade < 1 || _executingGrade < 1)
+	else if (_gradeToExec < 1 || _gradeToSign < 1)
 		throw(Form::GradeTooHighException);
 	std::cout << "Form data constructor called" << std::endl;
 }
-Form& Form::operator=(const Form &obj)
+Form::Form(const Form &obj) :
+			_name(obj.getName())
+			, _isSigned(false)
+			, _gradeToSign(obj.getGradeToSign())
+			, _gradeToExec(obj.getGradeToExec())
 {
-	std::cout << "Bureaucrat copy assignement operator called" << std::endl;
+	if (_gradeToExec > 150 || _gradeToSign > 150)
+	{
+		throw(Form::GradeTooLowException);
+	}
+	else if (_gradeToExec < 1 || _gradeToSign < 1)
+		throw(Form::GradeTooHighException);
+	*this = obj;
+	std::cout << "Form copy constructor called" << std::endl;
+}
+Form& Form::operator=(const Form &) // Useless AF
+{
 	if (this == &obj)
 		return (*this);
-	this->setSign(obj.getBool());
 	return (*this);
+	std::cout << "Form copy assignement operator called" << std::endl;
 }
 
 Form::~Form()
 {
 	std::cout << "Form destructor called" << std::endl;
 }
-std::string Form::getName() const			{ return (this->_name); }
-int			Form::getSigning() const		{ return (this->_signingGrade); }
-int			Form::getExec()	const			{ return (this->_executingGrade); }
-bool		Form::getBool()	const			{ return (this->_sign); }
-void		Form::setSign(const bool &val)	{ this->_sign = val; }
 
-void 		Form::beSigned(const Bureaucrat &bur)
+const std::string Form::getName() const
 {
-	if (this->getSigning() < bur.getGrade())
-	{
-		_sign = 0;
-		throw (Form::GradeTooLowException);
-	}
-	else
-		_sign = 1;
-}
-const char *Form::GradeTooLowException::what() const throw()
-{
-	return ("Error : GradeTooLowException\n");
+	return (_name);
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+int 			Form::getGradeToSign() const
 {
-	return ("Error : GradeTooHighException\n");
+	return (_gradeToSign);
 }
+
+int 			Form::getGradeToExec() const
+{
+	return (_gradeToExec);
+}
+
+bool			Form::getBool() const
+{
+	return (_isSigned);
+}
+	
+void	Form::beSigned(const Bureaucrat &obj)
+{
+	if (this->getGradeToSign() < obj.getGrade())
+		throw(Form::GradeTooLowException); // Not really satisfying considering its double use
+	_isSigned = true;
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("GradeTooHighException: Grade too high: < 1");
+} 
+		
+const char* Form::GradeTooLowException::what() const throw() // Problem from the subject : This exception is supposed to manage 2 different contexts.
+{
+	return ("GradeTooHighException: Grade too Low");
+} 

@@ -5,29 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/31 18:52:10 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/01 13:42:52 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/01 14:12:43 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include <iostream>
-#include <exception>
+#include "Bureaucrat.hpp"
 
 int main()
 {
 	try
 	{
-		Bureaucrat	Jim("Jim", 1);
-		Form 		Construction_permit("Permis de construire", 2, 15);
-
-		Jim.signForm(Construction_permit);
+		Form		Resignation("Resignation", 155, 0);
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e; 
+		std::cout << e.what() << std::endl;
 	}
-	
-	
+	try
+	{
+		Bureaucrat	Billy("Billy", 148);
+		Form		Resignation("Resignation", 20, 12);
+		Billy.signForm(Resignation);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

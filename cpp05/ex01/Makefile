@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/31 18:50:15 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/01 13:15:28 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,6 @@ SRCS		=	main.cpp Bureaucrat.cpp Form.cpp
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
 all : $(NAME)
-
-dev: CFLAGS += -DDEBUG_MODE
-dev: $(NAME)
 
 $(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ -Iinc/

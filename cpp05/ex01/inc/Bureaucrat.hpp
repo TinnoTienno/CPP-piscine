@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/31 18:59:39 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:23:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,39 @@
 #define BUREAUCRAT_HPP
 #include <string>
 #include <exception>
-#include "Form.hpp"
 
 class Form;
-
 class Bureaucrat
 {
-	private :
+	private : 
+	
 		const std::string	_name;
 		int					_grade;
 	public :
 		Bureaucrat();
-		Bureaucrat(const Bureaucrat&);
-		Bureaucrat(const std::string&);
 		Bureaucrat(const std::string&, const int&);
-		~Bureaucrat();
+		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
+		~Bureaucrat();
+		
+		const std::string& getName()const ;
+		const int& getGrade()const ;
+		void	setGrade(const int &);
+		
+		void	increment();
+		void	decrement();
 
-		std::ostream& operator<<(std::ostream& os);
-		void setGrade(const int&);
-		int	getGrade()	const;
-		const std::string&	getName() const;
-		void increment();
-		void decrement();
-		void signForm(Form &);
+		void signForm(Form&) const;
 		
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			int	_grade;
-			virtual std::ostream& operator<<(std::ostream&);
-			public : 
-			GradeTooHighException();
-			GradeTooHighException(const int&);
+			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	GradeTooHighException;
-		
 		class GradeTooLowException : public std::exception
 		{
-			int	_grade;
-			std::ostream& operator<<(std::ostream&);
-			GradeTooLowException();
-			GradeTooLowException(const int&);
+			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	GradeTooLowException;
 }	;
+
+std::ostream& operator<<(std::ostream&, Bureaucrat const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 #endif
