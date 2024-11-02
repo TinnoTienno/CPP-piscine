@@ -6,12 +6,12 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:54:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 14:49:05 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:23:45 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) // Set default value at the bottom
@@ -85,18 +85,33 @@ void	Bureaucrat::decrement()
 {
 	this->setGrade(this->getGrade() + 1);
 }
-void	Bureaucrat::signForm(Form &obj)
+void	Bureaucrat::signForm(AForm &obj)
 {
 	try
 	{
 		obj.beSigned(*this);
 		std::cout << this->getName() << " signed " << obj.getName() << "." << std::endl;
 	}
-	catch (Form::GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
-		std::cout << this->getName() << " couldn't sign " << obj.getName() << " because " << e.what() << ": Bureaucrat grade(" << e.getBurGrade() << ") > Form signing grade(" << e.getFormGrade() << ")." << std::endl; 
+		std::cout << this->getName() << " couldn't sign " << obj.getName() << " because " << e.what() << ": Bureaucrat grade(" << e.getBurGrade() << ") > AForm signing grade(" << e.getFormGrade() << ")." << std::endl; 
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const &obj)
+{
+	try
+	{
+		obj.execute(*this);
+		std::cout << this->getName() << " executed " << obj.getName() << "." << std::endl;
+	}
+	catch(AForm::GradeTooLowException& e)
+	{
+		std::cout << this->getName() << " couldn't execute " << obj.getName() << " because " << e.what() << ": Bureaucrat grade(" << e.getBurGrade() << ") > AForm executing grade(" << e.getFormGrade() << ")." << std::endl; 
+	}
+	
+}
+
 
 Bureaucrat::GradeTooHighException::GradeTooHighException() : _grade(0) { }
 Bureaucrat::GradeTooHighException::GradeTooHighException(const int &i) : _grade(i) { }

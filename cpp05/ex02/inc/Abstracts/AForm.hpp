@@ -1,42 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 14:32:05 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/02 13:24:53 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/02 16:47:26 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
-#include <string>
-#include <exception>
+#ifndef AFORM_HPP
+# define AFORM_HPP
+# include <string>
+# include <iostream>
 
-class Form;
-
-class Bureaucrat
+class Bureaucrat;
+class AForm
 {
-	private : 
-	
+	private :
 		const std::string	_name;
-		int					_grade;
+		bool				_isSigned;
+		const int			_gradeToSign;
+		const int			_gradeToExec;
+
 	public :
-		Bureaucrat();
-		Bureaucrat(const std::string&, const int&);
-		Bureaucrat(const Bureaucrat&);
-		Bureaucrat& operator=(const Bureaucrat&);
-		~Bureaucrat();
+		AForm();
+		AForm(const AForm&);
+		AForm(const std::string&, const int&, const int&);
+		AForm& operator=(const AForm&);
+		~AForm();
 		
-		const std::string& getName()const ;
-		const int& getGrade()const ;
-		void	setGrade(const int &);
+		const std::string& getName() const;
+		const int& 	getGradeToSign() const;
+		const int& 	getGradeToExec() const;
+		const bool& getBool() const;
+		const std::string& getTarget() const;
 		
-		void	increment();
-		void	decrement();
-		void	signForm(Form &);
+		void beSigned(const Bureaucrat&);
+		virtual void execute(Bureaucrat const &) const = 0;
+		
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
 			const int		_grade;
@@ -46,17 +49,28 @@ class Bureaucrat
 				const int& getGrade() const;
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
+		
 		class GradeTooLowException : public std::exception
 		{
-			const int		_grade;
+			const int		_burGrade;
+			const int		_formGrade;
+
 			public :
 				GradeTooLowException();
 				GradeTooLowException(const int&);
-				const int& getGrade() const;
+				GradeTooLowException(const int&, const int&);
+				const int& getBurGrade() const;
+				const int& getFormGrade() const;
+				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+		}	;
+
+		class IsntSignedException : public std::exception
+		{
+			public :
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 }	;
 
-std::ostream& operator<<(std::ostream&, Bureaucrat const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
+std::ostream& operator<<(std::ostream&, AForm const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 
 #endif

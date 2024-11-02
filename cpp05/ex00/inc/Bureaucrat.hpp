@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/01 13:08:33 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:08:14 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,22 @@ class Bureaucrat
 		void	decrement();
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-		}	GradeTooHighException;
+			const int		_grade;
+			public :
+				GradeTooHighException();
+				GradeTooHighException(const int&);
+				const int& getGrade() const;
+				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+		}	;
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-		}	GradeTooLowException;
+			const int		_grade;
+			public :
+				GradeTooLowException();
+				GradeTooLowException(const int&);
+				const int& getGrade() const;
+				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+		}	;
 }	;
 
 std::ostream& operator<<(std::ostream&, Bureaucrat const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)

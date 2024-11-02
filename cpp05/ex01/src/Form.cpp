@@ -5,47 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 13:24:56 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/01 14:24:01 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/02 13:46:43 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/02 14:48:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-		
-Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExec(1) // By default, sets the form to the highest grade
+#include <iostream>
+#include <string>
+
+Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExec(1)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
-Form::Form(const std::string &str, const int &i1, const int &i2) : _name(str), _isSigned(false), _gradeToSign(i1), _gradeToExec(i2)
+
+Form::Form(const Form &obj) : _name(obj.getName()), _isSigned(false), _gradeToSign(obj.getGradeToSign()), _gradeToExec(obj.getGradeToExec()) // sets isSigned to false so not to get false positives
 {
-	if (_gradeToExec > 150 || _gradeToSign > 150)
-		throw(Form::GradeTooLowException);
-	else if (_gradeToExec < 1 || _gradeToSign < 1)
-		throw(Form::GradeTooHighException);
+	std::cout << "Form copy constructor called" << std::endl;
+	*this = obj;
+}
+
+Form::Form(const std::string &str, const int &sign, const int &exec) : _name(str), _isSigned(false), _gradeToSign(sign), _gradeToExec(exec)
+{
+	if (_gradeToExec < 1)
+		throw (Form::GradeTooHighException(_gradeToExec));
+	else if (_gradeToSign < 1)
+		throw (Form::GradeTooHighException(_gradeToSign));
+	else if (_gradeToExec > 150)	
+		throw (Form::GradeTooLowException(_gradeToExec));
+	else if (_gradeToSign > 150)	
+		throw (Form::GradeTooLowException(_gradeToSign));
 	std::cout << "Form data constructor called" << std::endl;
 }
-Form::Form(const Form &obj) :
-			_name(obj.getName())
-			, _isSigned(false)
-			, _gradeToSign(obj.getGradeToSign())
-			, _gradeToExec(obj.getGradeToExec())
+
+Form& Form::operator=(const Form &obj) // Perfectly useless as it is
 {
-	if (_gradeToExec > 150 || _gradeToSign > 150)
-	{
-		throw(Form::GradeTooLowException);
-	}
-	else if (_gradeToExec < 1 || _gradeToSign < 1)
-		throw(Form::GradeTooHighException);
-	*this = obj;
-	std::cout << "Form copy constructor called" << std::endl;
-}
-Form& Form::operator=(const Form &) // Useless AF
-{
+	std::cout << "Form copy assignement operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
+	_isSigned = obj.getBool();
 	return (*this);
-	std::cout << "Form copy assignement operator called" << std::endl;
 }
 
 Form::~Form()
@@ -53,39 +53,57 @@ Form::~Form()
 	std::cout << "Form destructor called" << std::endl;
 }
 
-const std::string Form::getName() const
+
+const std::string& Form::getName() const { return (_name); }
+
+const int& 	Form::getGradeToSign() const { return (_gradeToSign); }
+
+const int& 	Form::getGradeToExec() const { return (_gradeToExec); }
+
+const bool& Form::getBool() const		 { return (_isSigned) ; }
+
+
+void Form::beSigned(const Bureaucrat &obj)
 {
-	return (_name);
+	if (obj.getGrade() > this->getGradeToSign())
+		throw (Form::GradeTooLowException(obj.getGrade(), this->getGradeToSign()));
+	else
+		_isSigned = true;
 }
 
-int 			Form::getGradeToSign() const
+
+Form::GradeTooHighException::GradeTooHighException() : _grade(0) { }
+
+Form::GradeTooHighException::GradeTooHighException(const int &i) : _grade(i) { }
+
+const int& Form::GradeTooHighException::getGrade() const 	{ return (_grade); }
+
+const char* Form::GradeTooHighException::what() const throw() // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 {
-	return (_gradeToSign);
+	return ("Error:Form::GradeTooHighException");
 }
 
-int 			Form::getGradeToExec() const
+Form::GradeTooLowException::GradeTooLowException() : _burGrade(150), _formGrade(0) { }
+
+Form::GradeTooLowException::GradeTooLowException(const int &i) : _burGrade(150), _formGrade(i){ }
+
+Form::GradeTooLowException::GradeTooLowException(const int &i1, const int &i2) : _burGrade(i1), _formGrade(i2) { }
+
+const int& Form::GradeTooLowException::getBurGrade() const { return(_burGrade); }
+
+const int& Form::GradeTooLowException::getFormGrade() const { return(_formGrade); }
+
+const char* Form::GradeTooLowException::what() const throw() // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 {
-	return (_gradeToExec);
+	return ("Error:Form::GradeTooLowException");
 }
 
-bool			Form::getBool() const
+std::ostream& operator<<(std::ostream &os, Form const &obj) // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 {
-	return (_isSigned);
+	os << "Form : " << obj.getName() << ",grade to sign : " << obj.getGradeToSign() << ", grade to execute : " << obj.getGradeToExec() << "signed ?";
+	if (obj.getBool())
+		std::cout << " yes" << std::endl;
+	else
+		std::cout << " no" << std::endl;
+	return (os);
 }
-	
-void	Form::beSigned(const Bureaucrat &obj)
-{
-	if (this->getGradeToSign() < obj.getGrade())
-		throw(Form::GradeTooLowException); // Not really satisfying considering its double use
-	_isSigned = true;
-}
-
-const char* Form::GradeTooHighException::what() const throw()
-{
-	return ("GradeTooHighException: Grade too high: < 1");
-} 
-		
-const char* Form::GradeTooLowException::what() const throw() // Problem from the subject : This exception is supposed to manage 2 different contexts.
-{
-	return ("GradeTooHighException: Grade too Low");
-} 

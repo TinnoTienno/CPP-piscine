@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:54:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/01 13:14:33 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:28:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,13 @@ const int& Bureaucrat::getGrade()const
 void	Bureaucrat::setGrade(const int &i) // exception are thrown for main to catch
 {
 	if (i < 1)
-		throw(Bureaucrat::GradeTooHighException);
+	{
+		throw(Bureaucrat::GradeTooHighException(i));
+	}
 	else if (i > 150)
-		throw(Bureaucrat::GradeTooLowException);
+	{
+		throw(Bureaucrat::GradeTooLowException(i));
+	}
 	else
 		_grade = i;
 }
@@ -81,12 +85,28 @@ void	Bureaucrat::decrement()
 	this->setGrade(this->getGrade() + 1);
 }
 
+Bureaucrat::GradeTooHighException::GradeTooHighException() : _grade(0) { }
+Bureaucrat::GradeTooHighException::GradeTooHighException(const int &i) : _grade(i) { }
+
+const int& Bureaucrat::GradeTooHighException::getGrade() const
+{
+	return (_grade);
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const throw() // Cant display the grade because of many reasons - main reason being the function returning a char* instead of a string
 {
-	return ("Bureaucrat::setGrade: Grade too high: < 1: value has not changed.");
+	return ("Bureaucrat::setGrade: Grade too high");
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException() : _grade(0) { }
+Bureaucrat::GradeTooLowException::GradeTooLowException(const int &i) : _grade(i) { }
+
+const int& Bureaucrat::GradeTooLowException::getGrade() const
+{
+	return (_grade);
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() 
 {
-	return ("Bureaucrat::setGrade: Grade too low: < 150: value has not changed.");
+	return ("Bureaucrat::setGrade: Grade too low");
 }
