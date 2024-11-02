@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 15:18:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 17:01:09 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:37:50 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const &obj) const
 		NewFile << ASCII_TREE;
 		NewFile.close();
 	}
-
-		
 }

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:54:18 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 17:18:47 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/02 18:26:52 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,32 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+enum FormKind {
+	FORM_SHRUBERRY = 0,
+	FORM_ROBOTOMY,
+	FORM_PRESIDENTIAL
+};
+
+typedef AForm (*AbstractFormConstructor)(std::string &);
+
+AForm MakeShruberryForm(const std::string&);
+
+static FormKind form_kind_from_repr(const std::string &repr) {
+	if (repr == "Shruberry")
+		return (FORM_SHRUBBERY);
+	/* ... */
+} 
+
+static AbstractFormConstructor consructor_from_kind(FormKind kind) {
+	/* let dispatch be array of constructor function pointers */	
+	/* return dispatch[kind] (optionally throwing if kind > len(dispatch) */
+}
+
 int main()
 {
 	try
 	{
-		Bureaucrat Matthew("Matthew", 137);
+		Bureaucrat Matthew("Matthew", 7);
 		ShrubberyCreationForm tree("tree");
 		
 		Matthew.signForm(tree);
