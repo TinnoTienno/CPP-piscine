@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:00:59 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:18:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:29:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-class ScavTrap : public ClapTrap
-{
+class ScavTrap : public ClapTrap // this is where the derived class is set up
+{   //no attributes declaration
     public :
         ScavTrap();
         ScavTrap(std::string);
         ScavTrap(const ScavTrap&);
+        ScavTrap operator=(const ScavTrap&);
         ~ScavTrap();
-        ScavTrap operator= (const ScavTrap&);
+        
         void guardGate();
         void attack(const std::string&);
 };

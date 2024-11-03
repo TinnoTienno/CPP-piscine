@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:27:34 by eschussl          #+#    #+#             */
-/*   Updated: 2024/07/25 15:35:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:19:20 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 class Zombie
 {
-	std::string name;
+	private :
+		std::string _name;
 	public :
 		Zombie(std::string);
 		~Zombie();
-		void announce ( void );
+		void announce(); // Btw announce() = announce(void)
 };
 
 #endif

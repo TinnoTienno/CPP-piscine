@@ -6,20 +6,21 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:14:20 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/03 13:51:53 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:21:40 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include <iostream>
+#include <string>
 
-const std::string& Weapon::getType()
+
+Weapon::Weapon(std::string str) : type(str) { }
+
+const std::string& Weapon::getType() const
 {
-	const std::string &res = type;
+	const std::string &res = _type;
 	return (res);
 }
 
-void	Weapon::setType(std::string name)
-{
-	type = name;
-}
+void	Weapon::setType(std::string str) { _type = str; }

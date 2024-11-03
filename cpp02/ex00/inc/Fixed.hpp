@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:28:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/10 14:49:39 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:23:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 class Fixed
 {
-private:
-	int					integer;
-	static const int	fract = 8;
-public:
-	Fixed();
-	Fixed( Fixed& );
-	~Fixed();
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw);
-	Fixed& operator=( const Fixed& );
+	private:
+		int					_integer;
+		static const int	_fract = 8;
+	public:
+		Fixed();
+		Fixed(Fixed&);
+		Fixed& operator=(const Fixed&);
+		~Fixed();
+		
+		int		getRawBits(void) const;
+		void	setRawBits(int const);
 };
 
 #endif

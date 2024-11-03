@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:11:56 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 18:24:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:20:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 class Weapon
 {
-		std::string	type;
+	private :
+		std::string	_type;
 	public :
-		const std::string& getType();
+		Weapon(std::string str);
+		const std::string& getType() const;
 		void setType( std::string );
-		Weapon(std::string str) : type(str) { };
 };
 
 #endif

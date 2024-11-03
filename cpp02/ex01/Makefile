@@ -6,11 +6,11 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/22 15:33:28 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/03 16:09:20 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	 fixedPoint
+NAME		=	fixedPoint
 
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g 

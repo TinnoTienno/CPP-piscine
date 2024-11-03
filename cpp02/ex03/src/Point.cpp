@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:01:17 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/23 17:00:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:10:06 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,43 @@
 
 Point::Point()
 {
-	std::cout << "Default Point constructor called" << std::endl;
+	// std::cout << "Default point constructor called" << std::endl;
 }
+
 Point::Point(const float value1, const float value2): x(value1), y(value2) //member initializer list
 {
-	std::cout << "Point Float constructor called" << std::endl;
+	// std::cout << "Point float constructor called" << std::endl;
 }
+
 Point::~Point()
 {
-	std::cout << "Point Destructor called" << std::endl;
+	// std::cout << "Point destructor called" << std::endl;
 }
-Point::Point(const Point& p): x(p.getX()), y(p.getY())
+
+Point::Point(const Point& obj): x(obj.getX()), y(obj.getY())
 {
-	std::cout << "Point Copy constructor called" << std::endl;
+	// std::cout << "Point copy constructor called" << std::endl;
 }
+
 Point::Point(const Point a, const Point b): x(b.getX().toFloat() - a.getX().toFloat()), y(b.getY().toFloat() - a.getY().toFloat())
 {
-	std::cout << "Vector built x : " << x << " | y : " << y << std::endl;
+	// std::cout << "Point vector constructor called" << std::endl;
 }
-Point&	Point::operator=(const Point& p)
+
+Point&	Point::operator=(const Point& obj)
 {
-	std::cout << "Point Copy assignment operator called" << std::endl;
-	if (this == &p)
+	// std::cout << "Point copy assignment operator called" << std::endl;
+	if (this == &obj)
 		return (*this);
 	return (*this);
 }
 
-Fixed	Point::getX(void) const
+Fixed	Point::getX() const
 {
 	return (x);
 }
 
-Fixed	Point::getY(void) const
+Fixed	Point::getY() const
 {
 	return (y);
 }

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:03:26 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 15:08:40 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 15:47:34 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	replace(char *filename, std::string in, std::string out)
 	std::ofstream ofs(outfile.c_str());
 	std::string filestring = get_file(filename);
 	size_t pos = 0;
+	if (!in.size())
+	{
+		std::cout << "No key was given." << std::endl;
+		return ;
+	}
 	while (filestring.find(in, pos) != std::string::npos)
 	{
 		pos = filestring.find(in, pos);
@@ -60,7 +65,7 @@ void	replace(char *filename, std::string in, std::string out)
 	ofs << filestring;
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv) // arg1 = filename, arg2 key, arg3 replacement
 {
 	if (argc != 4)
 		return (err("Args error"));

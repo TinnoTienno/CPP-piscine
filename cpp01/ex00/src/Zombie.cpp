@@ -6,24 +6,24 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/07/26 12:31:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:18:44 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie( std::string namez)
+Zombie::Zombie(std::string str)
 {
-	name = namez;
+	_name = str;
 }
 
-void Zombie::announce( void )
+void Zombie::announce()
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie::~Zombie( void )
+Zombie::~Zombie()
 {
-	std::cout << name << ": Sleeeeeeeep..." << std::endl;
+	std::cout << _name << ": Sleeeeeeeep..." << std::endl;
 }

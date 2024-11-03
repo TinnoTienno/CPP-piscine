@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:19:59 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/09 17:40:18 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:22:10 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 
 class Harl
 {
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
+	private :
+		void	debug();
+		void	info();
+		void	warning();
+		void	error();
 	public :
 		void	filter(std::string) ;
 };

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:12:43 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:55 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:32:48 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ class   FragTrap : public ClapTrap
 	public :
 		FragTrap();
 		FragTrap(std::string);
-		FragTrap(const FragTrap &);
+		FragTrap(const FragTrap&);
+		FragTrap& operator=(const FragTrap&);
 		~FragTrap();
-		FragTrap& operator=(const FragTrap &);
 		
 		void highFivesGuys(void);
 };

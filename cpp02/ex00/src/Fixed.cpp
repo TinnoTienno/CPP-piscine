@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:30:18 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/10 15:03:46 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:22:57 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,38 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
-	integer = 0;
+	std::cout << "Fixed default constructor called" << std::endl;
+	this->setRawBits(0);
 }
 
-int	Fixed::getRawBits() const
+Fixed::Fixed(Fixed &obj)
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (0);
+	std::cout << "Fixed copy constructor called" << std::endl;
+	this->setRawBits(obj.getRawBits());
 }
 
-Fixed::Fixed (Fixed& t)
+Fixed& Fixed::operator=(const Fixed& obj)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	integer = t.getRawBits();
-}
-
-void	Fixed::setRawBits( int const raw)
-{
-	std::cout << "setRaBitsw called" << std::endl;
-	integer = raw;
+	std::cout << "Fixed copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
+	this->setRawBits(obj.getRawBits());
+	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=( const Fixed& f)
+int	Fixed::getRawBits() const // fyi, getRawBits() = getRawBits(void)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this == &f)
-		return (*this);
-	integer = f.getRawBits();
-	return (*this);
+	std::cout << "getRawBits member function called" << std::endl;
+	return (_integer);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	std::cout << "setRawBits member function called" << std::endl;
+	_integer = raw;
 }

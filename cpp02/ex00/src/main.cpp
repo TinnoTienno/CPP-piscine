@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 14:56:19 by eschussl          #+#    #+#             */
-/*   Updated: 2024/08/10 14:57:20 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:12:00 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main( void ) 
 {
 	Fixed a;
-	Fixed b( a );
+	Fixed b(a);
 	Fixed c;
 	
 	c = b;
