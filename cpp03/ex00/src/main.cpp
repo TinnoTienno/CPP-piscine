@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:05:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:07:10 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
 	ClapTrap Character("Noda");
 	ClapTrap Ennemy("Minion");
 
-	Character.attack("Minion");
+	Character.attack("Minion"); // whats weird is that or ClapTrap class doesnt have attack damage, we cant do shit because of it
 	Ennemy.takeDamage(2);
 	Ennemy.beRepaired(1);
 	Character.attack("Minion");

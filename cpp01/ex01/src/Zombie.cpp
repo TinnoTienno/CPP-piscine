@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:19:44 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:20:05 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void Zombie::announce()
 
 void	Zombie::set(std::string str)
 {
-	_name = str;
+	this->_name = str;
 }

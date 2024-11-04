@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:03:26 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 15:47:34 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:23:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	replace(char *filename, std::string in, std::string out)
 {
 	std::string outfile = filename;
 	outfile += ".replace";
-	std::ofstream ofs(outfile.c_str());
+	std::ofstream ofs(outfile.c_str()); // no need to open or close, the constructor and destructor of std::ofstream will do it for you
 	std::string filestring = get_file(filename);
 	size_t pos = 0;
 	if (!in.size())

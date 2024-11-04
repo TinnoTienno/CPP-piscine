@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 17:32:20 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:33:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ class Animal
 	public :
 		Animal();
 		Animal(const Animal&);
-		virtual ~Animal();
 		Animal& operator=(const Animal&);
+		virtual ~Animal();
 
 		std::string	getType(void) const;
-		virtual void	makeSound(void) const;
+		virtual void	makeSound(void) const; //virtual is declare so the derived functions can use a specific call to the function
 	protected :
 		std::string	type;
 }	;

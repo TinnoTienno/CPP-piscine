@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:23:47 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 15:59:57 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:45:42 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,12 @@ void	Harl::filter(std::string level)
                 break;
 			}
             case (0):
-            {
                 debug();
-                mapVal++;
-            }
             case (1):
-            {
                 info();
-                mapVal++;
-            }
             case (2):
-            {
                 warning();
-                mapVal++;
-            }
             case (3):
-            {
                 error();
-				mapVal++;
-            }
         }
 }

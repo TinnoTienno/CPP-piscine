@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 17:28:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:06:28 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &obj)
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (!_energyPoint)
+	if (!_energyPoint) //Management of energy or hit point is done directly in function but should be implemented in class to scale 
 	{
 		std::cout << "ClapTrap " << _name << " tried to attack " << target << " but it has no more energy point." << std::endl;
 		return;

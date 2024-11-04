@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 15:36:55 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 14:54:58 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/04 15:14:25 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/04 15:14:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 Zombie* newZombie(std::string name)
 {
-	Zombie *res = new Zombie(name);
-	return (res);
+	return (new Zombie(name));
 }

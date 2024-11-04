@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:30:15 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 15:35:03 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:31:14 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int main()
 	club.setType("some other type of club");
 	bob.attack();
 	HumanB jim("Jim");
-	jim.setWeapon(NULL);
+	Weapon sword("rusty looking sword");
+	jim.setWeapon(sword);
 	jim.attack();
-	club.setType("some other type of club");
+	jim.setWeapon(NULL);
 	jim.attack();
 	return 0;
 }

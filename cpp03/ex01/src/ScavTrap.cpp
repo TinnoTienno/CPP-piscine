@@ -6,14 +6,14 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:00:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 17:27:44 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:11:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap() : ClapTrap() //this is where ScavTrap constructors will inherit the ClapTrap Constructors
 {
     std::cout << "ScavTrap default constructor called" << std::endl;
     ClapTrap::_hitPoint = 100;
@@ -66,7 +66,7 @@ void ScavTrap::guardGate(void)
     --_energyPoint;
 }
 
-void ScavTrap::attack(const std::string& target)
+void ScavTrap::attack(const std::string& target) // redefinition of attack
 {
     if (!_energyPoint)
 	{

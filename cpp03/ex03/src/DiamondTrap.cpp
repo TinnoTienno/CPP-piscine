@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:00:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 14:44:08 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:29:36 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap&d)
 
 void    DiamondTrap::whoAmI()
 {
-    std::cout << "DiamondTrap's name is both " << name << " and " << ClapTrap::name << std::endl;
+    std::cout << "DiamondTrap's name is both " << name << " and " << ClapTrap::name << std::endl; // both name and ClapTrap::name are called
 }

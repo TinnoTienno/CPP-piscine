@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:47:30 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 15:56:30 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:33:25 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	Harl::error()
 void	Harl::complain(std::string level)
 {
 	std::string str = " DEBUG INFO   WARNINGERROR";
-	(this->*function[(str.find(level) / 7)])(); // Do you get how it works ? I love this shit
+	int i = str.find(level) / 7;
+	if (i >= 0 && i < 4)
+		(this->*function[i])(); // Do you get how it works ? I love this shit
 }
 
 Harl::Harl()

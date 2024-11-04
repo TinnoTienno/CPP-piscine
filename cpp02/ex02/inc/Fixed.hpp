@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:05:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:54:56 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:19:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ public:
 	bool	operator==(const Fixed&) const;
 	bool	operator!=(const Fixed&) const;
 	
-	Fixed&	operator+(const Fixed&);
-	Fixed&	operator-(const Fixed&);
-	Fixed&	operator*(const Fixed&);
-	Fixed&	operator/(const Fixed&);
+	Fixed	operator+(const Fixed&);
+	Fixed	operator-(const Fixed&);
+	Fixed	operator*(const Fixed&);
+	Fixed	operator/(const Fixed&);
 
 	Fixed&	operator++();
 	Fixed	operator++(int);
@@ -50,7 +50,9 @@ public:
 	Fixed	operator--(int);
 	
 	static	const Fixed&	min(const Fixed&, const Fixed&); 
-	static	const Fixed&	max(const Fixed&, const Fixed&); 
+	static	const Fixed&	max(const Fixed&, const Fixed&);
+	static	Fixed&			min(Fixed&, Fixed&); 
+	static	Fixed&			max(Fixed&, Fixed&);
 };
 
 std::ostream&	operator<<(std::ostream&, const Fixed&);

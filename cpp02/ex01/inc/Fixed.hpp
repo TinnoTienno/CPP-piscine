@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:05:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:24:20 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:59:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ class Fixed
 		Fixed&	operator=(const Fixed&);
 }	;
 
-std::ostream&	operator<<( std::ostream&, const Fixed &);
+std::ostream&	operator<<( std::ostream&, const Fixed&);
 
 #endif

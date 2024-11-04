@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:12:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:31:42 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:10:29 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	std::cout << "Fixed float constructor called" << std::endl;
-	this->setRawBits((int)(roundf(f * ( 1 << _fract))));
+	this->setRawBits((roundf(f * ( 1 << _fract))));
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -54,13 +54,13 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (_integer);
 }
 
 void	Fixed::setRawBits(int const i)
 {
-	std::cout << "setRawBits called" << std::endl;
+	// std::cout << "setRawBits called" << std::endl;
 	_integer = i;
 }
 
@@ -71,7 +71,7 @@ int		Fixed::toInt() const
 
 float	Fixed::toFloat() const
 {
-	return (float(this->getRawBits()) / float(1 << _fract));
+	return (float(this->getRawBits()) / (1 << _fract));
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed &obj)

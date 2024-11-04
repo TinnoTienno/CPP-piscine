@@ -6,13 +6,14 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:30:20 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 14:59:10 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:14:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 void randomChump(std::string name);
+
 Zombie* newZombie(std::string name);
 
 int	main (int argc, char **argv) // needs 3 arguments to display the full test

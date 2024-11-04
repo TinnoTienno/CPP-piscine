@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:39:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 19:34:07 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:29:05 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class   DiamondTrap : public FragTrap, public ScavTrap
         DiamondTrap& operator=(const DiamondTrap&);
         
         void    whoAmI();
-        using   ScavTrap::attack;
+        using   ScavTrap::attack; //using here is allowed, helps specify which function to call when using attack()
     private :
         std::string name;
 }   ;

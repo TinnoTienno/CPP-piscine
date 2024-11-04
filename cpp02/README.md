@@ -13,7 +13,7 @@ EX01 -
 
 On continue a tout normer
 
-EX02 - Je pense que la division merite d'etre regardee ?
+EX02 - La division est un cas particulier, le reste est plutot facilement explicable
 
 EX03 - 
 BSP

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:13:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 17:19:11 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:05:16 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CLAPTRAP_HPP
 #include <string>
 
-class ClapTrap
+class ClapTrap // we haven't build the setters and getters but we'll need them for last exercice
 {
 	private :
 		std::string _name;

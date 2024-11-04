@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:49:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 17:32:16 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:32:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Cat : public Animal
 	public :
 		Cat();
 		Cat(const Cat&);
-		~Cat();
 		Cat& operator=(const Cat&);
+		~Cat();
 
 		void	makeSound() const;
 }	;

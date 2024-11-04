@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 14:40:26 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:23:59 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,10 @@ void	ClapTrap::beRepaired(unsigned int amount)
 void ClapTrap::setHP(void)	{hitPoint = 10;}
 void ClapTrap::setEP(void)	{energyPoint = 10;}
 void ClapTrap::setAD(void)	{attackDamage = 0;}
-
-
-
-
+void ClapTrap::print() const
+{
+	std::cout << "name : " << name << std::endl;
+	std::cout << "hitPoint : " << hitPoint << std::endl;
+	std::cout << "energyPoint : " << energyPoint << std::endl;
+	std::cout << "attackDamage : " << attackDamage << std::endl;
+}

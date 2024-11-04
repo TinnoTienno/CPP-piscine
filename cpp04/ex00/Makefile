@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/25 15:48:08 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/04 13:40:02 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	Polymorphism
 
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
-SRCS		=	main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRCS		=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

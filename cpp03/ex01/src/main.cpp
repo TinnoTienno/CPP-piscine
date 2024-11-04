@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:11:21 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:13:51 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main()
 {
-	ScavTrap Character("Noda");
+	ClapTrap Character("Noda");
 	ScavTrap Ennemy("Minion");
 
 	Character.attack("Minion");
@@ -23,4 +23,6 @@ int main()
 	Ennemy.guardGate();
 	Character.attack("Minion");
 	Ennemy.takeDamage(10);
+	Ennemy.attack("Noda");
+	Character.takeDamage(20);
 }

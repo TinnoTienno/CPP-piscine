@@ -18,7 +18,7 @@ Ba c'est la que la reference entre en jeu en c++, ca permet de passer la valeur,
 En plus, ca permet de renommer une variable, si toutefois ca vous parait necessaire
 
 EX03 -
-"HumanA can have a reference or a pointer to the Weapon." Ca veut dire quoi ca ? En vrai, c'est un des exos les plus durs, faudrait peut etre le faire checker par quelqu'un
+"HumanA can have a reference or a pointer to the Weapon." -> C'est un choix. On choisit la reference ici
 
 EX04 - 
 Tests a faire : 
@@ -29,3 +29,5 @@ pas de fichier
 un fichier bloque 
 un fichier sortie dont les permissions sont bloquees
 test uniforme
+
+EX05 -

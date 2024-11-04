@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:12:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:56:39 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:20:13 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (_integer);
 }
 
 void	Fixed::setRawBits(int const i)
 {
-	std::cout << "setRawBits called" << std::endl;
+	// std::cout << "setRawBits called" << std::endl;
 	_integer = i;
 }
 
@@ -104,37 +104,37 @@ bool	Fixed::operator!=(const Fixed &obj) const
 	return !(this->getRawBits() == obj.getRawBits());
 }
 
-Fixed&	Fixed::operator+(const Fixed &obj)
+Fixed	Fixed::operator+(const Fixed &obj)
 {
-	this->setRawBits(this->getRawBits() + obj.getRawBits());
-	return (*this);
+	Fixed res(this->toFloat() + obj.toFloat());
+	return (res);
 }
 
-Fixed&	Fixed::operator-(const Fixed &obj)
+Fixed	Fixed::operator-(const Fixed &obj)
 {
-	this->setRawBits(this->getRawBits() - obj.getRawBits());
-	return (*this);
+	Fixed res(this->toFloat() - obj.toFloat());
+	return (res);
 }
 
-Fixed&	Fixed::operator*(const Fixed &obj)
+Fixed	Fixed::operator*(const Fixed &obj)
 {
-	this->setRawBits((this->getRawBits() * obj.getRawBits()) >> _fract);
-	return (*this);
+	Fixed res(this->toFloat() * obj.toFloat());
+	return (res);
 }
 
-Fixed&	Fixed::operator/(const Fixed &obj) // I think this one is broken
+Fixed	Fixed::operator/(const Fixed &obj) // because we cant bitshift float values in c++, we need to scale before the division to maintain precision
 {
-	this->setRawBits(this->getRawBits() / obj.getRawBits() << _fract);
-	return (*this);
+	Fixed res(this->toFloat() / obj.toFloat());
+	return (res);
 }
 
-Fixed&	Fixed::operator++()
+Fixed&	Fixed::operator++() // pre incrementation
 {
 	this->setRawBits(this->getRawBits() + 1);
 	return (*this);
 }
 
-Fixed	Fixed::operator++(int)
+Fixed	Fixed::operator++(int) // post incrementation
 {
 	Fixed Old = *this;
 	operator++();
@@ -154,16 +154,25 @@ Fixed	Fixed::operator--(int)
 	return (Old);
 }
 
-const Fixed&	Fixed::min(const Fixed &F1,const Fixed &F2)
+const Fixed&	Fixed::min(const Fixed &F1, const Fixed &F2)
 {
-	return (F1 <= F2 ? F2: F1);
+	return (F1 <= F2 ? F1: F2);
 }
 
-const Fixed&	Fixed::max(const Fixed &F1,const Fixed &F2)
+const Fixed&	Fixed::max(const Fixed &F1, const Fixed &F2)
 {
-	return (F1 >= F2 ? F1: F2);
+	return (F1 >= F2 ? F2: F1);
 }
 
+Fixed&	Fixed::min(Fixed &F1, Fixed &F2)
+{
+	return (F1 <= F2 ? F1: F2);
+}
+
+Fixed&	Fixed::max(Fixed &F1, Fixed &F2)
+{
+	return (F1 >= F2 ? F2: F1);
+}
 std::ostream&	operator<<(std::ostream& os,const Fixed &obj)
 {
 	os << obj.toFloat();
