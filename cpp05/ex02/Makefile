@@ -6,15 +6,14 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/11/02 17:17:07 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/05 11:08:43 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Forms
 
 CC 			=	c++
-CFLAGS		=	-std=c++98 -g
-# -Wall -Wextra -Werror 
+CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g
 ABS_PATH	=	Abstracts/
 CON_PATH	=	Concretes/
 INT_PATH	=	interfaces/
