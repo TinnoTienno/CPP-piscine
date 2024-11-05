@@ -5,29 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 17:15:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/05 11:29:40 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/05 14:31:03 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/05 15:17:07 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "ScalarConvert.hpp"
 
-bool bsp(Point const a, Point const b, Point const c, Point const point);
-
-int	main()
+int main(int argc, char **argv)
 {
-	
-	Point a(10.0,0.0);
-	Point b(0.0,0.0);
-	Point c(0.0,10.0);
-
-	Point point(18.0, 4.0);
-
-	std::cout << a == 2;
-	if (bsp(a, b, c, point))
-		std::cout << "Point is inside the triangle ABC" << std::endl;
-	else
-		std::cout << "Point is outside the triangle ABC" << std::endl;
-	return 0;
+	if (argc != 2)
+		return (1);
+	ScalarConvert::Convert(argv[1]);
 }

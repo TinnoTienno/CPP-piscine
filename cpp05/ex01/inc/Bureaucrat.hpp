@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 14:32:05 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:55:48 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
 		~Bureaucrat();
-		
+
 		const std::string& getName()const ;
 		const int& getGrade()const ;
 		void	setGrade(const int &);
-		
+
 		void	increment();
 		void	decrement();
 		void	signForm(Form &);
@@ -44,7 +44,8 @@ class Bureaucrat
 				GradeTooHighException();
 				GradeTooHighException(const int&);
 				const int& getGrade() const;
-				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+			private:
+				int n;				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 		class GradeTooLowException : public std::exception
 		{
@@ -54,8 +55,8 @@ class Bureaucrat
 				GradeTooLowException(const int&);
 				const int& getGrade() const;
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-		}	;
-}	;
+		};
+};
 
 std::ostream& operator<<(std::ostream&, Bureaucrat const&); // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 

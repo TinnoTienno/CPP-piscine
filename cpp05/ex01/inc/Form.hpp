@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:24:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 14:40:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:55:48 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 # include <iostream>
 
 class Bureaucrat;
+
 class Form
 {
 	private :
 		const std::string	_name;
 		bool				_isSigned;
-		const int			_gradeToSign;
-		const int			_gradeToExec;
-
+			private:
+				int n;		const int			_gradeToExec;
 	public :
 		Form();
 		Form(const Form&);
 		Form(const std::string&, const int&, const int&);
 		Form& operator=(const Form&);
 		~Form();
-		
+
 		const std::string& getName() const;
 		const int& 	getGradeToSign() const;
 		const int& 	getGradeToExec() const;
