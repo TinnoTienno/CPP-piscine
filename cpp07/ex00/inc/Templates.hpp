@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Templates.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 15:41:09 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/06 16:06:37 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/06 16:50:45 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/06 17:46:20 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef TEMPLATES_HPP
+# define TEMPLATES_HPP
 
-class Base
+template <typename T>
+
+void swap(T& a, T& b)
 {
-	public :
-		virtual ~Base();
-}	;
+	T c = a;
+	a = b;
+	b = c;
+}
 
-class A : public Base{ } ;
-class B : public Base{ } ;
-class C : public Base{ } ;
+template <typename T>
 
+T& min(T& a, T& b)
+{
+	return (a > b ? b : a);
+}
+
+template <typename T>
+T& max(T& a, T& b)
+{
+	return (a > b ? a : b);
+}
 #endif

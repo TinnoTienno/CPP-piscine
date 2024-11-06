@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 15:41:09 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/06 16:06:37 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/06 18:15:08 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/06 18:22:34 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
-class Base
+template <typename T>
+
+class Array
 {
+	private :
+		T* array;
 	public :
-		virtual ~Base();
+		Array() { array = (NULL); }
+		Array(unsigned int n)
+		{
+			array = new 
+		}
+		Array(const Array &obj)
+		{
+			this->	
+		}
+		Array& operator=(const Array&);
+		~Array();
+	
 }	;
-
-class A : public Base{ } ;
-class B : public Base{ } ;
-class C : public Base{ } ;
-
 #endif

@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 15:41:09 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/06 16:06:37 by eschussl         ###   ########.fr       */
+/*   Created: 2024/11/06 17:51:37 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/06 18:08:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#include "iter.hpp"
+#include <iostream>
+#include <string>
 
-class Base
+void	print(std::string &str)
 {
-	public :
-		virtual ~Base();
-}	;
+	std::cout << str << std::endl;
+}
+void	toupper(std::string &str)
+{
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+	}
+}
+int main()
+{
+	std::string tab[5] = {"Coucou", "Tu", "Vas", "Bien", "?"};
 
-class A : public Base{ } ;
-class B : public Base{ } ;
-class C : public Base{ } ;
+	::iter(tab, 5, print);
+	::iter(tab, 5, toupper);
+	::iter(tab, 5, print);
+}
 
-#endif

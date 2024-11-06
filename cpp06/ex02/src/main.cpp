@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:54:08 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/06 16:03:43 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:25:08 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,54 @@ Base *generate()
 	return (new C);
 }
 
-// void identify(Base *p)
-// {
-// 	try
-// 	{
-		
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << e.what() << '\n';
-// 	}
-	
-// }
+void identify(Base *p)
+{
+		A *resa = dynamic_cast<A*>(p);
+		if (resa)
+			std::cout << "Object type is A" << std::endl;
 
-// void identify(Base& p)
-// {
-	
-// }
+		B *resb = dynamic_cast<B*>(p);
+		if (resb)
+			std::cout << "Object type is B" << std::endl;
+
+		C *resc = dynamic_cast<C*>(p);
+		if (resc)
+			std::cout << "Object type is C" << std::endl;
+}
+
+void identify(Base& p)
+{
+	try
+	{
+		A &res = dynamic_cast<A&>(p);
+		(void) res;
+		std::cout << "Object type is A" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+	}
+	try
+	{
+		B &res = dynamic_cast<B&>(p);
+		(void) res;
+		std::cout << "Object type is B" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+	}
+	try
+	{
+		C &res = dynamic_cast<C&>(p);
+		(void) res;
+		std::cout << "Object type is C" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+	}
+}
 int main()
 {
-	Base *ptr;
-	// ptr = generate();
-	(void) ptr;
-	// identify(ptr);
-	// identify(*ptr);
+	Base *ptr = generate();
+	identify(ptr);
+	identify(*ptr);
 }
