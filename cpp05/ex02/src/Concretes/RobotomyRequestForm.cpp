@@ -16,10 +16,32 @@
 #include <cstdlib>
 #include <ctime>
 
+RobotomyRequestForm::RobotomyRequestForm()
+{
+	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string &str) : AForm("RobotomyRequestForm", 72, 45), _target(str)
 {
 	std::cout << "RobotomyRequestForm string constructor called" << std::endl;
 }
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj.getName(), obj.getGradeToSign(), obj.getGradeToExec())
+{
+	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm&)
+{
+	std::cout << "RobotomyRequestForm copy assignement operator called" << std::endl;
+	return (*this);
+}
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+	std::cout << "RobotomyRequestForm destructor called" << std::endl;
+}
+
 
 const std::string& RobotomyRequestForm::getTarget() const { return (_target) ; }
 

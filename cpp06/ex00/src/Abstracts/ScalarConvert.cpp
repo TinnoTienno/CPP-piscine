@@ -37,7 +37,7 @@ ScalarConvert::~ScalarConvert()
 	std::cout << "ScalarConvert destructor called" << std::endl;
 }
 
-bool IsOnlyDigit(const std::string &str)
+static bool IsOnlyDigit(const std::string &str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -47,7 +47,7 @@ bool IsOnlyDigit(const std::string &str)
 	return (1);
 }
 
-bool HasPoint(const std::string &str)
+static bool HasPoint(const std::string &str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -57,7 +57,7 @@ bool HasPoint(const std::string &str)
 	return (0);
 }
 
-Type Parse(const std::string &str)
+static Type Parse(const std::string &str)
 {
 	if (IsOnlyDigit(str))
 	{
@@ -73,7 +73,8 @@ Type Parse(const std::string &str)
 	else
 		return (Other);
 }
-const std::string PrintC(const char &c)
+
+static const std::string PrintC(const char &c)
 {
 	std::string res = "";
 	if (c >= 32 && c <= 126)
@@ -103,7 +104,7 @@ void ScalarConvert::Convert(const std::string &str)
 		case (Int) :
 		num_int  = std::atoi(str.c_str());
 		std::cout << "char : " << PrintC(static_cast<char>(num_int)) << std::endl;
-		std::cout << "int : " << static_cast<int>(num_int) << std::endl;
+		std::cout << "int : " << num_int << std::endl;
 		std::cout << "float : " << static_cast<float>(num_int) << ".0f" << std::endl;
 		std::cout << "double : " << static_cast<double>(num_int) << ".0" << std::endl;
 		break ;
@@ -112,7 +113,7 @@ void ScalarConvert::Convert(const std::string &str)
 		num_float = (float) std::atof(str.c_str());
 		std::cout << "char : " << PrintC(static_cast<char>(num_float)) << std::endl;
 		std::cout << "int : " << static_cast<int>(num_float) << std::endl;
-		std::cout << "float : " << static_cast<float>(num_float);
+		std::cout << "float : " << num_float;
 		if ((num_float - static_cast<int>(num_float)) == 0)
 			std::cout << ".0";
 		std::cout << "f" << std::endl;
@@ -126,17 +127,17 @@ void ScalarConvert::Convert(const std::string &str)
 		num_double = std::atof(str.c_str());
 		std::cout << "char : " << PrintC(static_cast<char>(num_double)) << std::endl;
 		std::cout << "int : " << static_cast<int>(num_double) << std::endl;
-		std::cout << "double : " << static_cast<double>(num_double);
-		if ((num_double - static_cast<int>(num_double)) == 0)
-			std::cout << ".0";
-		std::cout << "f" << std::endl;
 		std::cout << "float : " << static_cast<float>(num_double);
 		if ((num_double - static_cast<int>(num_double)) == 0)
 			std::cout << ".0";
+		std::cout << "double : " << num_double;
+		if ((num_double - static_cast<int>(num_double)) == 0)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
 		std::cout << std::endl;
 		break ;
 		
-		case (4) :
+		case (Other) :
 		if (!str.compare("-inff") || !str.compare("+inff"))
 		{
 			std::cout << "char : " << "impossible" << std::endl;

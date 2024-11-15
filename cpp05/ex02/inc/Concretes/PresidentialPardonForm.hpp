@@ -20,7 +20,12 @@ class PresidentialPardonForm : public AForm
 		const std::string	_target;
 	
 	public :
+		PresidentialPardonForm();
+		PresidentialPardonForm(const PresidentialPardonForm&);
 		PresidentialPardonForm(const std::string&);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm&);
+		~PresidentialPardonForm();
+
 		const std::string& getTarget() const;
 		void execute(Bureaucrat const &obj) const;
 } ;

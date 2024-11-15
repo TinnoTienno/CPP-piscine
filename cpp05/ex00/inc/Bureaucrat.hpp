@@ -32,8 +32,9 @@ class Bureaucrat
 		const int& getGrade()const ;
 		void	setGrade(const int &);
 		
-		void	increment();
-		void	decrement();
+		Bureaucrat &operator++();
+		Bureaucrat &operator--();
+		
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
 			const int		_grade;

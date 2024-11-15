@@ -20,10 +20,10 @@ class ScavTrap;
 class ClapTrap
 {
 	protected :
-		std::string name;
-		int	hitPoint;
-		int	energyPoint;
-		int	attackDamage;
+		std::string 	_name;
+		int		_hitPoint;
+		int		_energyPoint;
+		int		_attackDamage;
 	public :
 		ClapTrap();
 		ClapTrap(const ClapTrap &);

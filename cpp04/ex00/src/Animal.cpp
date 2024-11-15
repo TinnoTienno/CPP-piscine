@@ -41,5 +41,5 @@ std::string	Animal::getType(void) const
 }
 void	Animal::makeSound(void) const
 {
-	std::cout << type << " doesnt know what to do !" <<std::endl;
+	std::cout << type << " doesnt know what to do !" << std::endl;
 }

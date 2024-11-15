@@ -19,7 +19,7 @@ Dog::Dog() : Animal()
 	std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &c)
+Dog::Dog(const Dog &c) : Animal()
 {
 	*this = c;
 	std::cout << "Dog copy constructor called" << std::endl;

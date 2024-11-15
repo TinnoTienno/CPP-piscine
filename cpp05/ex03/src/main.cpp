@@ -23,7 +23,7 @@ int main()
 	{
 		Intern Trevis;
 
-		AForm *form = Trevis.makeForm("robotomy request", "Brandon");
+		AForm *form = Trevis.makeForm("ShrubberyCreationForm", "Brandon");
 		Bureaucrat Roger("Roger", 1); 
 		Roger.signForm(*form);
 	}

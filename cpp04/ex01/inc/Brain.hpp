@@ -26,6 +26,6 @@ class	Brain
 		Brain& operator= (const Brain&);
 		
 		void setIdea(const int, const std::string);
-		std::string getIdea(const int) const; 
+		std::string getIdea(const int) const;
 }	;
 #endif

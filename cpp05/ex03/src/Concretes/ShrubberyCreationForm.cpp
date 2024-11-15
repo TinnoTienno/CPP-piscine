@@ -30,9 +30,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const &obj) const
 		throw (AForm::GradeTooLowException(obj.getGrade(), this->getGradeToExec()));
 	else
 	{
-		std::ofstream NewFile;
-		NewFile.open((this->getTarget() + "_shrubbery").c_str());
-		NewFile << ASCII_TREE;
-		NewFile.close();
+		try
+		{
+			std::ofstream NewFile((this->getTarget() + "_shrubbery").c_str());
+			NewFile << ASCII_TREE;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 }

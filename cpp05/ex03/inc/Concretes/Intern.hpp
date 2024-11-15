@@ -25,6 +25,7 @@ class Intern
 		~Intern();
 		
 		AForm* makeForm(const std::string&, const std::string&);
+		class 
 }	;
 
 

@@ -17,20 +17,21 @@
 #include	"WrongCat.hpp"
 #include	<iostream>
 
-// int main()
-// {
-// 	Animal *StinkyCat = new Cat;
-// 	Cat	GrosMinet;
-
-// 	GrosMinet.makeSound();
-// 	StinkyCat->makeSound();
-// }
-
-int main() //WrongMain
+int main()
 {
-	WrongAnimal *StinkyCat = new WrongCat;
-	WrongCat	GrosMinet;
-
-	GrosMinet.makeSound();
-	StinkyCat->makeSound(); // this guys actually doesnt know he is a cat
+	{
+		Animal *StinkyCat = new Cat;
+		Cat	GrosMinet;
+	
+		GrosMinet.makeSound();
+		StinkyCat->makeSound();
+	}
+	{
+		WrongAnimal *StinkyCat = new WrongCat;
+		WrongCat	GrosMinet;
+	
+		GrosMinet.makeSound();
+		StinkyCat->makeSound(); // this guys actually doesnt know he is a cat
+	}
 }
+

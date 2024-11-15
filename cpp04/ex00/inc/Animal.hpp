@@ -20,7 +20,7 @@ class Animal
 		Animal();
 		Animal(const Animal&);
 		Animal& operator=(const Animal&);
-		virtual ~Animal();
+		virtual ~Animal(); 
 
 		std::string	getType(void) const;
 		virtual void	makeSound(void) const; //virtual is declare so the derived functions can use a specific call to the function
