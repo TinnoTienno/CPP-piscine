@@ -34,18 +34,18 @@ class Bureaucrat
 		const int& getGrade()const ;
 		void	setGrade(const int &);
 
-		void	increment();
-		void	decrement();
+		Bureaucrat &operator++();
+		Bureaucrat &operator--();
 		void	signForm(Form &);
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
+			private:
 			const int		_grade;
 			public :
 				GradeTooHighException();
 				GradeTooHighException(const int&);
 				const int& getGrade() const;
-			private:
-				int n;				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 		class GradeTooLowException : public std::exception
 		{

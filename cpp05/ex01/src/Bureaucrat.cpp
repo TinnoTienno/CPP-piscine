@@ -76,14 +76,16 @@ void	Bureaucrat::setGrade(const int &i) // exception are thrown for main to catc
 		_grade = i;
 }
 
-void	Bureaucrat::increment() // setGrade is called to make code somewhat more dynamic
+Bureaucrat&	Bureaucrat::operator++() // setGrade is called to make code somewhat more dynamic
 {
 	this->setGrade(this->getGrade() - 1);
+	return (*this);
 }
 
-void	Bureaucrat::decrement()
+Bureaucrat&	Bureaucrat::operator--()
 {
 	this->setGrade(this->getGrade() + 1);
+	return (*this);
 }
 void	Bureaucrat::signForm(Form &obj)
 {

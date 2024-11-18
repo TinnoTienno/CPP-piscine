@@ -21,7 +21,7 @@ int main()
 	std::cout << "TEST" << std::endl;
 	try
 	{
-		Bureaucrat Matthew("Matthew", 145);
+		Bureaucrat Matthew("Matthew", 125);
 		ShrubberyCreationForm tree("tree");
 		
 		Matthew.signForm(tree);

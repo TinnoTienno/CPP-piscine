@@ -22,6 +22,7 @@ Dog::Dog() : Animal()
 
 Dog::Dog(const Dog &c) : Animal()
 {
+	this->brain = NULL;
 	*this = c;
 	std::cout << "Dog copy constructor called" << std::endl;
 }
@@ -38,6 +39,8 @@ Dog& Dog::operator=(const Dog &d)
 	if (this == &d)
 		return (*this);
 	type = d.type;
+	if (this->brain)
+		delete (this->brain);
 	this->brain = new(Brain);
 	*brain = *d.brain;
 

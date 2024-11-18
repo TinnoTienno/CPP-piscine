@@ -20,6 +20,7 @@ FragTrap::FragTrap() : ClapTrap()
 	_attackDamage = 30;
 	std::cout << "FragTrap default constructor called" << std::endl;
 }
+
 FragTrap::FragTrap(std::string str) : ClapTrap()
 {
     _hitPoint = 100;
@@ -28,15 +29,18 @@ FragTrap::FragTrap(std::string str) : ClapTrap()
     _name = str;
 	std::cout << "FragTrap string constructor called" << std::endl;
 }
+
 FragTrap::FragTrap(const FragTrap &f) : ClapTrap()
 {
     *this = f;
 	std::cout << "FragTrap copy constructor called" << std::endl;
 }
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap destructor called" << std::endl;
 }
+
 FragTrap& FragTrap::operator=(const FragTrap &f)
 {
     std::cout << "FragTrap copy assignement operator called" << std::endl;
@@ -51,6 +55,5 @@ FragTrap& FragTrap::operator=(const FragTrap &f)
 
 void FragTrap::highFivesGuys(void)
 {
-    
     std::cout << "FragTrap " << _name << " is requesting a high five." << std::endl;
 }

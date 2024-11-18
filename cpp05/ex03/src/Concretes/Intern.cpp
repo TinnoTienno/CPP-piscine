@@ -39,7 +39,7 @@ Intern::~Intern()
 	std::cout << "Intern destructor called" << std::endl;
 }
 
-int map_val(std::string level)
+static int map_val(std::string level)
 {
 	std::string tab[3] = {"presidential request", "shrubbery request", "robotomy request"};
 	int i = 0;
@@ -61,6 +61,7 @@ AForm* Intern::makeForm(const std::string &formName, const std::string &burName)
 		default :
 		{
 			std::cout << "Intern couldn't create a form : Wrong format" << std::endl;
+			throw ()
 			return (NULL);
 		}
 		case (0) :
