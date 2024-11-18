@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Templates.hpp                                      :+:      :+:    :+:   */
+/*   Pyroblast.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 16:50:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 17:01:22 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/28 16:28:46 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/08 15:07:37 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPLATES_HPP
-# define TEMPLATES_HPP
+#ifndef PYROBLAST_HPP
+#define PYROBLAST_HPP
+#include "AMateria.hpp"
 
-template <typename T>
-void swap(T& a, T& b)
+class Pyroblast : public AMateria
 {
-	T c = a;
-	a = b;
-	b = c;
-}
+    public :
+        Pyroblast();
+        Pyroblast(const Pyroblast&);
+        Pyroblast& operator=(const Pyroblast&);
+        ~Pyroblast();
+        
+        void    use(ICharacter&);
+        AMateria*    clone() const;
+}   ;
 
-template <typename T>
-T& min(T& a, T& b)
-{
-	return (a > b ? b : a);
-}
-
-template <typename T>
-T& max(T& a, T& b)
-{
-	return (a > b ? a : b);
-}
 #endif

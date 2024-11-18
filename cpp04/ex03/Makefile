@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/29 14:10:57 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/08 15:07:59 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CON_PATH	=	Concretes/
 INT_PATH	=	interfaces/
 SRCS		=	main.cpp \
 				$(addprefix $(ABS_PATH),AMateria.cpp)\
-				$(addprefix $(CON_PATH),Character.cpp Ice.cpp MateriaSource.cpp Cure.cpp)\
+				$(addprefix $(CON_PATH),Character.cpp Ice.cpp MateriaSource.cpp Cure.cpp Fireball.cpp Purge.cpp Pyroblast.cpp)\
 
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

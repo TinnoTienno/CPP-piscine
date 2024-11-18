@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:25:50 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/29 14:37:14 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:41:57 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 AMateria::AMateria()
 {
+	next = NULL;
 	std::cout << "AMaterial default constructor called" << std::endl;
 }
 AMateria::AMateria(std::string const &type)
 {
+	next = NULL;
 	std::cout << "AMaterial string constructor called" << std::endl;
 	this->type = type;
 }
 AMateria::AMateria(const AMateria &obj)
 {
+	next = NULL;
 	std::cout << "AMaterial copy constructor called" << std::endl;
 	*this = obj;
 }

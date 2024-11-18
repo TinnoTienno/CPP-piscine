@@ -1,55 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Fireball.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:52:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 14:46:39 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:03:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Ice.hpp"
+#include "Fireball.hpp"
 
-Ice::Ice()
+Fireball::Fireball()
 {
-	type = "ice";
-	// std::cout << "Ice default constructor called" << std::endl;
+	type = "fireball";
+	// std::cout << "Fireball default constructor called" << std::endl;
 }
 
-Ice::Ice(const Ice &obj) : AMateria()
+Fireball::Fireball(const Fireball &obj) : AMateria()
 {
-	// std::cout << "Ice copy constructor called" << std::endl;
+	// std::cout << "Fireball copy constructor called" << std::endl;
 	*this = obj;
 }
 
-Ice& Ice::operator=(const Ice &obj)
+Fireball& Fireball::operator=(const Fireball &obj)
 {
-	// std::cout << "Ice copy assignement operator called" << std::endl;
+	// std::cout << "Fireball copy assignement operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
 	type = obj.type;
 	return (*this);
 }
 
-Ice::~Ice()
+Fireball::~Fireball()
 {
-	std::cout << "Ice destructor called" << std::endl;
+	std::cout << "Fireball destructor called" << std::endl;
 }
 
 
-void    Ice::use(ICharacter&target)
+void    Fireball::use(ICharacter&target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+	std::cout << "* shoots an Fireball at " << target.getName() << std::endl;
 }
 
-AMateria* Ice::clone() const
+AMateria* Fireball::clone() const
 {
-	Ice *res;
+	Fireball *res;
 
-	res = new(Ice);
+	res = new(Fireball);
 	res->type = this->type;
 	return (res);
 }

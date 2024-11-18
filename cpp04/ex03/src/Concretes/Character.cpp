@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:00:37 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/29 16:53:16 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:50:29 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ Character::Character()
 	for (int i = 0; i < 4; i++)
 		Inventory[i] = NULL;
 	name = "Default";
-	std::cout << "Character default constructor called" << std::endl;
+	// std::cout << "Character default constructor called" << std::endl;
 }
 
 Character::Character(const Character &obj)
 {
-	std::cout << "Character copy constructor called" << std::endl;
+	// std::cout << "Character copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		Inventory[i] = NULL;
 	name = "Default";
@@ -32,7 +32,7 @@ Character::Character(const Character &obj)
 
 Character::Character(const std::string str)
 {
-	std::cout << "Character string constructor called" << std::endl;
+	// std::cout << "Character string constructor called" << std::endl;
 	name = str;
 	for (int i = 0; i < 4; i++)
 		Inventory[i] = NULL;
@@ -60,6 +60,19 @@ Character& Character::operator=(const Character &obj)
 	return (*this);
 }
 
+void Character::cleanFloor()
+{
+	AMateria *tmp;
+	
+	while (this->floor)
+	{
+		std::cout << "cleaning floor : " << this->floor->getType() << std::endl;
+		tmp = this->floor->next;
+		delete (this->floor);
+		this->floor = tmp;
+	}
+}
+
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
@@ -67,6 +80,7 @@ Character::~Character()
 		if (Inventory[i])
 			delete (Inventory[i]);
 	}
+	cleanFloor();
 	std::cout << "Character destructor called" << std::endl;
 }
 
@@ -91,6 +105,20 @@ void Character::equip(AMateria* m)
 		std::cout << name << " couldnt equip the materia." << std::endl;
 }
 
+void	Character::dropToFloor(AMateria *materia)
+{
+	AMateria *tmp;
+	
+	std::cout << "drop to floor : " << materia->getType() << std::endl;
+	tmp = this->floor;
+	materia->next = NULL;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	if (!tmp)
+		this->floor = materia;
+	else
+		tmp->next = materia;
+}
 void Character::unequip(int idx)
 {
 	if (idx > 4 || idx < 0 || !Inventory[idx])
@@ -99,6 +127,7 @@ void Character::unequip(int idx)
 		return ;
 	}
 	std::cout << name << " unequipped " << Inventory[idx]->getType() << " materia." << std::endl;
+	dropToFloor(Inventory[idx]);
 	Inventory[idx] = NULL;
 }
 

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Templates.hpp                                      :+:      :+:    :+:   */
+/*   fireball.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 16:50:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 17:01:22 by eschussl         ###   ########.fr       */
+/*   Created: 2024/10/28 16:28:46 by eschussl          #+#    #+#             */
+/*   Updated: 2024/11/08 15:02:49 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPLATES_HPP
-# define TEMPLATES_HPP
+#ifndef FIREBALL_HPP
+#define FIREBALL_HPP
+#include "AMateria.hpp"
 
-template <typename T>
-void swap(T& a, T& b)
+class Fireball : public AMateria
 {
-	T c = a;
-	a = b;
-	b = c;
-}
+    public :
+        Fireball();
+        Fireball(const Fireball&);
+        Fireball& operator=(const Fireball&);
+        ~Fireball();
+        
+        void    use(ICharacter&);
+        AMateria*    clone() const;
+}   ;
 
-template <typename T>
-T& min(T& a, T& b)
-{
-	return (a > b ? b : a);
-}
-
-template <typename T>
-T& max(T& a, T& b)
-{
-	return (a > b ? a : b);
-}
 #endif

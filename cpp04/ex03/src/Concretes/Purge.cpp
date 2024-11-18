@@ -1,55 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   Purge.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:10:28 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 14:46:34 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:05:00 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Cure.hpp"
+#include "Purge.hpp"
 
-Cure::Cure()
+Purge::Purge()
 {
-	type = "cure";
-	// std::cout << "Cure default constructor called" << std::endl;
+	type = "purge";
+	// std::cout << "Purge default constructor called" << std::endl;
 }
 
-Cure::Cure(const Cure &obj) : AMateria()
+Purge::Purge(const Purge &obj) : AMateria()
 {
-	// std::cout << "Cure copy constructor called" << std::endl;
+	// std::cout << "Purge copy constructor called" << std::endl;
 	*this = obj;
 }
 
-Cure& Cure::operator=(const Cure &obj)
+Purge& Purge::operator=(const Purge &obj)
 {
-	// std::cout << "Cure copy assignement operator called" << std::endl;
+	// std::cout << "Purge copy assignement operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
 	type = obj.type;
 	return (*this);
 }
 
-Cure::~Cure()
+Purge::~Purge()
 {
-	std::cout << "Cure destructor called" << std::endl;
+	std::cout << "Purge destructor called" << std::endl;
 }
 
 
-void    Cure::use(ICharacter&target)
+void    Purge::use(ICharacter&target)
 {
-	std::cout << "* shoots an Cure bolt at " << target.getName() << std::endl;
+	std::cout << "* shoots an Purge bolt at " << target.getName() << std::endl;
 }
 
-AMateria* Cure::clone() const
+AMateria* Purge::clone() const
 {
-	Cure *res;
+	Purge *res;
 
-	res = new(Cure);
+	res = new(Purge);
 	res->type = this->type;
 	return (res);
 }

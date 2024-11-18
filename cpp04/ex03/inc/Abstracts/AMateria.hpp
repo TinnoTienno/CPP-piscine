@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:25:57 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/29 14:33:19 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:27:30 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ class AMateria
 {
     protected:
         std::string type;
-    public:
     
+    public:
+        AMateria *next;
     AMateria();
     AMateria(std::string const &);
     AMateria(const AMateria&);
