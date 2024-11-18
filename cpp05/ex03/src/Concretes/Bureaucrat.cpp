@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:54:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 16:23:45 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:13:05 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj) // operator= is rendere
 {
 	std::cout << "Bureaucrat copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	this->setGrade(obj.getGrade());
-	return (*this);
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream &os, Bureaucrat const &obj) // done as asked in the subject
@@ -79,20 +79,20 @@ void	Bureaucrat::setGrade(const int &i) // exception are thrown for main to catc
 Bureaucrat&	Bureaucrat::operator++() // setGrade is called to make code somewhat more dynamic
 {
 	this->setGrade(this->getGrade() - 1);
-	return (*this);
+	return *this;
 }
 
 Bureaucrat&	Bureaucrat::operator--()
 {
 	this->setGrade(this->getGrade() + 1);
-	return (*this);
+	return *this;
 }
 
 void	Bureaucrat::signForm(AForm &obj)
 {
 	try
 	{
-		obj.beSigned(*this);
+		obj.beSigned*this;
 		std::cout << this->getName() << " signed " << obj.getName() << "." << std::endl;
 	}
 	catch (AForm::GradeTooLowException &e)
@@ -105,7 +105,7 @@ void	Bureaucrat::executeForm(AForm const &obj)
 {
 	try
 	{
-		obj.execute(*this);
+		obj.execute*this;
 		std::cout << this->getName() << " executed " << obj.getName() << "." << std::endl;
 	}
 	catch(AForm::GradeTooLowException& e)

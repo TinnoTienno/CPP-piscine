@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:15:08 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 18:03:55 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:43:55 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 #include <ostream>
 
 template <class T>
-
 class Array
 {
 	private :
-		T* 		_array;
+		T* 				_array;
 		unsigned int 	_size;
 	public :
 		Array() 
@@ -31,6 +30,7 @@ class Array
 			_array = NULL;
 			_size = 0;
 		}
+		
 		Array(unsigned int n)
 		{
 			std::cout << "Array int constructor called" << std::endl;
@@ -39,24 +39,47 @@ class Array
 				_array[i] = 0;
 			_size = n;
 		}
+		
 		Array(const Array &obj)
 		{
 			std::cout << "Array copy constructor called" << std::endl;
 			*this = obj;
 		}
+		
+		T&	operator[](unsigned int index)
+		{
+			if (index >= this->size() || index < 0)
+			{
+				std::cout << "yo " << index << std::endl;
+				throw (IndexOutOfScopeException(index));
+			}
+			return this->_array[index];
+		}
+		
+		const T& operator[](unsigned int index) const
+		{
+			if (index >= this->size() || index < 0)
+			{
+				std::cout << "yo " << index << std::endl;
+				throw (IndexOutOfScopeException(index));
+			}
+			return this->_array[index];
+		}
+		
 		Array& operator=(const Array &obj)
 		{
 			if (this->_array)
-				delete[] (this->_array);
-			std::cout << "size " << obj._size << std::endl;
+			{
+				delete[] this->_array;
+				this->_array = NULL;
+			}
+			this->_size = obj.size();
 			this->_array = new T[obj._size];
 			try
 			{
 				for (unsigned int i = 0; i < obj.size(); i++)
 				{
-					std::cout << "obj[i] = " << obj[i] << std::endl;	
-					(this[i]) = (obj[i]);
-					// std::cout << "this[i] = " << this[i] << std::endl;	
+					(*this)[i] = obj[i];
 				}
 				_size = obj.size();
 			}
@@ -66,6 +89,7 @@ class Array
 			}
 			return (*this);
 		}
+		
 		~Array()
 		{
 			if (this->_array)
@@ -74,18 +98,6 @@ class Array
 		
 		unsigned int size() const { return (this->_size); }
 		
-		T&	operator[](unsigned int index)
-		{
-			if (index >= this->size())
-				throw (IndexOutOfScopeException(index));
-			return this->_array[index];
-		}
-		const T& operator[](unsigned int index) const
-		{
-			if (index >= this->size())
-				throw (IndexOutOfScopeException(index));
-			return this->_array[index];
-		}
 		class IndexOutOfScopeException : public std::exception
 		{
 			private :

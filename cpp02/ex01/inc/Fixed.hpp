@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 15:05:38 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:59:21 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:04:25 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Fixed
 {
 	private:
-		int					_integer;
-		static const int	_fract = 8;
+		int					m_integer;
+		static const int	m_fract = 8;
 	public:
 		Fixed();
 		Fixed(const Fixed&);

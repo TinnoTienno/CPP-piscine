@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:00:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 14:38:41 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:51:40 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,45 +43,45 @@ ScavTrap ScavTrap::operator= (const ScavTrap& s)
     std::cout << "ScavTrap copy assignement operator called" << std::endl;
 	if (this == &s)
 		return (*this);
-	hitPoint = s.hitPoint;
-	name = s.name;
-	energyPoint = s.energyPoint;
-	attackDamage = s.attackDamage;
+	this->m_hitPoint = s.m_hitPoint;
+	this->m_name = s.m_name;
+	this->m_energyPoint = s.m_energyPoint;
+	this->m_attackDamage = s.m_attackDamage;
 	return (*this);
 }
 
 void ScavTrap::guardGate(void)
 {
-    if (!energyPoint)
+    if (!this->m_energyPoint)
 	{
-		std::cout << "ScavTrap " << name << " tried to guard but it has no more energy point." << std::endl;
+		std::cout << "ScavTrap " << this->m_name << " tried to guard but it has no more energy point." << std::endl;
 		return;
 	}
-	if (!hitPoint)
+	if (!this->m_hitPoint)
 	{
-		std::cout << "ScavTrap " << name << " tried to guard but it is already dead." << std::endl;
+		std::cout << "ScavTrap " << this->m_name << " tried to guard but it is already dead." << std::endl;
 		return;
 	}
-    std::cout << "ScavTrap " << name << " is now in Gate keeper mode." << std::endl;
-    --energyPoint;
+    std::cout << "ScavTrap " << this->m_name << " is now in Gate keeper mode." << std::endl;
+    --this->m_energyPoint;
 }
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (!energyPoint)
+    if (!this->m_energyPoint)
 	{
-		std::cout << "ScavTrap " << name << " tried to attack " << target << " but it has no more energy point." << std::endl;
+		std::cout << "ScavTrap " << this->m_name << " tried to attack " << target << " but it has no more energy point." << std::endl;
 		return;
 	}
-	if (!hitPoint)
+	if (!this->m_hitPoint)
 	{
-		std::cout << "ScavTrap " << name << " tried to attack but it is already dead." << std::endl;
+		std::cout << "ScavTrap " << this->m_name << " tried to attack but it is already dead." << std::endl;
 		return;
 	}
-	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage !" << std::endl;
-	energyPoint--;
+	std::cout << "ScavTrap " << this->m_name << " attacks " << target << ", causing " << this->m_attackDamage << " points of damage !" << std::endl;
+	this->m_energyPoint--;
 }
 
-void ScavTrap::setHP(void)	{hitPoint = 100;}
-void ScavTrap::setEP(void)	{energyPoint = 50;}
-void ScavTrap::setAD(void)	{attackDamage = 20;}
+void ScavTrap::setHP(void)	{this->m_hitPoint = 100;}
+void ScavTrap::setEP(void)	{this->m_energyPoint = 50;}
+void ScavTrap::setAD(void)	{this->m_attackDamage = 20;}

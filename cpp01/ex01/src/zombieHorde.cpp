@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:09:28 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 15:10:35 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:52:35 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ Zombie*	zombieHorde(int N, std::string name)
 		The_Horde[i].set(name); // initialize the objects by setting their name
 		i++;
 	}
-	return (The_Horde); // returns the pointer to first Zombie
+	return The_Horde; // returns the pointer to first Zombie
 }

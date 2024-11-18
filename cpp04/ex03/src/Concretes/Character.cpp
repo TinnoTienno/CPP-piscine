@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:00:37 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 14:50:29 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:54:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Character& Character::operator=(const Character &obj)
 {
 	std::cout << "Character copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	name = obj.name;
 	for (int i = 0; i < 4; i++)
 	{
@@ -57,7 +57,7 @@ Character& Character::operator=(const Character &obj)
 		if (obj.Inventory[i])
 			Inventory[i] = obj.Inventory[i]->clone();
 	}
-	return (*this);
+	return *this;
 }
 
 void Character::cleanFloor()

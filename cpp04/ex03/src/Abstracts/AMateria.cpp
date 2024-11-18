@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:25:50 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 14:41:57 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:55:11 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ AMateria& AMateria::operator=(const AMateria &obj)
 {
 	std::cout << "AMaterial copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	type = obj.type;
-	return (*this);
+	return *this;
 }
 AMateria::~AMateria()
 {
@@ -45,7 +45,7 @@ AMateria::~AMateria()
    
 const std::string& AMateria::getType() const //Returns the materia type
 {
-	return (type);
+	return type;
 }
 
 void AMateria::use(ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 15:18:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 18:07:55 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:02:30 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	private : 
-		const std::string	_target;
+		const std::string	m_target;
 	
 	public :
         ShrubberyCreationForm();

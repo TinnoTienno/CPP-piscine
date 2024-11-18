@@ -6,37 +6,37 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:54:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 13:28:38 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:13:37 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) // Set default value at the bottom
+Bureaucrat::Bureaucrat() : m_name("Default"), m_grade(150) // Set default value at the bottom
 {
 	// std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string &str, const int &i) : _name(str) // was not clearly asked for in the subject but then again -> "Any attempt to instantiate a Bureaucrat using an invalid grade..."
+Bureaucrat::Bureaucrat(const std::string &str, const int &i) : m_name(str) // was not clearly asked for in the subject but then again -> "Any attempt to instantiate a Bureaucrat using an invalid grade..."
 {
 	this->setGrade(i);
 	// std::cout << "Bureaucrat data constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj) : _name(obj.getName()) //_name being a const needs to be set before construction
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : m_name(obj.getName()) //m_name being a const needs to be set before construction
 {
 	*this = obj;
 	// std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj) // operator= is rendered useless here considering the const variable (cant redefine a _name)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj) // operator= is rendered useless here considering the const variable (cant redefine a m_name)
 {
 	if (this == &obj)
-		return (*this);
+		return *this;
 	this->setGrade(obj.getGrade());
 	// std::cout << "Bureaucrat copy assignement operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream &os, Bureaucrat const &obj) // done as asked in the subject
@@ -51,15 +51,9 @@ Bureaucrat::~Bureaucrat()
 }
 
 
-const std::string& Bureaucrat::getName()const 
-{
-	return (_name);
-}
+const std::string& Bureaucrat::getName()const { return this->m_name; }
 
-const int& Bureaucrat::getGrade()const 
-{
-	return (_grade);
-}
+const int& Bureaucrat::getGrade()const { return this->m_grade; }
 
 void	Bureaucrat::setGrade(const int &i) // exception are thrown for main to catch
 {
@@ -72,41 +66,35 @@ void	Bureaucrat::setGrade(const int &i) // exception are thrown for main to catc
 		throw(Bureaucrat::GradeTooLowException(i));
 	}
 	else
-		_grade = i;
+		this->m_grade = i;
 }
 
 Bureaucrat&	Bureaucrat::operator++() // setGrade is called to make code somewhat more dynamic
 {
 	this->setGrade(this->getGrade() - 1);
-	return (*this);
+	return *this;
 }
 
 Bureaucrat&	Bureaucrat::operator--()
 {
 	this->setGrade(this->getGrade() + 1);
-	return (*this);
+	return *this;
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException() : _grade(0) { }
-Bureaucrat::GradeTooHighException::GradeTooHighException(const int &i) : _grade(i) { }
+Bureaucrat::GradeTooHighException::GradeTooHighException() : m_grade(0) { }
+Bureaucrat::GradeTooHighException::GradeTooHighException(const int &i) : m_grade(i) { }
 
-const int& Bureaucrat::GradeTooHighException::getGrade() const
-{
-	return (_grade);
-}
+const int& Bureaucrat::GradeTooHighException::getGrade() const { return (m_grade); }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() // Cant display the grade because of many reasons - main reason being the function returning a char* instead of a string
 {
 	return ("Bureaucrat::setGrade: Grade too high");
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException() : _grade(0) { }
-Bureaucrat::GradeTooLowException::GradeTooLowException(const int &i) : _grade(i) { }
+Bureaucrat::GradeTooLowException::GradeTooLowException() : m_grade(0) { }
+Bureaucrat::GradeTooLowException::GradeTooLowException(const int &i) : m_grade(i) { }
 
-const int& Bureaucrat::GradeTooLowException::getGrade() const
-{
-	return (_grade);
-}
+const int& Bureaucrat::GradeTooLowException::getGrade() const { return (m_grade); }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() 
 {

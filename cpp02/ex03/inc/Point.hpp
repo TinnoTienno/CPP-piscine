@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:01:14 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:56:44 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:19:09 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Point
 {
 	private :
-		const Fixed x;
-		const Fixed y;
+		const Fixed m_x;
+		const Fixed m_y;
 	public :
 		Point();
 		Point(const Point&);

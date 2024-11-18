@@ -21,7 +21,7 @@ RobotomyRequestForm::RobotomyRequestForm()
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &str) : AForm("RobotomyRequestForm", 72, 45), _target(str)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &str) : AForm("RobotomyRequestForm", 72, 45), m_target(str)
 {
 	std::cout << "RobotomyRequestForm string constructor called" << std::endl;
 }
@@ -34,7 +34,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm&)
 {
 	std::cout << "RobotomyRequestForm copy assignement operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -43,7 +43,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 }
 
 
-const std::string& RobotomyRequestForm::getTarget() const { return (_target) ; }
+const std::string& RobotomyRequestForm::getTarget() const { return m_target; }
 
 void RobotomyRequestForm::execute(Bureaucrat const &obj) const
 {

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 15:18:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 17:06:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:02:27 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class RobotomyRequestForm : public AForm
 {
 	private : 
-		const std::string	_target;
+		const std::string	m_target;
 	
 	public :
 		RobotomyRequestForm();

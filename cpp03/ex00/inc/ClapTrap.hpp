@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:13:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 13:05:16 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:30:57 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 class ClapTrap // we haven't build the setters and getters but we'll need them for last exercice
 {
 	private :
-		std::string _name;
-		int			_hitPoint;
-		int			_energyPoint;
-		int			_attackDamage;
+		std::string m_name;
+		int			m_hitPoint;
+		int			m_energyPoint;
+		int			m_attackDamage;
 	public :
 		ClapTrap();
 		ClapTrap(std::string);

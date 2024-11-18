@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:52:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 15:03:46 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:08:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ Fireball& Fireball::operator=(const Fireball &obj)
 {
 	// std::cout << "Fireball copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	type = obj.type;
-	return (*this);
+	return *this;
 }
 
 Fireball::~Fireball()
@@ -45,11 +45,4 @@ void    Fireball::use(ICharacter&target)
 	std::cout << "* shoots an Fireball at " << target.getName() << std::endl;
 }
 
-AMateria* Fireball::clone() const
-{
-	Fireball *res;
-
-	res = new(Fireball);
-	res->type = this->type;
-	return (res);
-}
+AMateria* Fireball::clone() const { return new Fireball(*this); }

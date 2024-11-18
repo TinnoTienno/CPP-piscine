@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:10:28 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 15:05:00 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:10:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ Purge& Purge::operator=(const Purge &obj)
 {
 	// std::cout << "Purge copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	type = obj.type;
-	return (*this);
+	return *this;
 }
 
 Purge::~Purge()
@@ -45,11 +45,4 @@ void    Purge::use(ICharacter&target)
 	std::cout << "* shoots an Purge bolt at " << target.getName() << std::endl;
 }
 
-AMateria* Purge::clone() const
-{
-	Purge *res;
-
-	res = new(Purge);
-	res->type = this->type;
-	return (res);
-}
+AMateria* Purge::clone() const { return new Purge(*this); }

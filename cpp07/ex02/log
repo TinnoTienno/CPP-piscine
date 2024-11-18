@@ -1,0 +1,20 @@
+Array int constructor called
+0
+2
+Array default constructor called
+size 5
+obj[i] = 1
+Array int constructor called
+size 1
+obj[i] = 0
+Array int constructor called
+size 0
+obj[i] = 0
+Array int constructor called
+size 0
+obj[i] = 0
+Array int constructor called
+size 0
+obj[i] = 0
+Array int constructor called
+size 0

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:26:31 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/25 14:37:04 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:50:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::FragTrap() : ClapTrap()
 }
 FragTrap::FragTrap(std::string str) : ClapTrap()
 {
-    name = str;
+    this->m_name = str;
     setAD();
 	setEP();
 	setHP();
@@ -42,18 +42,18 @@ FragTrap& FragTrap::operator=(const FragTrap &f)
     std::cout << "FragTrap copy assignement operator called" << std::endl;
 	if (this == &f)
 		return (*this);
-	hitPoint = f.hitPoint;
-	name = f.name;
-	energyPoint = f.energyPoint;
-	attackDamage = f.attackDamage;
+	this->m_hitPoint = f.m_hitPoint;
+	this->m_name = f.m_name;
+	this->m_energyPoint = f.m_energyPoint;
+	this->m_attackDamage = f.m_attackDamage;
 	return (*this);
 }
 
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap " << name << " is requesting a high five." << std::endl;
+    std::cout << "FragTrap " << this->m_name << " is requesting a high five." << std::endl;
 }
 
-void FragTrap::setHP(void)	{hitPoint = 100;}
-void FragTrap::setEP(void)	{energyPoint = 100;}
-void FragTrap::setAD(void)	{attackDamage = 30;}
+void FragTrap::setHP(void)	{this->m_hitPoint = 100;}
+void FragTrap::setEP(void)	{this->m_energyPoint = 100;}
+void FragTrap::setAD(void)	{this->m_attackDamage = 30;}

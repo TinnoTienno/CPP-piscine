@@ -25,7 +25,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj
 	std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &str) : AForm("PresidentialPardonForm", 25, 5), _target(str)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &str) : AForm("PresidentialPardonForm", 25, 5), m_target(str)
 {
 	std::cout << "PresidentialPardonForm string constructor called" << std::endl;
 }
@@ -33,7 +33,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &str) : AForm("
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &)
 {
 	std::cout << "PresidentialPardonForm copy assignement operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
@@ -41,7 +41,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }
 
-const std::string& PresidentialPardonForm::getTarget() const { return (_target) ; }
+const std::string& PresidentialPardonForm::getTarget() const { return m_target; }
 
 void PresidentialPardonForm::execute(Bureaucrat const &obj) const
 {

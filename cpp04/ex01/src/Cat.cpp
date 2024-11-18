@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:32:35 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 14:31:23 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:57:37 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ Cat& Cat::operator=(const Cat &c)
 {
 	std::cout << "Cat copy assignement operator called" << std::endl;
 	if (this == &c)
-		return (*this);
+		return *this;
 	type = c.type;
 	if (this->brain)
 		delete this->brain;
 	this->brain = new(Brain);
 	*brain = *c.brain;
-	return (*this);
+	return *this;
 }
 
 void	Cat::makeSound() const
@@ -53,12 +53,6 @@ void	Cat::makeSound() const
 	std::cout << "MeoooOOOOOOOWWWW !" << std::endl;
 }
 
-std::string	Cat::getIdea(const int index) const
-{
-	return (brain->getIdea(index));
-}
+std::string	Cat::getIdea(const int index) const { return brain->getIdea(index); }
 
-void	Cat::setIdea(const int index, const std::string str)
-{
-	brain->setIdea(index, str);
-}
+void	Cat::setIdea(const int index, const std::string str) { brain->setIdea(index, str); }

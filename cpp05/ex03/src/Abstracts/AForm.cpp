@@ -43,9 +43,9 @@ AForm& AForm::operator=(const AForm &obj) // Perfectly useless as it is
 {
 	std::cout << "AForm copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	_isSigned = obj.getBool();
-	return (*this);
+	return *this;
 }
 
 AForm::~AForm()

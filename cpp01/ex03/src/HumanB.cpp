@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:26:00 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 15:29:48 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:50:49 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "HumanB.hpp"
 #include <string>
 
-HumanB::HumanB(std::string str) : _weapon(NULL), _name(str) { }
+HumanB::HumanB(std::string str) : m_weapon(NULL), m_name(str) { }
 
-void	HumanB::setWeapon(Weapon *new_weap) { _weapon = new_weap; }
+void	HumanB::setWeapon(Weapon *new_weap) { this->m_weapon = new_weap; }
 
-void	HumanB::setWeapon(Weapon &new_weap) { _weapon = &new_weap; }
+void	HumanB::setWeapon(Weapon &new_weap) { this->m_weapon = &new_weap; }
 
 void	HumanB::attack()
 {
-	if (_weapon)
-		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
+	if (this->m_weapon)
+		std::cout << this->m_name << " attacks with their " << m_weapon->getType() << std::endl;
 	else
-		std::cout << _name << " doesnt have a weapon, so he runs away. CHICKEEEEEEN !" << std::endl;
+		std::cout << this->m_name << " doesnt have a weapon, so he runs away. CHICKEEEEEEN !" << std::endl;
 }

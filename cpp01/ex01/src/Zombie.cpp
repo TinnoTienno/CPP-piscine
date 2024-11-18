@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 15:20:05 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:52:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 
 Zombie::Zombie()
 {
-	_name = "default";
+	this->m_name = "default";
 }
 
 Zombie::Zombie(std::string str)
 {
-	_name = str;
+	this->m_name = str;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << _name << ": Sleeeeeeep..." << std::endl;
+	std::cout << this->m_name << ": Sleeeeeeep..." << std::endl;
 }
 
 void Zombie::announce()
 {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->m_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::set(std::string str)
-{
-	this->_name = str;
-}
+void	Zombie::set(std::string str) { this->m_name = str; }

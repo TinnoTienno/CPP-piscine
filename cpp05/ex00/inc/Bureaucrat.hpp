@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:48:23 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 13:08:14 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:14:38 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class Bureaucrat
 {
 	private : 
 	
-		const std::string	_name;
-		int					_grade;
+		const std::string	m_name;
+		int					m_grade;
 	public :
 		Bureaucrat();
 		Bureaucrat(const std::string&, const int&);
@@ -37,7 +37,7 @@ class Bureaucrat
 		
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			const int		_grade;
+			const int		m_grade;
 			public :
 				GradeTooHighException();
 				GradeTooHighException(const int&);
@@ -46,7 +46,7 @@ class Bureaucrat
 		}	;
 		class GradeTooLowException : public std::exception
 		{
-			const int		_grade;
+			const int		m_grade;
 			public :
 				GradeTooLowException();
 				GradeTooLowException(const int&);

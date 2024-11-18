@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:24:31 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:20:12 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:49:33 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 class HumanB
 {
 	private : 
-		Weapon		*_weapon;
-		std::string	_name;
+		Weapon		*m_weapon;
+		std::string	m_name;
 	public :
 		HumanB (std::string);
 		void	attack(); 	

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:27:34 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/03 16:19:08 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:48:31 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Zombie
 {
 	private :
-		std::string _name;
+		std::string m_name;
 	public :
 		Zombie(); // default constructor
 		Zombie(std::string);

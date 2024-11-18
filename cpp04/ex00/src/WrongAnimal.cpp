@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:06:49 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 13:40:51 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:55:27 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,12 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &a)
 {
 	std::cout << "WrongAnimal copy assignement operator called" << std::endl;
 	if (this == &a)
-		return (*this);
+		return *this;
 	type = a.type;
-	return (*this);
+	return *this;
 }
 
-std::string	WrongAnimal::getType(void) const
-{
-	return (type);
-}
+std::string	WrongAnimal::getType(void) const { return type; }
 
 void	WrongAnimal::makeSound(void) const
 {

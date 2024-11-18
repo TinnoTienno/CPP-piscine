@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:37:34 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 14:31:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:59:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ Dog& Dog::operator=(const Dog &d)
 {
 	std::cout << "Dog copy assignement operator called" << std::endl;
 	if (this == &d)
-		return (*this);
+		return *this;
 	type = d.type;
 	this->brain = new(Brain);
 	*brain = *d.brain;
-
-	return (*this);
+	return *this;
 }
 
 void	Dog::makeSound() const
@@ -50,12 +49,6 @@ void	Dog::makeSound() const
 	std::cout << "Uuuu Waaaf ! Wwwaaff !" << std::endl;
 }
 
-std::string	Dog::getIdea(const int index) const
-{
-	return (brain->getIdea(index));
-}
+std::string	Dog::getIdea(const int index) const { return (brain->getIdea(index)); }
 
-void	Dog::setIdea(const int index, const std::string str)
-{
-	brain->setIdea(index, str);
-}
+void	Dog::setIdea(const int index, const std::string str) { brain->setIdea(index, str); }

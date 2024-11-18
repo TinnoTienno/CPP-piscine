@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:49:45 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 13:14:54 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:58:18 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Cat : public Animal
 		~Cat();
 		Cat& operator=(const Cat&);
 
-		void	makeSound() const;
+		void		makeSound() const;
 		std::string	getIdea(const int) const;
 		void		setIdea(const int, const std::string);
 	private :

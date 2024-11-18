@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:14:13 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/05 12:33:47 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:13:05 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Intern::Intern(const Intern&) // perfectly useless considering there is no attri
 Intern& Intern::operator=(const Intern&) //same here, useless af
 {
 	std::cout << "Intern copy assignement operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 Intern::~Intern()

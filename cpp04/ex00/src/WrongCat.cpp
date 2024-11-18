@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:32:35 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 13:38:05 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:54:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ WrongCat& WrongCat::operator=(const WrongCat &c)
 {
 	std::cout << "WrongCat copy assignement operator called" << std::endl;
 	if (this == &c)
-		return (*this);
+		return *this;
 	type = c.type;
-	return (*this);
+	return *this;
 }
 
 void	WrongCat::makeSound() const

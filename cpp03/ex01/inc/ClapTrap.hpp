@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:13:04 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 13:16:11 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:34:11 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ class ScavTrap;
 class ClapTrap
 {
 	protected :		// protected otherwise we wouldnt be able to access it without a getter
-		std::string _name;
-		int	_hitPoint;
-		int	_energyPoint;
-		int	_attackDamage;
+		std::string m_name;
+		int			m_hitPoint;
+		int			m_energyPoint;
+		int			m_attackDamage;
 	public :
 		ClapTrap();
 		ClapTrap(std::string);

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:31:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 16:23:06 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:00:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main()
 {
-	// Animal	blob;
+	// Animal	blob; // is supposed to to bug
 
 	// blob.makeSound();
 	Dog		Medor;

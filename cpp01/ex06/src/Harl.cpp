@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:23:47 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:45:42 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:59:42 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	map_val(std ::string level)
 			return (i);
 		i++;
 	}
-	return (-1);
+	return -1;
 }
 void	Harl::filter(std::string level)
 {
@@ -57,12 +57,12 @@ void	Harl::filter(std::string level)
                 break;
 			}
             case (0):
-                debug();
+                this->debug();
             case (1):
-                info();
+                this->info();
             case (2):
-                warning();
+                this->warning();
             case (3):
-                error();
+                this->error();
         }
 }

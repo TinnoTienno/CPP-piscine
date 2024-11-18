@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 15:18:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/02 17:37:50 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:17:08 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &str) : AForm("ShrubberyCreationForm", 145, 137), _target(str)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &str) : AForm("ShrubberyCreationForm", 145, 137), m_target(str)
 {
 	std::cout << "ShrubberyCreationForm string constructor called" << std::endl;
 }
@@ -35,7 +35,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) :
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &)
 {
 	std::cout << "ShrubberyCreationForm copy assignement operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -43,7 +43,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-const std::string& ShrubberyCreationForm::getTarget() const { return (_target) ; }
+const std::string& ShrubberyCreationForm::getTarget() const { return m_target; }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &obj) const
 {
@@ -53,17 +53,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const &obj) const
 		throw (AForm::GradeTooLowException(obj.getGrade(), this->getGradeToExec()));
 	else
 	{
-			try
-			{
-				std::ofstream NewFile((this->getTarget() + "_shrubbery").c_str(), std::fstream::out);
-				NewFile.exceptions ( std::ofstream::badbit );
-				NewFile << ASCII_TREE;
-				// if (NewFile.bad())
-				// 	throw(std::ofstream::failure);
-			}
-			catch (const std::ofstream::failure& e) 
-			{
-    			std::cout << "Exception opening/reading file";
-  			}
+		std::ofstream NewFile;
+		NewFile.open((this->getTarget() + "_shrubbery").c_str(), std::fstream::out);
+		NewFile.exceptions (std::ofstream::badbit);
+		NewFile << ASCII_TREE;
+		if (NewFile.fail())
+			throw(std::ios_base::failure("ShrubberyCreationForm::execute"));
 	}
 }

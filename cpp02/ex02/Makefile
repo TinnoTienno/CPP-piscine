@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:49:56 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/22 15:58:14 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/18 12:17:31 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,3 @@ fclean : clean
 re : fclean $(NAME)
 
 -include $(OBJS:.o=.d)
-	

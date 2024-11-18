@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:30:15 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 15:31:14 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:56:44 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main()
 {
-	Weapon club = Weapon("crude spiked club");
+	Weapon club = Weapon("crude spiked club"); // test copie
 	HumanA bob("Bob", club);
 	bob.attack();
 	club.setType("some other type of club");

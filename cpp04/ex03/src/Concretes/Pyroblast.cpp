@@ -29,9 +29,9 @@ Pyroblast& Pyroblast::operator=(const Pyroblast &obj)
 {
 	// std::cout << "Pyroblast copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	type = obj.type;
-	return (*this);
+	return *this;
 }
 
 Pyroblast::~Pyroblast()
@@ -45,11 +45,4 @@ void    Pyroblast::use(ICharacter&target)
 	std::cout << "* shoots an Pyroblast at " << target.getName() << std::endl;
 }
 
-AMateria* Pyroblast::clone() const
-{
-	Pyroblast *res;
-
-	res = new(Pyroblast);
-	res->type = this->type;
-	return (res);
-}
+AMateria* Pyroblast::clone() const { return new Pyroblast(*this); }

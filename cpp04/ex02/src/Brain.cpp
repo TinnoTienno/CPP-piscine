@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:54:21 by eschussl          #+#    #+#             */
-/*   Updated: 2024/10/28 14:29:13 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:59:09 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ Brain& Brain::operator= (const Brain &b)
 {
 	std::cout << "Animal copy assignement operator called" << std::endl;
 	if (this == &b)
-		return (*this);
+		return *this;
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = b.ideas[i];
-	return (*this);
+	return *this;
 }
 
-void Brain::setIdea(const int i, const std::string str){	ideas[i] = str;	}
-std::string Brain::getIdea(const int i) const{	return (ideas[i]);	} 
+void Brain::setIdea(const int i, const std::string str) { ideas[i] = str; }
+
+std::string Brain::getIdea(const int i) const { return (ideas[i]); }	

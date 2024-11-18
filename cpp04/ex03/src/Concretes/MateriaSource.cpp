@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:35:01 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/08 15:17:23 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:54:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &obj)
 {
 	// std::cout << "MateriaSource copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
+		return *this;
 	for (int i = 0; i < 4; i++)
 		this->Inventory[i] = obj.Inventory[i];
-	return (*this);
+	return *this;
 }
 MateriaSource::~MateriaSource()
 {

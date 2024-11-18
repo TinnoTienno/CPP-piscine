@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 17:15:46 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/05 11:29:40 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:29:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main()
 
 	Point point(18.0, 4.0);
 
-	std::cout << a == 2;
 	if (bsp(a, b, c, point))
 		std::cout << "Point is inside the triangle ABC" << std::endl;
 	else

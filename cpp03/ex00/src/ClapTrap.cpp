@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:18:24 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/04 13:06:28 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:33:31 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 ClapTrap::ClapTrap()
 {
-	_name = "Default";
-	_hitPoint = 10;
-	_energyPoint = 10;
-	_attackDamage = 0;
+	this->m_name = "Default";
+	this->m_hitPoint = 10;
+	this->m_energyPoint = 10;
+	this->m_attackDamage = 0;
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
@@ -29,10 +29,10 @@ ClapTrap::ClapTrap(const ClapTrap &obj)
 }
 ClapTrap::ClapTrap(std::string str)
 {
-	_name = str;
-	_hitPoint = 10;
-	_energyPoint = 10;
-	_attackDamage = 0;
+	this->m_name = str;
+	this->m_hitPoint = 10;
+	this->m_energyPoint = 10;
+	this->m_attackDamage = 0;
 	std::cout << "ClapTrap string constructor called" << std::endl;
 }
 
@@ -45,59 +45,59 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &obj)
 {
     std::cout << "ClapTrap copy assignement operator called" << std::endl;
 	if (this == &obj)
-		return (*this);
-	_hitPoint = obj._hitPoint;
-	_name = obj._name;
-	_energyPoint = obj._energyPoint;
-	_attackDamage = obj._attackDamage;
-	return (*this);
+		return *this;
+	this->m_hitPoint = obj.m_hitPoint;
+	this->m_name = obj.m_name;
+	this->m_energyPoint = obj.m_energyPoint;
+	this->m_attackDamage = obj.m_attackDamage;
+	return *this;
 }
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (!_energyPoint) //Management of energy or hit point is done directly in function but should be implemented in class to scale 
+	if (!this->m_energyPoint) //Management of energy or hit point is done directly in function but should be implemented in class to scale 
 	{
-		std::cout << "ClapTrap " << _name << " tried to attack " << target << " but it has no more energy point." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " tried to attack " << target << " but it has no more energy point." << std::endl;
 		return;
 	}
-	if (!_hitPoint)
+	if (!this->m_hitPoint)
 	{
-		std::cout << "ClapTrap " << _name << " tried to attack but it is already dead." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " tried to attack but it is already dead." << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage !" << std::endl;
-	_energyPoint--;
+	std::cout << "ClapTrap " << this->m_name << " attacks " << target << ", causing " << this->m_attackDamage << " points of damage !" << std::endl;
+	this->m_energyPoint--;
 }
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (!_hitPoint)
+	if (!this->m_hitPoint)
 	{
-		std::cout << "ClapTrap " << _name << " is already dead." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " is already dead." << std::endl;
 		return ;
 	}
-	_hitPoint -= amount;
-	std::cout << "ClapTrap " << _name << " got hit for " << amount << " damages." << std::endl;
-	if (_hitPoint <= 0)
+	this->m_hitPoint -= amount;
+	std::cout << "ClapTrap " << this->m_name << " got hit for " << amount << " damages." << std::endl;
+	if (this->m_hitPoint <= 0)
 	{
-		std::cout << "ClapTrap " << _name << " died." << std::endl;
-		_hitPoint = 0;
+		std::cout << "ClapTrap " << this->m_name << " died." << std::endl;
+		this->m_hitPoint = 0;
 	}
 	else
-		std::cout << "ClapTrap " << _name << " is left with " << _hitPoint << " hit points." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " is left with " << this->m_hitPoint << " hit points." << std::endl;
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (!_energyPoint)
+	if (!this->m_energyPoint)
 	{
-		std::cout << "ClapTrap " << _name << " tried to repair itself but it has no more energy point." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " tried to repair itself but it has no more energy point." << std::endl;
 		return;
 	}
-	if (!_hitPoint)
+	if (!this->m_hitPoint)
 	{
-		std::cout << "ClapTrap " << _name << " tried to repair itself but it is already dead." << std::endl;
+		std::cout << "ClapTrap " << this->m_name << " tried to repair itself but it is already dead." << std::endl;
 		return;
 	}
-	_hitPoint += amount;
-	std::cout << "ClapTrap " << _name << " repairs himself for " << amount << " hit points. He now has " << _hitPoint << " hit points." << std::endl;
+	this->m_hitPoint += amount;
+	std::cout << "ClapTrap " << this->m_name << " repairs himself for " << amount << " hit points. He now has " << this->m_hitPoint << " hit points." << std::endl;
 }
 
