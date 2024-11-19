@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:33:31 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/18 16:51:14 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:10:22 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,12 @@ void Span::addRange(const unsigned int &range, int (*function)(int))
 {
 	for (unsigned int i = 0; i < range; i++)
 		addNumber(function(i));
+}
+
+void Span::print() const
+{
+	std::cout << "SpanPrint :" << std::endl;
+	for (std::vector<int>::const_iterator it = _arr.begin(); it != _arr.end(); it++)
+		std::cout << *it << std::endl;
+	std::cout << "----" << std::endl;
 }

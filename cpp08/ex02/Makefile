@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/11/18 16:57:16 by eschussl         ###   ########.fr        #
+#    Updated: 2024/11/19 12:27:27 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	stack
 
 CC 			=	c++ 
 CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g
-SRCS		=	main.cpp Span.cpp\
+SRCS		=	main.cpp\
 				
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

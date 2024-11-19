@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:58:13 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/18 17:17:24 by eschussl         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:58:23 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 #include <stack>
 
 template <class T>
-class MutantStack : public std::stack
+class MutantStack : public std::stack<T>
 {
-	class iterator
-	{
-		void	*pos;
-		T		value;
-		public :
-			
-	}	;
-	iterator top() const;
-	iterator begin() const;
-	iterator end() const;
+	typedef std::stack<T> Stack;
+	using Stack::c;
+	public :
+		using Stack::operator=;
+		using Stack::size;
+    	using Stack::push;
+    	using Stack::pop;
+    	using Stack::top;
+		using Stack::iterator;
 }	;
 
 #endif
