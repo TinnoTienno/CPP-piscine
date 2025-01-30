@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:46:43 by eschussl          #+#    #+#             */
-/*   Updated: 2025/01/30 14:40:44 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:50:13 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Form::Form(const std::string &str, const int &sign, const int &exec) :
 	m_name(str), m_isSigned(false), m_gradeToSign(sign), m_gradeToExec(exec)
 		{ checkGrade(); }
 
-void Form::checkGrade()
+void Form::checkGrade() const
 {
 	if (m_gradeToExec < 1)
 		throw (Form::GradeTooHighException(this->getName(), m_gradeToExec));

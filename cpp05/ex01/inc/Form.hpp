@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:24:53 by eschussl          #+#    #+#             */
-/*   Updated: 2025/01/30 14:35:43 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:50:18 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Form
 		bool				m_isSigned;
 		const int			m_gradeToSign;
 		const int			m_gradeToExec;
-		void				checkGrade();
+		void				checkGrade() const;
 	public :
 		Form();
 		Form(const Form&);

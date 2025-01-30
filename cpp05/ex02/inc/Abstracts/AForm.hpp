@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:24:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/18 14:20:53 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:41:41 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,50 @@ class AForm
 		bool				m_isSigned;
 		const int			m_gradeToSign;
 		const int			m_gradeToExec;
+		void				checkGrade() const;
+
 	public :
 		AForm();
 		AForm(const AForm&);
 		AForm(const std::string&, const int&, const int&);
 		AForm& operator=(const AForm&);
-		~AForm();
+		virtual ~AForm();
 		
 		const std::string& getName() const;
 		const int& 	getGradeToSign() const;
 		const int& 	getGradeToExec() const;
 		const bool& getBool() const;
-		const std::string& getTarget() const;
 		
 		void beSigned(const Bureaucrat&);
 		virtual void execute(Bureaucrat const &) const = 0;
 		
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			private :
-				const int		m_grade;
+			const std::string		m_message;
 			public :
-				GradeTooHighException();
-				GradeTooHighException(const int&);
-				const int& getGrade() const;
+				GradeTooHighException(const std::string &name, const int &grade);
+				~GradeTooHighException() throw();
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 		
 		class GradeTooLowException : public std::exception
 		{
-			private :
-				const int		m_burGrade;
-				const int		m_formGrade;
+			const std::string	m_message;
+
 			public :
-				GradeTooLowException();
-				GradeTooLowException(const int&);
-				GradeTooLowException(const int&, const int&);
-				const int& getBurGrade() const;
-				const int& getFormGrade() const;
+				GradeTooLowException(const std::string &name, const int &grade);
+				GradeTooLowException(const std::string &name, const int &grade, const std::string &bureaucratName, const int &bureaucratGrade);
+				~GradeTooLowException() throw();
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 
 		class IsntSignedException : public std::exception
 		{
+			const std::string	m_message;
+			
 			public :
+				IsntSignedException(const std::string &name);
+				~IsntSignedException() throw();
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 }	;

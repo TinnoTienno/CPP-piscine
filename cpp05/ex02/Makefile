@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2025/01/30 14:44:51 by eschussl         ###   ########.fr        #
+#    Updated: 2025/01/30 16:06:04 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CON_PATH	=	Concretes/
 INT_PATH	=	interfaces/
 SRCS		=	main.cpp \
 				$(addprefix $(ABS_PATH),AForm.cpp)\
-				$(addprefix $(CON_PATH),Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp)\
+				$(addprefix $(CON_PATH),Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp FForm.cpp)\
 				
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

@@ -6,62 +6,112 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:54:18 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/05 13:04:28 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:03:46 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "FForm.hpp"
+#define TEST_MESS ">> Test N-"
 
 int main()
 {
-	std::cout << "TEST" << std::endl;
+	FForm factory;
+	Bureaucrat Boris("Boris", 147);
+	Bureaucrat Anastasia("Anastasia", 70);
+	Bureaucrat Vladimir("Vladimir", 3);
+	AForm *form;
+	unsigned int t = 0;
 	try
 	{
-		Bureaucrat Matthew("Matthew", 125);
-		ShrubberyCreationForm tree("tree");
-		
-		Matthew.signForm(tree);
-		Matthew.executeForm(tree);
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("PresidentialPardonForm", "John the brute");
+		Boris.signForm(*form);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << std::endl;
-
-	std::cout << "TEST" << std::endl;
+	delete form;
 	try
 	{
-		Bureaucrat John("John", 35);
-		RobotomyRequestForm Matthew("Matthew");
-		
-		John.signForm(Matthew);
-		John.executeForm(Matthew);
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("ERROR", "John the brute");
+		Boris.signForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << std::endl;
-
-	std::cout << "TEST" << std::endl;
 	try
 	{
-		Bureaucrat Russel("Russel", 6);
-		PresidentialPardonForm John("John");
-		
-		Russel.signForm(John);
-		Russel.executeForm(John);
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("RobotomyRequestForm", "John the brute");
+		Boris.signForm(*form);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	
-	
+	delete form;
+	try
+	{
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("ShrubberyCreationForm", "Moscou");
+		Boris.signForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	delete form;
+	try
+	{
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("ShrubberyCreationForm", "Moscou");
+		Anastasia.signForm(*form);
+		Vladimir.executeForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	delete form;
+	try
+	{
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("RobotomyRequestForm", "Moscou");
+		Vladimir.executeForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	delete form;
+	try
+	{
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("RobotomyRequestForm", "Moscou");
+		Vladimir.signForm(*form);
+		Vladimir.executeForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	delete form;
+	try
+	{
+		std::cout << TEST_MESS << ++t << std::endl;
+		form = factory.make("PresidentialPardonForm", "Moscou");
+		Vladimir.signForm(*form);
+		Vladimir.executeForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	delete form;
 }

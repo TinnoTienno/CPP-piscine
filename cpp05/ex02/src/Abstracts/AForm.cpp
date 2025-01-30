@@ -15,44 +15,38 @@
 #include <iostream>
 #include <string>
 
-AForm::AForm() : m_name("Default"), m_isSigned(false), m_gradeToSign(1), m_gradeToExec(1)
-{
-	std::cout << "AForm default constructor called" << std::endl;
-}
+AForm::AForm() : 
+	m_name("Default"), m_isSigned(false), m_gradeToSign(1), m_gradeToExec(1) { }
 
-AForm::AForm(const AForm &obj) : m_name(obj.getName()), m_isSigned(false), m_gradeToSign(obj.getGradeToSign()), m_gradeToExec(obj.getGradeToExec()) // sets isSigned to false so not to get false positives
-{
-	std::cout << "AForm copy constructor called" << std::endl;
-	*this = obj;
-}
+AForm::AForm(const AForm &obj) : 
+	m_name(obj.getName()), m_isSigned(false), m_gradeToSign(obj.getGradeToSign()), m_gradeToExec(obj.getGradeToExec()) // sets isSigned to false so not to get false positives
+		{ checkGrade(); }
 
-AForm::AForm(const std::string &str, const int &sign, const int &exec) : m_name(str), m_isSigned(false), m_gradeToSign(sign), m_gradeToExec(exec)
-{
-	if (m_gradeToExec < 1)
-		throw (AForm::GradeTooHighException(m_gradeToExec));
-	else if (m_gradeToSign < 1)
-		throw (AForm::GradeTooHighException(m_gradeToSign));
-	else if (m_gradeToExec > 150)	
-		throw (AForm::GradeTooLowException(m_gradeToExec));
-	else if (m_gradeToSign > 150)	
-		throw (AForm::GradeTooLowException(m_gradeToSign));
-	std::cout << "AForm data constructor called" << std::endl;
-}
+AForm::AForm(const std::string &str, const int &sign, const int &exec) : 
+	m_name(str), m_isSigned(false), m_gradeToSign(sign), m_gradeToExec(exec)
+		{ checkGrade(); }
 
 AForm& AForm::operator=(const AForm &obj) // Perfectly useless as it is
 {
-	std::cout << "AForm copy assignement operator called" << std::endl;
 	if (this == &obj)
 		return *this;
 	m_isSigned = obj.getBool();
 	return *this;
 }
 
-AForm::~AForm()
+void AForm::checkGrade() const
 {
-	std::cout << "AForm destructor called" << std::endl;
+	if (m_gradeToExec < 1)
+		throw (AForm::GradeTooHighException(this->getName(), m_gradeToExec));
+	else if (m_gradeToSign < 1)
+		throw (AForm::GradeTooHighException(this->getName(), m_gradeToSign));
+	else if (m_gradeToExec > 150)	
+		throw (AForm::GradeTooLowException(this->getName(), m_gradeToExec));
+	else if (m_gradeToSign > 150)	
+		throw (AForm::GradeTooLowException(this->getName(), m_gradeToSign));
 }
 
+AForm::~AForm() { }
 
 const std::string& AForm::getName() const { return m_name; }
 
@@ -65,37 +59,27 @@ const bool& AForm::getBool() const { return m_isSigned ; }
 void AForm::beSigned(const Bureaucrat &obj)
 {
 	if (obj.getGrade() > this->getGradeToSign())
-		throw (AForm::GradeTooLowException(obj.getGrade(), this->getGradeToSign()));
+		throw (AForm::GradeTooLowException(this->getName(), this->getGradeToSign(), obj.getName(), obj.getGrade()));
 	else
 		m_isSigned = true;
 }
 
+AForm::GradeTooHighException::GradeTooHighException(const std::string &name, const int &grade) : 
+	m_message("error: GradeTooHigh: Form " + name + ": " + itoa(grade)) { }
 
-AForm::GradeTooHighException::GradeTooHighException() : m_grade(0) { }
+const char* AForm::GradeTooHighException::what() const throw() { return m_message.c_str(); }// Throw meaning it wont throw any exception / to prevent handling more than one exception at a time 
 
-AForm::GradeTooHighException::GradeTooHighException(const int &i) : m_grade(i) { }
+AForm::GradeTooHighException::~GradeTooHighException() throw() { }
 
-const int& AForm::GradeTooHighException::getGrade() const { return m_grade; }
+AForm::GradeTooLowException::GradeTooLowException(const std::string &name, const int &grade) : 
+	m_message("error: GradeTooLow: Form " + name + ": " + itoa(grade)) { }
 
-const char* AForm::GradeTooHighException::what() const throw() // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-{
-	return "Error:AForm::GradeTooHighException";
-}
+AForm::GradeTooLowException::GradeTooLowException(const std::string &name, const int &grade, const std::string &bureaucratName, const int &bureaucratGrade) :
+	m_message("error: GradeTooLow: Form " + name + ": " + itoa(grade) + ": Bureaucrat " + bureaucratName + ": " + itoa(bureaucratGrade)) { }
 
-AForm::GradeTooLowException::GradeTooLowException() : m_burGrade(150), m_formGrade(0) { }
+const char* AForm::GradeTooLowException::what() const throw() { return m_message.c_str(); } // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 
-AForm::GradeTooLowException::GradeTooLowException(const int &i) : m_burGrade(150), m_formGrade(i){ }
-
-AForm::GradeTooLowException::GradeTooLowException(const int &i1, const int &i2) : m_burGrade(i1), m_formGrade(i2) { }
-
-const int& AForm::GradeTooLowException::getBurGrade() const { return m_burGrade; }
-
-const int& AForm::GradeTooLowException::getFormGrade() const { return m_formGrade; }
-
-const char* AForm::GradeTooLowException::what() const throw() // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-{
-	return "Error:AForm::GradeTooLowException";
-}
+AForm::GradeTooLowException::~GradeTooLowException() throw() { }
 
 std::ostream& operator<<(std::ostream &os, AForm const &obj) // Has to be outside of class definition overwise would use the friend keyword (forbidden by subject)
 {
@@ -107,7 +91,10 @@ std::ostream& operator<<(std::ostream &os, AForm const &obj) // Has to be outsid
 	return os;
 }
 
-const char* AForm::IsntSignedException::what() const throw() // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
-{
-	return "Error:AForm::IsntSignedException";
-}
+AForm::IsntSignedException::IsntSignedException(const std::string &name) : 
+	m_message("error : IsntSigned: Form: " + name) { }
+
+AForm::IsntSignedException::~IsntSignedException() throw() { }
+
+const char* AForm::IsntSignedException::what() const throw() { return m_message.c_str(); }// Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
+	
