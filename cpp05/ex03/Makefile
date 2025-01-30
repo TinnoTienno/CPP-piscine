@@ -6,12 +6,13 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/11/05 11:48:41 by eschussl         ###   ########.fr        #
+#    Updated: 2025/01/30 14:45:11 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Forms
+NAME		=	Forms$(EXTENSION)
 
+EXTENSION	=	.bin
 CC 			=	c++ 
 CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g 
 ABS_PATH	=	Abstracts/

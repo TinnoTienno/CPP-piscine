@@ -6,12 +6,13 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/10/29 19:53:46 by eschussl         ###   ########.fr        #
+#    Updated: 2025/01/30 14:44:38 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Bureaucrat
+NAME		=	Bureaucrat$(EXTENSION)
 
+EXTENSION	=	.bin
 CC 			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
 SRCS		=	main.cpp Bureaucrat.cpp
