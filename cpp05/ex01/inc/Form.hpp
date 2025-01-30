@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:24:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/18 13:56:09 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:35:43 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Form
 		bool				m_isSigned;
 		const int			m_gradeToSign;
 		const int			m_gradeToExec;
-
+		void				checkGrade();
 	public :
 		Form();
 		Form(const Form&);
@@ -41,25 +41,21 @@ class Form
 		
 		class GradeTooHighException : public std::exception // Derived from exception so to be read from main with catch(std::exception&)
 		{
-			const int		m_grade;
+			const std::string		m_message;
 			public :
-				GradeTooHighException();
-				GradeTooHighException(const int&);
-				const int& getGrade() const;
+				GradeTooHighException(const std::string &name, const int &grade);
+				~GradeTooHighException() throw();
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 		
 		class GradeTooLowException : public std::exception
 		{
-			const int		m_burGrade;
-			const int		m_formGrade;
+			const std::string	m_message;
 
 			public :
-				GradeTooLowException();
-				GradeTooLowException(const int&);
-				GradeTooLowException(const int&, const int&);
-				const int& getBurGrade() const;
-				const int& getFormGrade() const;
+				GradeTooLowException(const std::string &name, const int &grade);
+				GradeTooLowException(const std::string &name, const int &grade, const std::string &bureaucratName, const int &bureaucratGrade);
+				~GradeTooLowException() throw();
 				virtual const char* what() const throw(); // Throw meaning it wont throw any exception / to prevent handling more than one exception at a time
 		}	;
 }	;
