@@ -5,42 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 15:13:37 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/01 12:58:10 by noda             ###   ########.fr       */
+/*   Created: 2025/01/28 12:09:10 by noda              #+#    #+#             */
+/*   Updated: 2025/01/28 17:16:59 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
-#include "PmergeMeList.hpp"
-#include <iostream>
-#include <string>
+#include "Bureaucrat.hpp"
 
-std::string buildString(char **args)
-{
-	std::string tmp = args[0];
-	for (size_t i = 1; args[i]; i++)
-		tmp += (std::string) " " + args[i];
-	return tmp;
-}
-int main(int argc, char** argv)
+int main()
 {
 	try
 	{
-		PmergeMe *algoList;
-		if (argc == 2)
-			algoList = new PmergeMeList((std::string) argv[1]);
-		else
-			algoList = new PmergeMeList(buildString(&argv[1]));
-		std::cout << *algoList << std::endl;
-		algoList->pairSort(1);
-		std::cout << "time since start : " << algoList->getDuration() << "s" << std::endl;
-		std::cout << *algoList << std::endl;
-
-		delete algoList;
+		Bureaucrat pawn;
+		std::cout << pawn << std::endl;
+		pawn--;
+		std::cout << pawn << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
+	try
+	{
+		Bureaucrat Viktor("Viktor", 1);
+		std::cout << Viktor << std::endl;
+		Viktor++;
+		std::cout << Viktor << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat Vladimir("Vladimir", 5);
+		std::cout << Vladimir << std::endl;
+		Vladimir++;
+		std::cout << Vladimir << std::endl;\
+		Vladimir--;
+		std::cout << Vladimir << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+
 	
 }
