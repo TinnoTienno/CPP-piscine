@@ -6,29 +6,26 @@
 #    By: noda <noda@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2025/01/31 12:56:26 by noda             ###   ########.fr        #
+#    Updated: 2025/01/29 17:00:53 by noda             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	PmergeMe
+NAME		=	Bureaucrat
 
-CC 			=	c++ 
-CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g
-SRCS		=	main.cpp PmergeMe.cpp PmergeMeList.cpp Utils.cpp\
-				
+CC 			=	c++
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
+SRCS		=	main.cpp Bureaucrat.cpp AForm.cpp FForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 
 all : $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ -Iinc
+	$(CC) $(CFLAGS) $^ -o $@ -Iinc/
 
 .obj/%.o: src/%.cpp
 	@mkdir -p .obj
-	@mkdir -p .obj/$(ABS_PATH)
-	@mkdir -p .obj/$(CON_PATH)
-	@mkdir -p .obj/$(INT_PATH)
-	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc
+	$(CC) -MMD $(CFLAGS) -c $< -o $@ -Iinc/
 
 clean :
 	@rm -rf .obj
