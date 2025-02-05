@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:42:58 by noda              #+#    #+#             */
-/*   Updated: 2025/02/05 22:05:15 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 22:58:12 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class MainIterator
 		std::list<unsigned int>::iterator	m_iter;
 		const int							m_level;
 		int									m_pos; // position inside main
+		int									m_start; //position after which you should increment twice
 	public :
 		MainIterator(std::list<unsigned int> &list, int i, int level);
 		bool 								operator++(int);

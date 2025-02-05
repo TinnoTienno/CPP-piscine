@@ -6,7 +6,7 @@
 #    By: noda <noda@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2025/02/05 21:55:24 by noda             ###   ########.fr        #
+#    Updated: 2025/02/05 22:20:52 by noda             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	PmergeMe$(EXTENSION)
 EXTENSION	=	.bin
 CC 			=	c++ 
 CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g
-SRCS		=	main.cpp PmergeMe.cpp PmergeMeList.cpp Utils.cpp ListIterator.cpp MainIterator.cpp\
+SRCS		=	main.cpp PmergeMe.cpp PmergeMeList.cpp Utils.cpp ListIterator.cpp MainIterator.cpp PendIterator.cpp\
 				
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

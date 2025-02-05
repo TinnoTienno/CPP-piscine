@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:31:42 by noda              #+#    #+#             */
-/*   Updated: 2025/02/01 12:27:47 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 23:34:36 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,11 @@ void	swap(unsigned int *n1, unsigned int *n2)
 	std::cout << *n1 << " " << *n2 << std::endl;
 }
 
-void	memswap(unsigned int *ptr1, unsigned int *ptr2, size_t size)
+unsigned int getJacob(const unsigned int &nb)
 {
-	for (size_t i = 0; i < size; i++)
-	{
-		ptr1 = &ptr1[i];
-		ptr2 = &ptr2[i];
-		*ptr1 += *ptr2;
-		*ptr2 = *ptr1 - *ptr2;
-		*ptr1 -= *ptr2;
-	}
+	if (nb > 16)
+		throw std::runtime_error("Cant find this Jacobsthal number");
+	unsigned int array[16] = {0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923};
+
+	return array[nb];
 }

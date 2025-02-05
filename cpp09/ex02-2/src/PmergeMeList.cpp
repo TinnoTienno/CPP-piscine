@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:19:14 by noda              #+#    #+#             */
-/*   Updated: 2025/02/05 22:14:27 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/06 00:31:34 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "ListIterator.hpp"
 #include "MainIterator.hpp"
+#include "PendIterator.hpp"
 
 PmergeMeList::PmergeMeList() { }
 
@@ -72,15 +73,59 @@ void		PmergeMeList::mergeSort(size_t &level)
 	mergeSort(level);
 }
 
+void		PmergeMeList::oddFill(std::list<unsigned int> &odd, size_t level)
+{
+	int modulo = ((m_list.size() - level) % (level * 2));
+	std::list<unsigned int>::iterator iter = m_list.end();
+	std::advance(iter, - modulo);
+	odd.splice(odd.end(), m_list, iter, m_list.end());
+}
+
+void		PmergeMeList::pendFill(std::list<unsigned int> &pend, size_t level)
+{
+	if (m_list.size() < level * 3)
+		return ;
+	std::list<unsigned int>::iterator iter1 = m_list.begin();
+	std::advance(iter1, (level * 2));
+	std::list<unsigned int>::iterator iter2 = iter1;
+	std::advance(iter2, level);
+	for (size_t i = 2; i * level < m_list.size(); i++)
+	{
+		pend.splice(pend.end(), m_list, iter1, iter2);
+		iter1 = iter2;
+		std::advance(iter2, level * 2);
+		std::advance(iter1, level);
+		
+	}
+
+}
+
 void		PmergeMeList::binaryInsertionSort(size_t &level)
 {
 	if (level == 0)
 		return ;
-	MainIterator main(m_list, 0, level);
-	PendIterator pend(m_list, 0, level);
-	// while (!main++)
-	// 	std::cout << "value : " << main.getValue() << std::endl;
-	// PendIterator pend(m_list, 0, level);
+	std::list<unsigned int> pend;
+	std::list<unsigned int> odd;
+	oddFill(odd, level);
+	std::cout << "odd" << std::endl;
+	std::list<unsigned int>::iterator iterOdd = odd.begin();
+	for (size_t i = 0; i < odd.size(); i++)
+	{
+		std::cout << " | " << *iterOdd;
+		std::advance(iterOdd, 1);	
+	}
+	std::cout << std::endl;
+	std::cout << *this << std::endl;
+	pendFill(pend, level);
+	std::cout << "pend" << std::endl;
+	std::list<unsigned int>::iterator iter = pend.begin();
+	for (size_t i = 0; i < pend.size(); i++)
+	{
+		std::cout << " | " << *iter;
+		std::advance(iter, 1);	
+	}
+	std::cout << std::endl;
+	// jacobsthalSort(main, pend);
 	level /= 2;
 	std::cout << *this << std::endl;
 	binaryInsertionSort(level);
@@ -90,6 +135,7 @@ void		PmergeMeList::sort()
 {
 	size_t level = 1;
 	mergeSort(level);
+	level /= 2;
 	std::cout << *this << std::endl;
 	binaryInsertionSort(level);
 }

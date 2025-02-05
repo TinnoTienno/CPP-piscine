@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:15:17 by noda              #+#    #+#             */
-/*   Updated: 2025/02/05 21:51:29 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 23:50:29 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class PmergeMeList : public PmergeMe
 		void		sort();
 		void		mergeSort(size_t &level);
 		void		binaryInsertionSort(size_t &level);
+		void		oddFill(std::list<unsigned int> &odd, size_t level);
+		void		pendFill(std::list<unsigned int> &pend, size_t level);
 
 		~PmergeMeList();
 }	;

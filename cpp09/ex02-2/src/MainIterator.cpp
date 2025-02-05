@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:45:39 by noda              #+#    #+#             */
-/*   Updated: 2025/02/05 22:14:36 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 22:18:56 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 MainIterator::MainIterator(std::list<unsigned int> &list, int i, int level) : m_list(list), m_level(level)
 {
-	m_index = 0;
 	m_pos = i;
 	m_iter = m_list.begin();
 	std::advance(m_iter, (level * (i + 1)) - 1);
