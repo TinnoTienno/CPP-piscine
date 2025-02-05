@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:02:56 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/19 18:17:03 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:13:24 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ float verifyVal(std::string val)
 		throw (std::runtime_error("too large a number"));
 	return (res);
 }
+
 void	verifyDate(std::string key)
 {
 	size_t i1 = key.find('-');

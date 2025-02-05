@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 15:13:37 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/01 14:44:13 by noda             ###   ########.fr       */
+/*   Created: 2025/02/05 16:49:45 by noda              #+#    #+#             */
+/*   Updated: 2025/02/05 20:57:27 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,22 @@ std::string buildString(char **args)
 		tmp += (std::string) " " + args[i];
 	return tmp;
 }
+
 int main(int argc, char** argv)
 {
-	try
-	{
 		PmergeMe *algoList;
+		if (argc == 1)
+		{
+			std::cout << "format > ./PmergeMe.bin value1 valueN... || ./PmergeMe.bin \"value1 valueN...\"" << std::endl;
+			return 1;
+		}
 		if (argc == 2)
 			algoList = new PmergeMeList((std::string) argv[1]);
 		else
 			algoList = new PmergeMeList(buildString(&argv[1]));
 		std::cout << *algoList << std::endl;
-		size_t ksize = 1;
-		algoList->pairSort(ksize);
+		algoList->sort();
 		std::cout << "time since start : " << algoList->getDuration() << "s" << std::endl;
-		std::cout << *algoList << std::endl;
 
 		delete algoList;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
 }

@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:53:45 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/01 14:44:21 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:51:38 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <string>
 #include <ctime>
 #include <iostream>
-# define K_SIZE 2
 
 class PmergeMe
 {
@@ -33,7 +32,9 @@ class PmergeMe
 		
 		virtual std::string print() const = 0;
 		std::string			getDuration() const;
-		virtual void	pairSort(size_t &level) = 0;
+		virtual void		sort() = 0;
+		virtual void		mergeSort(size_t &level) = 0;
+		virtual void		binaryInsertionSort(size_t &level) = 0;
 
 		// void printCompTime() const;
 }	;

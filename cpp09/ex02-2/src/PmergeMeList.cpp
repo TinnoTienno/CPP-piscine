@@ -6,13 +6,15 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:19:14 by noda              #+#    #+#             */
-/*   Updated: 2025/02/05 16:48:39 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 22:14:27 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMeList.hpp"
 #include "Utils.hpp"
 #include <stdlib.h>
+#include "ListIterator.hpp"
+#include "MainIterator.hpp"
 
 PmergeMeList::PmergeMeList() { }
 
@@ -41,44 +43,6 @@ std::string PmergeMeList::print() const
 	return res;
 }
 
-static void	swap(std::list<unsigned int>::iterator iter1, size_t ksize)
-{
-	std::list<unsigned int>::iterator iter2 = iter1;
-	std::advance(iter2, ksize);
-	for (size_t i = 0; i < ksize; i++)
-	{
-		*iter1 += *iter2;
-		*iter2 = *iter1 - *iter2;
-		*iter1 -= *iter2;
-		std::advance(iter1, 1);
-		std::advance(iter2, 1);
-	}
-}
-
-void	PmergeMeList::pairSort(size_t &ksize)
-{
-	if (ksize > m_list.size() / 2)
-	{
-		ksize / 2;
-		return ;
-	}
-	std::list<unsigned int>::iterator iter1 = m_list.begin();
-	size_t i1 = 0;
-	std::list<unsigned int>::iterator iter2 = iter1;
-	std::advance(iter2, ksize);
-	size_t i2 = ksize;
-	while (i1 < m_list.size() && i2 < m_list.size())
-	{
-		if (*iter1 > *iter2)
-			swap(iter1, ksize);
-		std::advance(iter1, ksize * 2);
-		i1 += ksize * 2;
-		std::advance(iter2, ksize * 2);
-		i2 += ksize * 2;
-	}
-	ksize *= 2;
-	pairSort(ksize);
-}
 
 /*
 | | | | | | | | |
@@ -87,6 +51,48 @@ void	PmergeMeList::pairSort(size_t &ksize)
 2a   b   a   b  
 4a       b
 */  
+
+void		PmergeMeList::mergeSort(size_t &level)
+{
+	if (m_list.size() < level * 2)
+		return ;
+	ListIterator iter1(m_list, 0, level);
+	ListIterator iter2(m_list, 1, level);
+	bool	end = false;
+	while (!end)
+	{
+		{
+			if (iter1.getValue() > iter2.getValue())
+				iter1.swap(iter2);
+			end = iter1 + 2;
+			end = iter2 + 2;
+		}
+	}
+	level *= 2;
+	mergeSort(level);
+}
+
+void		PmergeMeList::binaryInsertionSort(size_t &level)
+{
+	if (level == 0)
+		return ;
+	MainIterator main(m_list, 0, level);
+	PendIterator pend(m_list, 0, level);
+	// while (!main++)
+	// 	std::cout << "value : " << main.getValue() << std::endl;
+	// PendIterator pend(m_list, 0, level);
+	level /= 2;
+	std::cout << *this << std::endl;
+	binaryInsertionSort(level);
+}
+
+void		PmergeMeList::sort()
+{
+	size_t level = 1;
+	mergeSort(level);
+	std::cout << *this << std::endl;
+	binaryInsertionSort(level);
+}
 
 PmergeMeList::~PmergeMeList()
 {
