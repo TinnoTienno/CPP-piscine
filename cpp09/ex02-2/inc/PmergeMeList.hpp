@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:15:17 by noda              #+#    #+#             */
-/*   Updated: 2025/02/06 01:58:10 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:55:30 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PmergeMeList : public PmergeMe
 	public :
 		PmergeMeList();
 		PmergeMeList(const std::string &list);
+		size_t		getSize();
 		std::string print() const;
 		void		sort();
 		void		mergeSort(size_t &level);
@@ -32,6 +33,8 @@ class PmergeMeList : public PmergeMe
 		std::list<unsigned int>::iterator binarySearch(unsigned int value, std::list<unsigned int>::iterator lowerbound, std::list<unsigned int>::iterator higherbound, size_t level);
 		void 		jacobsthalSort(std::list<unsigned int> &pend, size_t level);
 		std::list<unsigned int>::iterator higherBound(unsigned int i, size_t level);
+		void		Insertion(std::list<unsigned int> &pend, size_t level);
+		
 
 		~PmergeMeList();
 }	;

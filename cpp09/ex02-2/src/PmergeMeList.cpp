@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:19:14 by noda              #+#    #+#             */
-/*   Updated: 2025/02/06 03:20:09 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/06 17:07:04 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PmergeMeList::PmergeMeList() { }
 PmergeMeList::PmergeMeList(const std::string &list)
 {
 	size_t i = 0;
-	
+	m_starttime = clock();
 	while (i != list.npos)
 	{
 		std::string word = list.substr(i, list.find(' ', i) - i);
@@ -35,13 +35,18 @@ PmergeMeList::PmergeMeList(const std::string &list)
 	}
 }
 
+size_t		PmergeMeList::getSize()
+{
+	return m_list.size();
+}
+
 
 std::string PmergeMeList::print() const
 {
-	std::string res = "LIST --> \n";
+	std::string res = "";
 	for (std::list<unsigned int>::const_iterator iter = m_list.begin(); iter != m_list.end(); iter++)
-			res += " | " + utoa(*iter);
-		res += " |\n";
+			res += " " + utoa(*iter);
+		res += "\n";
 	return res;
 }
 
@@ -96,56 +101,110 @@ void		PmergeMeList::pendFill(std::list<unsigned int> &pend, size_t level)
 		iter1 = iter2;
 		std::advance(iter2, level * 2);
 		std::advance(iter1, level);
-		
 	}
 }
+
 std::list<unsigned int>::iterator PmergeMeList::binarySearch(unsigned int value, std::list<unsigned int>::iterator lowerbound, std::list<unsigned int>::iterator higherbound, size_t level)
 {
+	
 	while (lowerbound != higherbound)
 	{
 		std::list<unsigned int>::iterator mid = lowerbound;
-		std::advance(mid, (std::distance(lowerbound, higherbound) / 2) * level);
+		// std::cout << "lowerbound " << *lowerbound << " higherbound " << *higherbound << std::endl;
+		// std::cout << "distance " << std::distance(lowerbound, higherbound) << std::endl;
+		// std::cout << "mid = " << (((std::distance(lowerbound, higherbound)) / level) / 2) * level << std::endl;
+		std::advance(mid, (((std::distance(lowerbound, higherbound) / level)) / 2) * level);
+		// std::cout << "mid value " << *mid << std::endl;
+		if (value > *higherbound)
+		{
+			std::advance(higherbound, + 1);
+			return higherbound;
+		}
+		else if (value < *lowerbound)
+		{
+			// std::cout << "lower than" << std::endl;
+			std::advance(lowerbound, - level + 1);
+			return lowerbound;
+		}
 		if (*mid == value)
+		{
+			std::advance(mid, 1);	
 			return mid;
+		}
 		if (*mid > value)
 		{
-			lowerbound = mid;
-			std::advance(lowerbound, level);	
+			// std::cout << "lower" << std::endl;
+			higherbound = mid;
+			// std::advance(higherbound, - level);
 		}
 		else
 		{
-			higherbound = mid;
-			std::advance(higherbound, - 1);
+			// std::cout << "higher" << std::endl;
+			lowerbound = mid;
+			if (std::distance(lowerbound, higherbound) / level == 1)
+				break ;
+			std::advance(lowerbound, level);	
 		}
 	} 
+	std::advance(lowerbound, 1);
 	return lowerbound;
 }
+
 std::list<unsigned int>::iterator PmergeMeList::higherBound(unsigned int i, size_t level)
 {
 	std::list<unsigned int>::iterator res = m_list.begin();
 	size_t offset = getJacob(i) + getJacob(i - 1) - 1;
-	std::advance(res, offset * level);
+	// std::cout << " offset "<< offset << std::endl;
+	std::advance(res, offset * level - 1);
 	return res;
 }
 
 void 		PmergeMeList::jacobsthalSort(std::list<unsigned int> &pend, size_t level)
 {
 	unsigned int NbofInsert = (getJacob(3) - getJacob(3 - 1));
-	for (unsigned int i = 3; NbofInsert * level < pend.size(); i++)
+	for (unsigned int i = 3; (getJacob(i) - getJacob(i - 1)) * level <= pend.size(); i++)
 	{
+		NbofInsert = (getJacob(i) - getJacob(i - 1));
+		// std::cout << "NbofInsert " << NbofInsert << std::endl;
 		for (;NbofInsert > 0; NbofInsert--)
 		{
 			std::list<unsigned int>::iterator end = pend.begin();
-			std::advance(end, (NbofInsert - 1) * level);
-			std::list<unsigned int>::iterator position = binarySearch(*end, ListIterator(m_list, 0, level).getIterator(), higherBound(i, level), level);
+			std::advance(end, (NbofInsert) * level - 1);
+			// std::cout << " value " << *end << std::endl;
+			std::list<unsigned int>::iterator higherbound = higherBound(i, level);
+			// std::cout << "higher bound " << *higherbound << std::endl;
+			std::list<unsigned int>::iterator position = binarySearch(*end, ListIterator(m_list, 0, level).getIterator(), higherbound, level);
 			std::list<unsigned int>::iterator begin = end;
-			std::cout << " value " << *end << std::endl;
-			std::cout << "Position " << *position << std::endl;
-			std::advance(begin, - level);
+			// std::cout << "Position " << *position << std::endl;
+			std::advance(begin, - level + 1);
+			std::advance(end, 1);
 			m_list.splice(position, pend, begin, end);
+			// std::cout << "pend" << std::endl;
+			// printList(pend);
+			// std::cout << *this << std::endl;
 		}
-		NbofInsert = (getJacob(i) - getJacob(i - 1));
 	}
+}
+
+void		PmergeMeList::Insertion(std::list<unsigned int> &list, size_t level)
+{
+	// std::cout << "Insertion :" << std::endl;
+	while (list.size() >= level)
+	{
+		std::list<unsigned int>::iterator iter = list.begin();
+		std::advance(iter, level - 1);
+		std::list<unsigned int>::iterator end = m_list.end();
+		std::advance(end, -1);
+		// std::cout << "value " << *iter << std::endl;
+		std::list<unsigned int>::iterator position = binarySearch(*iter, ListIterator(m_list, 0, level).getIterator(), end, level);
+		// std::cout << "position " << *position << std::endl;
+		std::list<unsigned int>::iterator begin = iter;
+		std::advance(begin, - level + 1);
+		std::advance(iter, 1);
+		
+		m_list.splice(position, list, begin, iter);
+	}
+	
 }
 
 void		PmergeMeList::binaryInsertionSort(size_t &level)
@@ -153,26 +212,42 @@ void		PmergeMeList::binaryInsertionSort(size_t &level)
 	level /= 2;
 	if (level == 0)
 		return ;
-	std::cout << level << std::endl;
+	// std::cout << level << std::endl;
 	std::list<unsigned int> pend;
 	std::list<unsigned int> odd;
 	oddFill(odd, level);
 	pendFill(pend, level);
-	std::cout << *this << std::endl;
+	// std::cout << "Pend " << std::endl;
+	// printList(pend);
+	// std::cout << std::endl;
+	// std::cout << *this << std::endl;
+	// std::cout << "Odd " << std::endl;
+	// printList(odd);
 	jacobsthalSort(pend, level);
-	level /= 2;
-	m_list.splice(m_list.end(), pend, pend.begin(), pend.end());
+	// std::cout << "Pend " << std::endl;
+	// printList(pend);
+	// std::cout << std::endl;
+	// std::cout << *this << std::endl;
+	Insertion(pend, level);
+	// std::cout << "Odd " << std::endl;
+	// printList(odd);
+	// std::cout << *this << std::endl;
+	Insertion(odd, level);
+	// std::cout << "Odd " << std::endl;
+	// printList(odd);
 	m_list.splice(m_list.end(), odd, odd.begin(), odd.end());
+	// std::cout << "End of Insertion" << std::endl << *this;
 	binaryInsertionSort(level);
 }
+#include <unistd.h>
 
 void		PmergeMeList::sort()
 {
 	size_t level = 1;
 	mergeSort(level);
-	level /= 2;
-	std::cout << *this << std::endl;
+	sleep(10);
 	binaryInsertionSort(level);
+	setDuration();
 }
 
 PmergeMeList::~PmergeMeList()

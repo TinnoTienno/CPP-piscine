@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:12:32 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/05 16:54:12 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:56:44 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <string>
 #include <exception>
 #include <iostream>
-#include <ctime>
 #include <sstream>
 #include "Utils.hpp"
+#include <iomanip>
 
-PmergeMe::PmergeMe() { m_starttime = getTime(); }
+PmergeMe::PmergeMe() { m_starttime = clock(); }
 
 // PmergeMe::PmergeMe(const std::string& str) { }
 
@@ -37,13 +37,17 @@ PmergeMe::~PmergeMe()
 
 std::string			PmergeMe::getDuration() const
 {
-	float current_time = getTime();
 	std::stringstream ss;
-	ss << current_time - m_starttime;
+	ss << std::fixed << std::setprecision(6) << m_duration << "s"; ;
 	return ss.str();
 }
 
-
+#include <unistd.h>
+void				PmergeMe::setDuration()
+{
+	clock_t current_time = clock();
+	m_duration = static_cast<double>(current_time - m_starttime) / CLOCKS_PER_SEC;
+}
 std::ostream &operator<<(std::ostream &os, const PmergeMe &obj)
 {
 	os << obj.print();

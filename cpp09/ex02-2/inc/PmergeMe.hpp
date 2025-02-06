@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:53:45 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/05 21:51:38 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/06 17:07:23 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 
 class PmergeMe
 {
-	private :
-		float m_starttime;
+	protected :
+		clock_t m_starttime;
+		float m_duration;
 		// std::clock_t m_list_compute_time;
 	public :
 		PmergeMe();
@@ -32,6 +33,8 @@ class PmergeMe
 		
 		virtual std::string print() const = 0;
 		std::string			getDuration() const;
+		void				setDuration();
+		virtual size_t		getSize() = 0;
 		virtual void		sort() = 0;
 		virtual void		mergeSort(size_t &level) = 0;
 		virtual void		binaryInsertionSort(size_t &level) = 0;

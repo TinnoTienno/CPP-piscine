@@ -1,0 +1,358 @@
+LIST --> 
+ | 19 | 11 | 14 | 18 | 13 | 2 | 16 | 15 | 12 | 26 | 8 | 22 | 25 | 20 | 21 | 24 | 4 | 9 | 23 | 3 | 6 | 10 | 17 | 5 | 1 | 7 | 7 | 15 | 45 |
+
+8
+size 29
+29
+size 29
+38
+size 45
+31
+size 45
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 |
+
+8
+Pend 
+
+
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+
+Odd 
+23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 | 
+Pend 
+
+
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+
+Insertion :
+Odd 
+23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 | 
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+
+Insertion :
+value 7
+lowerbound 19 higherbound 3
+distance 11
+mid = 0
+mid value 19
+position 8
+Odd 
+15 | 14 | 
+End of Insertion
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 |
+4
+Pend 
+21 | 24 | 20 | 25 | 
+
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 |
+
+Odd 
+17 | 1 | 7 | 7 | 15 | 14 | 
+Pend 
+21 | 24 | 20 | 25 | 
+
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 |
+
+Insertion :
+value 25
+lowerbound 16 higherbound 5
+distance 15
+mid = 4
+mid value 19
+position 8
+Odd 
+17 | 1 | 7 | 7 | 15 | 14 | 
+LIST --> 
+ | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 |
+
+Insertion :
+value 7
+lowerbound 16 higherbound 25
+distance 19
+mid = 8
+mid value 26
+lower than
+position 2
+Odd 
+15 | 14 | 
+End of Insertion
+LIST --> 
+ | 17 | 1 | 7 | 7 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+2
+Pend 
+2 | 13 | 29 | 45 | 8 | 22 | 4 | 9 | 
+
+LIST --> 
+ | 17 | 1 | 7 | 7 | 15 | 16 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+Odd 
+
+NbofInsert 2
+ value 45
+ offset 3
+higher bound 16
+lowerbound 1 higherbound 16
+distance 4
+mid = 2
+mid value 7
+Position 11
+pend
+2 | 13 | 8 | 22 | 4 | 9 | 
+LIST --> 
+ | 17 | 1 | 7 | 7 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+ value 13
+ offset 3
+higher bound 16
+lowerbound 1 higherbound 16
+distance 4
+mid = 2
+mid value 7
+higher
+Position 15
+pend
+8 | 22 | 4 | 9 | 
+LIST --> 
+ | 17 | 1 | 7 | 7 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+NbofInsert 2
+ value 9
+ offset 7
+higher bound 26
+lowerbound 1 higherbound 26
+distance 12
+mid = 6
+mid value 16
+lower
+lowerbound 1 higherbound 16
+distance 6
+mid = 2
+mid value 7
+higher
+lowerbound 13 higherbound 16
+distance 2
+mid = 0
+mid value 13
+lower than
+Position 2
+pend
+8 | 22 | 
+LIST --> 
+ | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+ value 22
+ offset 7
+higher bound 19
+lowerbound 1 higherbound 19
+distance 12
+mid = 6
+mid value 13
+Position 12
+pend
+
+LIST --> 
+ | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+Pend 
+
+
+LIST --> 
+ | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+Insertion :
+Odd 
+
+LIST --> 
+ | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+
+Insertion :
+Odd 
+
+End of Insertion
+LIST --> 
+ | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+1
+Pend 
+7 | 4 | 2 | 15 | 29 | 11 | 8 | 12 | 
+
+LIST --> 
+ | 17 | 1 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+Odd 
+14 | 
+NbofInsert 2
+ value 4
+ offset 3
+higher bound 7
+lowerbound 17 higherbound 7
+distance 2
+mid = 1
+mid value 1
+lower than
+Position 17
+pend
+7 | 2 | 15 | 29 | 11 | 8 | 12 | 
+LIST --> 
+ | 4 | 17 | 1 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+ value 7
+ offset 3
+higher bound 1
+lowerbound 4 higherbound 1
+distance 2
+mid = 1
+mid value 17
+Position 7
+pend
+2 | 15 | 29 | 11 | 8 | 12 | 
+LIST --> 
+ | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+NbofInsert 2
+ value 15
+ offset 7
+higher bound 13
+lowerbound 4 higherbound 13
+distance 6
+mid = 3
+mid value 7
+Position 16
+pend
+2 | 29 | 11 | 8 | 12 | 
+LIST --> 
+ | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+ value 2
+ offset 7
+higher bound 13
+lowerbound 4 higherbound 13
+distance 6
+mid = 3
+mid value 7
+lower than
+Position 4
+pend
+29 | 11 | 8 | 12 | 
+LIST --> 
+ | 2 | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+Pend 
+29 | 11 | 8 | 12 | 
+
+LIST --> 
+ | 2 | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
+
+Insertion :
+value 29
+lowerbound 2 higherbound 15
+distance 23
+mid = 11
+mid value 19
+position 13
+value 11
+lowerbound 2 higherbound 29
+distance 24
+mid = 12
+mid value 22
+lower
+lowerbound 2 higherbound 22
+distance 12
+mid = 6
+mid value 9
+higher
+lowerbound 13 higherbound 22
+distance 5
+mid = 2
+mid value 16
+lower than
+position 13
+value 8
+lowerbound 2 higherbound 29
+distance 25
+mid = 12
+mid value 19
+lower
+lowerbound 2 higherbound 19
+distance 12
+mid = 6
+mid value 9
+lower
+lowerbound 2 higherbound 9
+distance 6
+mid = 3
+mid value 1
+higher
+lowerbound 7 higherbound 9
+distance 2
+mid = 1
+mid value 7
+higher
+position 9
+value 12
+lowerbound 2 higherbound 29
+distance 26
+mid = 13
+mid value 19
+lower
+lowerbound 2 higherbound 19
+distance 13
+mid = 6
+mid value 8
+higher
+lowerbound 9 higherbound 19
+distance 6
+mid = 3
+mid value 15
+lower
+lowerbound 9 higherbound 15
+distance 3
+mid = 1
+mid value 11
+higher
+lowerbound 13 higherbound 15
+distance 1
+mid = 0
+mid value 13
+lower than
+position 13
+Odd 
+14 | 
+LIST --> 
+ | 2 | 4 | 17 | 1 | 7 | 7 | 8 | 9 | 11 | 12 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 29 |
+
+Insertion :
+value 14
+lowerbound 2 higherbound 29
+distance 27
+mid = 13
+mid value 45
+lower
+lowerbound 2 higherbound 45
+distance 13
+mid = 6
+mid value 8
+higher
+lowerbound 9 higherbound 45
+distance 6
+mid = 3
+mid value 13
+higher
+lowerbound 15 higherbound 45
+distance 2
+mid = 1
+mid value 16
+lower than
+position 15
+Odd 
+
+End of Insertion
+LIST --> 
+ | 2 | 4 | 17 | 1 | 7 | 7 | 8 | 9 | 11 | 12 | 13 | 14 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 29 |
+time since start : 0.069508s

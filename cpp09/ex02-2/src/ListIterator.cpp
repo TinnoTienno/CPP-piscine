@@ -24,7 +24,7 @@ ListIterator::ListIterator(std::list<unsigned int> &list, int i, int level) : m_
 
 bool 								ListIterator::operator++(int)
 {
-	if ((size_t) m_index + m_level > m_list.size())
+	if ((size_t) m_index + m_level >= m_list.size())
 		return 1;
 	m_index += m_level;
 	std::advance(m_iter, m_level);
@@ -42,7 +42,7 @@ bool 								ListIterator::operator--(int)
 
 bool								ListIterator::operator+(int value)
 {
-	if ((size_t)m_index +  m_level * value > m_list.size() || m_index +  m_level < 0)
+	if ((size_t)m_index + m_level * value >= m_list.size() || m_index +  m_level < 0)
 		return 1;
 	m_index += m_level * value;
 	std::advance(m_iter, m_level * value);
@@ -50,7 +50,7 @@ bool								ListIterator::operator+(int value)
 }
 bool								ListIterator::operator-(int value)
 {
-	if ((size_t)m_index -  m_level * value > m_list.size() || m_index +  m_level < 0)
+	if ((size_t)m_index -  m_level * value >= m_list.size() || m_index +  m_level < 0)
 		return 1;
 	m_index -= m_level * value;
 	std::advance(m_iter, - (m_level * value));
