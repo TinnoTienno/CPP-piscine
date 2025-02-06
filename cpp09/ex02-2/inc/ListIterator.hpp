@@ -30,6 +30,7 @@ class ListIterator
 		bool								operator-(int value);
 		const unsigned int					&getValue();
 		const int 							&getIndex();
+		std::list<unsigned int>::iterator	&getIterator();
 
 		void								swap(ListIterator &obj);
 }	;

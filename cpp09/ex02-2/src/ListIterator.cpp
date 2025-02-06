@@ -86,3 +86,8 @@ void								ListIterator::swap(ListIterator &obj)
 		std::advance(iter2, -1);
 	}
 }
+
+std::list<unsigned int>::iterator	&ListIterator::getIterator()
+{
+	return m_iter;
+}
