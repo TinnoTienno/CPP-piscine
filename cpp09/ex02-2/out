@@ -1,358 +1,322 @@
-LIST --> 
- | 19 | 11 | 14 | 18 | 13 | 2 | 16 | 15 | 12 | 26 | 8 | 22 | 25 | 20 | 21 | 24 | 4 | 9 | 23 | 3 | 6 | 10 | 17 | 5 | 1 | 7 | 7 | 15 | 45 |
+After:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
 
-8
-size 29
-29
-size 29
-38
-size 45
-31
-size 45
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 |
+Time to process a range of 26 elements with std::list : 0.021395s
+ 19 11 14 18 13 2 16 15 12 26 8 22 25 20 21 24 4 9 23 3 6 10 17 5 1 7
 
-8
-Pend 
+level 8
 
+Jacobsthal : 
+pend :
+6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 
+vector :
+ 2 13 15 16 14 18 11 19 21 24 20 25 8 22 12 26
 
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+classic insertion : 
+source :
+6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 
+vector :
+ 2 13 15 16 14 18 11 19 21 24 20 25 8 22 12 26
+ | binarySearch with value : 23
+lowerbound 19 higherbound 26
+Inserting normally from 6 to 23
+Position in m_vector 21
+classic insertion : 
+source :
 
-Odd 
-23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 | 
-Pend 
+vector :
+ 2 13 15 16 14 18 11 19 6 10 5 17 4 9 3 23 21 24 20 25 8 22 12 26
 
+classic insertion : 
+source :
+1 | 7 | 
+vector :
+ 2 13 15 16 14 18 11 19 6 10 5 17 4 9 3 23 21 24 20 25 8 22 12 26
+vector
+ 2 13 15 16 14 18 11 19 6 10 5 17 4 9 3 23 21 24 20 25 8 22 12 26 1 7
+level 4
 
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+Jacobsthal : 
+pend :
+6 | 10 | 5 | 17 | 21 | 24 | 20 | 25 | 
+vector :
+ 2 13 15 16 14 18 11 19 4 9 3 23
+NbofInsert : 2
+ | binarySearch with value : 25
+lowerbound 16 higherbound 23
+Inserting from 210x1181c8 to 25 at 21
+Jacobsthal : 
+pend :
+6 | 10 | 5 | 17 | 
+vector :
+ 2 13 15 16 14 18 11 19 4 9 3 23 21 24 20 25
+ | binarySearch with value : 17
+lowerbound 16 higherbound 23
+lowerbound 16 higherbound 19
+Inserting from 60x1181c8 to 17 at 14
+Jacobsthal : 
+pend :
 
-Insertion :
-Odd 
-23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 | 
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 |
+vector :
+ 2 13 15 16 6 10 5 17 14 18 11 19 4 9 3 23 21 24 20 25
 
-Insertion :
-value 7
-lowerbound 19 higherbound 3
-distance 11
-mid = 0
-mid value 19
-position 8
-Odd 
-15 | 14 | 
-End of Insertion
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 | 7 | 15 | 14 |
-4
-Pend 
-21 | 24 | 20 | 25 | 
+classic insertion : 
+source :
 
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 |
+vector :
+ 2 13 15 16 6 10 5 17 14 18 11 19 4 9 3 23 21 24 20 25
 
-Odd 
-17 | 1 | 7 | 7 | 15 | 14 | 
-Pend 
-21 | 24 | 20 | 25 | 
-
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 |
-
-Insertion :
-value 25
-lowerbound 16 higherbound 5
-distance 15
-mid = 4
-mid value 19
-position 8
-Odd 
-17 | 1 | 7 | 7 | 15 | 14 | 
-LIST --> 
- | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 |
-
-Insertion :
-value 7
+classic insertion : 
+source :
+8 | 22 | 12 | 26 | 1 | 7 | 
+vector :
+ 2 13 15 16 6 10 5 17 14 18 11 19 4 9 3 23 21 24 20 25
+ | binarySearch with value : 26
 lowerbound 16 higherbound 25
-distance 19
-mid = 8
-mid value 26
-lower than
-position 2
-Odd 
-15 | 14 | 
-End of Insertion
-LIST --> 
- | 17 | 1 | 7 | 7 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
-2
-Pend 
-2 | 13 | 29 | 45 | 8 | 22 | 4 | 9 | 
+Inserting normally from 8 to 26
+Position in m_vector 8
+classic insertion : 
+source :
+1 | 7 | 
+vector :
+ 2 13 15 16 6 10 5 17 14 18 11 19 4 9 3 23 21 24 20 25 8 22 12 26
+vector
+ 2 13 15 16 6 10 5 17 14 18 11 19 4 9 3 23 21 24 20 25 8 22 12 26 1 7
+level 2
 
-LIST --> 
- | 17 | 1 | 7 | 7 | 15 | 16 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+Jacobsthal : 
+pend :
+6 | 10 | 14 | 18 | 4 | 9 | 21 | 24 | 8 | 22 | 1 | 7 | 
+vector :
+ 2 13 15 16 5 17 11 19 3 23 20 25 12 26
+NbofInsert : 2
+ | binarySearch with value : 18
+lowerbound 13 higherbound 17
+Inserting from 140x1181c8 to 18 at 11
+Jacobsthal : 
+pend :
+6 | 10 | 4 | 9 | 21 | 24 | 8 | 22 | 1 | 7 | 
+vector :
+ 2 13 15 16 5 17 14 18 11 19 3 23 20 25 12 26
+ | binarySearch with value : 10
+lowerbound 13 higherbound 17
+Inserting from 60x1181c8 to 10 at 2
+Jacobsthal : 
+pend :
+4 | 9 | 21 | 24 | 8 | 22 | 1 | 7 | 
+vector :
+ 6 10 2 13 15 16 5 17 14 18 11 19 3 23 20 25 12 26
+NbofInsert : 2
+ | binarySearch with value : 24
+lowerbound 10 higherbound 23
+Inserting from 210x1181c8 to 24 at 20
+Jacobsthal : 
+pend :
+4 | 9 | 8 | 22 | 1 | 7 | 
+vector :
+ 6 10 2 13 15 16 5 17 14 18 11 19 3 23 21 24 20 25 12 26
+ | binarySearch with value : 9
+lowerbound 10 higherbound 23
+Inserting from 40x1181c8 to 9 at 6
+Jacobsthal : 
+pend :
+8 | 22 | 1 | 7 | 
+vector :
+ 4 9 6 10 2 13 15 16 5 17 14 18 11 19 3 23 21 24 20 25 12 26
 
-Odd 
+classic insertion : 
+source :
+8 | 22 | 1 | 7 | 
+vector :
+ 4 9 6 10 2 13 15 16 5 17 14 18 11 19 3 23 21 24 20 25 12 26
+ | binarySearch with value : 22
+lowerbound 9 higherbound 26
+lowerbound 19 higherbound 26
+lowerbound 19 higherbound 24
+lowerbound 19 higherbound 23
+Inserting normally from 8 to 22
+Position in m_vector 3
+classic insertion : 
+source :
+1 | 7 | 
+vector :
+ 4 9 6 10 2 13 15 16 5 17 14 18 11 19 8 22 3 23 21 24 20 25 12 26
+ | binarySearch with value : 7
+lowerbound 9 higherbound 26
+Inserting normally from 1 to 7
+Position in m_vector 4
+classic insertion : 
+source :
 
-NbofInsert 2
- value 45
- offset 3
-higher bound 16
-lowerbound 1 higherbound 16
-distance 4
-mid = 2
-mid value 7
-Position 11
-pend
-2 | 13 | 8 | 22 | 4 | 9 | 
-LIST --> 
- | 17 | 1 | 7 | 7 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+vector :
+ 1 7 4 9 6 10 2 13 15 16 5 17 14 18 11 19 8 22 3 23 21 24 20 25 12 26
 
- value 13
- offset 3
-higher bound 16
-lowerbound 1 higherbound 16
-distance 4
-mid = 2
-mid value 7
-higher
-Position 15
-pend
-8 | 22 | 4 | 9 | 
-LIST --> 
- | 17 | 1 | 7 | 7 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+classic insertion : 
+source :
 
-NbofInsert 2
- value 9
- offset 7
-higher bound 26
-lowerbound 1 higherbound 26
-distance 12
-mid = 6
-mid value 16
-lower
-lowerbound 1 higherbound 16
-distance 6
-mid = 2
-mid value 7
-higher
-lowerbound 13 higherbound 16
-distance 2
-mid = 0
-mid value 13
-lower than
-Position 2
-pend
-8 | 22 | 
-LIST --> 
- | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
+vector :
+ 1 7 4 9 6 10 2 13 15 16 5 17 14 18 11 19 8 22 3 23 21 24 20 25 12 26
+vector
+ 1 7 4 9 6 10 2 13 15 16 5 17 14 18 11 19 8 22 3 23 21 24 20 25 12 26
+level 1
 
- value 22
- offset 7
-higher bound 19
+Jacobsthal : 
+pend :
+4 | 6 | 2 | 15 | 5 | 14 | 11 | 8 | 3 | 21 | 20 | 12 | 
+vector :
+ 1 7 9 10 13 16 17 18 19 22 23 24 25
+NbofInsert : 2
+ | binarySearch with value : 6
+lowerbound 1 higherbound 9
+lowerbound 1 higherbound 7
+Inserting from 60x1181c8 to 6 at 7
+Jacobsthal : 
+pend :
+4 | 2 | 15 | 5 | 14 | 11 | 8 | 3 | 21 | 20 | 12 | 
+vector :
+ 1 6 7 9 10 13 16 17 18 19 22 23 24 25
+ | binarySearch with value : 4
+lowerbound 1 higherbound 7
+lowerbound 1 higherbound 6
+Inserting from 40x1181c8 to 4 at 6
+Jacobsthal : 
+pend :
+2 | 15 | 5 | 14 | 11 | 8 | 3 | 21 | 20 | 12 | 
+vector :
+ 1 4 6 7 9 10 13 16 17 18 19 22 23 24 25
+NbofInsert : 2
+ | binarySearch with value : 15
+lowerbound 1 higherbound 13
+Inserting from 150x1181c8 to 15 at 16
+Jacobsthal : 
+pend :
+2 | 5 | 14 | 11 | 8 | 3 | 21 | 20 | 12 | 
+vector :
+ 1 4 6 7 9 10 13 15 16 17 18 19 22 23 24 25
+ | binarySearch with value : 2
+lowerbound 1 higherbound 13
+lowerbound 1 higherbound 7
+lowerbound 1 higherbound 4
+Inserting from 20x1181c8 to 2 at 4
+Jacobsthal : 
+pend :
+5 | 14 | 11 | 8 | 3 | 21 | 20 | 12 | 
+vector :
+ 1 2 4 6 7 9 10 13 15 16 17 18 19 22 23 24 25
+NbofInsert : 6
+ | binarySearch with value : 21
+lowerbound 1 higherbound 23
+lowerbound 15 higherbound 23
+lowerbound 19 higherbound 23
+lowerbound 19 higherbound 22
+Inserting from 210x1181c8 to 21 at 22
+Jacobsthal : 
+pend :
+5 | 14 | 11 | 8 | 3 | 20 | 12 | 
+vector :
+ 1 2 4 6 7 9 10 13 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 3
+lowerbound 1 higherbound 22
+lowerbound 1 higherbound 13
+lowerbound 1 higherbound 6
+lowerbound 4 higherbound 6
+Inserting from 30x1181c8 to 3 at 4
+Jacobsthal : 
+pend :
+5 | 14 | 11 | 8 | 20 | 12 | 
+vector :
+ 1 2 3 4 6 7 9 10 13 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 8
+lowerbound 1 higherbound 21
+lowerbound 1 higherbound 10
+lowerbound 6 higherbound 10
+lowerbound 9 higherbound 10
+Inserting from 80x1181c8 to 8 at 9
+Jacobsthal : 
+pend :
+5 | 14 | 11 | 20 | 12 | 
+vector :
+ 1 2 3 4 6 7 8 9 10 13 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 11
 lowerbound 1 higherbound 19
-distance 12
-mid = 6
-mid value 13
-Position 12
-pend
-
-LIST --> 
- | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
-
-Pend 
-
-
-LIST --> 
- | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
-
-Insertion :
-Odd 
-
-LIST --> 
- | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
-
-Insertion :
-Odd 
-
-End of Insertion
-LIST --> 
- | 17 | 1 | 7 | 7 | 4 | 9 | 2 | 13 | 15 | 16 | 29 | 45 | 11 | 19 | 8 | 22 | 12 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 14 |
-1
-Pend 
-7 | 4 | 2 | 15 | 29 | 11 | 8 | 12 | 
-
-LIST --> 
- | 17 | 1 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
-Odd 
-14 | 
-NbofInsert 2
- value 4
- offset 3
-higher bound 7
-lowerbound 17 higherbound 7
-distance 2
-mid = 1
-mid value 1
-lower than
-Position 17
-pend
-7 | 2 | 15 | 29 | 11 | 8 | 12 | 
-LIST --> 
- | 4 | 17 | 1 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
- value 7
- offset 3
-higher bound 1
-lowerbound 4 higherbound 1
-distance 2
-mid = 1
-mid value 17
-Position 7
-pend
-2 | 15 | 29 | 11 | 8 | 12 | 
-LIST --> 
- | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
-NbofInsert 2
- value 15
- offset 7
-higher bound 13
-lowerbound 4 higherbound 13
-distance 6
-mid = 3
-mid value 7
-Position 16
-pend
-2 | 29 | 11 | 8 | 12 | 
-LIST --> 
- | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
- value 2
- offset 7
-higher bound 13
-lowerbound 4 higherbound 13
-distance 6
-mid = 3
-mid value 7
-lower than
-Position 4
-pend
-29 | 11 | 8 | 12 | 
-LIST --> 
- | 2 | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
-Pend 
-29 | 11 | 8 | 12 | 
-
-LIST --> 
- | 2 | 4 | 17 | 1 | 7 | 7 | 9 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 |
-
-Insertion :
-value 29
-lowerbound 2 higherbound 15
-distance 23
-mid = 11
-mid value 19
-position 13
-value 11
-lowerbound 2 higherbound 29
-distance 24
-mid = 12
-mid value 22
-lower
-lowerbound 2 higherbound 22
-distance 12
-mid = 6
-mid value 9
-higher
-lowerbound 13 higherbound 22
-distance 5
-mid = 2
-mid value 16
-lower than
-position 13
-value 8
-lowerbound 2 higherbound 29
-distance 25
-mid = 12
-mid value 19
-lower
-lowerbound 2 higherbound 19
-distance 12
-mid = 6
-mid value 9
-lower
-lowerbound 2 higherbound 9
-distance 6
-mid = 3
-mid value 1
-higher
-lowerbound 7 higherbound 9
-distance 2
-mid = 1
-mid value 7
-higher
-position 9
-value 12
-lowerbound 2 higherbound 29
-distance 26
-mid = 13
-mid value 19
-lower
-lowerbound 2 higherbound 19
-distance 13
-mid = 6
-mid value 8
-higher
-lowerbound 9 higherbound 19
-distance 6
-mid = 3
-mid value 15
-lower
-lowerbound 9 higherbound 15
-distance 3
-mid = 1
-mid value 11
-higher
+lowerbound 10 higherbound 19
+lowerbound 10 higherbound 16
+lowerbound 10 higherbound 13
+Inserting from 110x1181c8 to 11 at 13
+Jacobsthal : 
+pend :
+5 | 14 | 20 | 12 | 
+vector :
+ 1 2 3 4 6 7 8 9 10 11 13 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 14
+lowerbound 1 higherbound 18
+lowerbound 10 higherbound 18
+lowerbound 10 higherbound 15
 lowerbound 13 higherbound 15
-distance 1
-mid = 0
-mid value 13
-lower than
-position 13
-Odd 
-14 | 
-LIST --> 
- | 2 | 4 | 17 | 1 | 7 | 7 | 8 | 9 | 11 | 12 | 13 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 29 |
+Inserting from 140x1181c8 to 14 at 15
+Jacobsthal : 
+pend :
+5 | 20 | 12 | 
+vector :
+ 1 2 3 4 6 7 8 9 10 11 13 14 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 5
+lowerbound 1 higherbound 17
+lowerbound 1 higherbound 9
+lowerbound 6 higherbound 9
+Inserting from 50x1181c8 to 5 at 6
+Jacobsthal : 
+pend :
+20 | 12 | 
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 17 18 19 21 22 23 24 25
 
-Insertion :
-value 14
-lowerbound 2 higherbound 29
-distance 27
-mid = 13
-mid value 45
-lower
-lowerbound 2 higherbound 45
-distance 13
-mid = 6
-mid value 8
-higher
-lowerbound 9 higherbound 45
-distance 6
-mid = 3
-mid value 13
-higher
-lowerbound 15 higherbound 45
-distance 2
-mid = 1
-mid value 16
-lower than
-position 15
-Odd 
+classic insertion : 
+source :
+20 | 12 | 
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 17 18 19 21 22 23 24 25
+ | binarySearch with value : 20
+lowerbound 1 higherbound 25
+lowerbound 14 higherbound 25
+lowerbound 21 higherbound 25
+Inserting normally from 20 to 20
+Position in m_vector 21
+classic insertion : 
+source :
+12 | 
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 17 18 19 20 21 22 23 24 25
+ | binarySearch with value : 12
+lowerbound 1 higherbound 25
+lowerbound 1 higherbound 13
+lowerbound 7 higherbound 13
+lowerbound 10 higherbound 13
+Inserting normally from 12 to 12
+Position in m_vector 13
+classic insertion : 
+source :
 
-End of Insertion
-LIST --> 
- | 2 | 4 | 17 | 1 | 7 | 7 | 8 | 9 | 11 | 12 | 13 | 14 | 15 | 16 | 45 | 19 | 22 | 26 | 3 | 23 | 6 | 10 | 5 | 21 | 24 | 20 | 25 | 15 | 29 |
-time since start : 0.069508s
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+classic insertion : 
+source :
+26 | 
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+ | binarySearch with value : 26
+lowerbound 1 higherbound 25
+Inserting normally from 26 to 26
+Position in m_vector 26
+classic insertion : 
+source :
+
+vector :
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+vector
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+level 0
+After:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+
+List:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+
+Time to process a range of 26 elements with std::vector : 0.064245s

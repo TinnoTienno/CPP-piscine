@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMeList.hpp                                   :+:      :+:    :+:   */
+/*   PmergeMeVec.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:15:17 by noda              #+#    #+#             */
-/*   Updated: 2025/02/07 14:41:04 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 17:23:28 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEMELIST_HPP
-# define PMERGEMELIST_HPP
+#ifndef PMERGEMEVEC_HPP
+# define PMERGEMEVEC_HPP
 # include "PmergeMe.hpp"
-# include <list>
+# include <vector>
 # include <iterator>
 
-class PmergeMeList : public PmergeMe
+class PmergeMevec : public PmergeMe
 {
 	private :
-		std::list<unsigned int> m_list;
+		std::vector<unsigned int> m_vector;
 	public :
-		PmergeMeList();
-		PmergeMeList(const std::string &list);
+		PmergeMevec();
+		PmergeMevec(const std::string &vector);
 		size_t		getSize();
 		std::string print() const;
 		void		mergeSort(size_t &level);
+		void		swap(size_t i1, size_t i2, size_t level);
+
 		void		binaryInsertionSort(size_t &level);
-		void		oddFill(std::list<unsigned int> &odd, size_t level);
-		void		pendFill(std::list<unsigned int> &pend, size_t level);
-		std::list<unsigned int>::iterator binarySearch(unsigned int value, std::list<unsigned int>::iterator lowerbound, std::list<unsigned int>::iterator higherbound, size_t level);
-		void 		jacobsthalSort(std::list<unsigned int> &pend, size_t level);
-		std::list<unsigned int>::iterator higherBound(unsigned int i, size_t level);
-		void		Insertion(std::list<unsigned int> &pend, size_t level);
+		void		oddFill(std::vector<unsigned int> &odd, size_t level);
+		void		pendFill(std::vector<unsigned int> &pend, size_t level);
+		std::vector<unsigned int>::iterator binarySearch(unsigned int value, size_t lowerbound, size_t higherbound, size_t level);
+		void 		jacobsthalSort(std::vector<unsigned int> &pend, size_t level);
+		size_t 		higherBound(unsigned int i, size_t level);
+		void		Insertion(std::vector<unsigned int> &pend, size_t level);
 		
 
-		~PmergeMeList();
+		~PmergeMevec();
 }	;
 
 

@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:12:32 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/06 16:56:44 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 15:19:53 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,12 @@ std::ostream &operator<<(std::ostream &os, const PmergeMe &obj)
 {
 	os << obj.print();
 	return os;
+}
+
+void		PmergeMe::sort()
+{
+	size_t level = 1;
+	mergeSort(level);
+	binaryInsertionSort(level);
+	setDuration();
 }

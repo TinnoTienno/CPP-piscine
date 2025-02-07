@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:19:14 by noda              #+#    #+#             */
-/*   Updated: 2025/02/06 17:07:04 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 16:44:44 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,10 @@ void		PmergeMeList::mergeSort(size_t &level)
 	bool	end = false;
 	while (!end)
 	{
-		{
-			if (iter1.getValue() > iter2.getValue())
-				iter1.swap(iter2);
-			end = iter1 + 2;
-			end = iter2 + 2;
-		}
+		if (iter1.getValue() > iter2.getValue())
+			iter1.swap(iter2);
+		end = iter1 + 2;
+		end = iter2 + 2;
 	}
 	level *= 2;
 	mergeSort(level);
@@ -238,16 +236,6 @@ void		PmergeMeList::binaryInsertionSort(size_t &level)
 	m_list.splice(m_list.end(), odd, odd.begin(), odd.end());
 	// std::cout << "End of Insertion" << std::endl << *this;
 	binaryInsertionSort(level);
-}
-#include <unistd.h>
-
-void		PmergeMeList::sort()
-{
-	size_t level = 1;
-	mergeSort(level);
-	sleep(10);
-	binaryInsertionSort(level);
-	setDuration();
 }
 
 PmergeMeList::~PmergeMeList()

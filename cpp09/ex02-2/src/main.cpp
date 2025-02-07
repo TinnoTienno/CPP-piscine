@@ -6,12 +6,13 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:49:45 by noda              #+#    #+#             */
-/*   Updated: 2025/02/06 17:11:09 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 15:19:29 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include "PmergeMeList.hpp"
+#include "PmergeMeVec.hpp"
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -26,7 +27,7 @@ std::string buildString(char **args)
 
 int main(int argc, char** argv)
 {
-		clock_t start_vec = clock();
+		PmergeMe *algoVec;
 		PmergeMe *algoList;
 		if (argc == 1)
 		{
@@ -37,17 +38,24 @@ int main(int argc, char** argv)
 			algoList = new PmergeMeList((std::string) argv[1]);
 		else
 			algoList = new PmergeMeList(buildString(&argv[1]));
-		std::cout << "Before: " ;
-		std::cout << *algoList << std::endl;
+		// std::cout << "Before: " ;
+		// std::cout << *algoList << std::endl;
 		algoList->sort();
-		clock_t end_vec = clock();
-		double time_elapsed_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC;
-		std::cout << "Time to process a range of " << algoList->getSize()
-              << " elements with std::vector: " << std::fixed << std::setprecision(6)
-              << time_elapsed_vec << "s\n";
-		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
 		std::cout << "After: ";
 		std::cout << *algoList << std::endl;
-
+		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
+		if (argc == 2)
+			algoVec = new PmergeMevec((std::string) argv[1]);
+		else
+			algoVec = new PmergeMevec(buildString(&argv[1]));
+		// std::cout << "Before: " ;
+		std::cout << *algoVec << std::endl;
+		algoVec->sort();
+		std::cout << "After: ";
+		std::cout << *algoVec << std::endl;
+		std::cout << "List: ";
+		std::cout << *algoList << std::endl;
+		std::cout << "Time to process a range of " << algoVec->getSize() <<" elements with std::vector : " << algoVec->getDuration() << std::endl;
 		delete algoList;
+		delete algoVec;
 }

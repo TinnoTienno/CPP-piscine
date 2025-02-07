@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:31:42 by noda              #+#    #+#             */
-/*   Updated: 2025/02/06 11:17:10 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 16:10:57 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ float	getTime()
 	return ((float)t)/CLOCKS_PER_SEC;
 }
 
-void	swap(unsigned int *n1, unsigned int *n2)
-{
-	std::cout << *n1 << " " << *n2 << std::endl;
-	*n1 += *n2;
-	*n2 = *n1 - *n2;
-	*n1 -= *n2;
-	std::cout << *n1 << " " << *n2 << std::endl;
-}
+// void	swap(unsigned int *n1, unsigned int *n2)
+// {
+// 	std::cout << *n1 << " " << *n2 << std::endl;
+// 	*n1 += *n2;
+// 	*n2 = *n1 - *n2;
+// 	*n1 -= *n2;
+// 	std::cout << *n1 << " " << *n2 << std::endl;
+// }
 
 unsigned int getJacob(const unsigned int &nb)
 {
@@ -53,5 +53,12 @@ void	printList(std::list<unsigned int> list)
 		std::cout << *iter << " | ";
 		std::advance(iter, 1);
 	}
+	std::cout << std::endl;
+}
+
+void	printVec(std::vector<unsigned int> vector)
+{
+	for (size_t i = 0; i < vector.size(); i++)
+		std::cout << vector[i] << " | ";
 	std::cout << std::endl;
 }

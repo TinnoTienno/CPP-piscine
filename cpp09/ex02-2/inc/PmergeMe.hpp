@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:53:45 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/06 17:07:23 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 15:06:23 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe& operator=(const PmergeMe&);
 		virtual ~PmergeMe();
+		void		sort();
+		virtual size_t		getSize() = 0;
 		
-		virtual std::string print() const = 0;
 		std::string			getDuration() const;
 		void				setDuration();
-		virtual size_t		getSize() = 0;
-		virtual void		sort() = 0;
+		virtual std::string print() const = 0;
 		virtual void		mergeSort(size_t &level) = 0;
 		virtual void		binaryInsertionSort(size_t &level) = 0;
 
