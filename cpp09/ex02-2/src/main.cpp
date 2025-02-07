@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:49:45 by noda              #+#    #+#             */
-/*   Updated: 2025/02/07 15:19:29 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/07 19:25:50 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,18 @@ int main(int argc, char** argv)
 			std::cout << "format > ./PmergeMe.bin value1 valueN... || ./PmergeMe.bin \"value1 valueN...\"" << std::endl;
 			return 1;
 		}
+		std::string values;
 		if (argc == 2)
-			algoList = new PmergeMeList((std::string) argv[1]);
+			values = (std::string) argv[1];
 		else
-			algoList = new PmergeMeList(buildString(&argv[1]));
-		// std::cout << "Before: " ;
-		// std::cout << *algoList << std::endl;
+			values = buildString(&argv[1]);
+		std::cout << "Before: " << values << std::endl;
+		algoList = new PmergeMeList(values);
 		algoList->sort();
-		std::cout << "After: ";
-		std::cout << *algoList << std::endl;
-		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
-		if (argc == 2)
-			algoVec = new PmergeMevec((std::string) argv[1]);
-		else
-			algoVec = new PmergeMevec(buildString(&argv[1]));
-		// std::cout << "Before: " ;
-		std::cout << *algoVec << std::endl;
+		algoVec = new PmergeMevec(values);
 		algoVec->sort();
-		std::cout << "After: ";
-		std::cout << *algoVec << std::endl;
-		std::cout << "List: ";
-		std::cout << *algoList << std::endl;
+		std::cout << "After: " << *algoVec << std::endl;
+		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
 		std::cout << "Time to process a range of " << algoVec->getSize() <<" elements with std::vector : " << algoVec->getDuration() << std::endl;
 		delete algoList;
 		delete algoVec;
