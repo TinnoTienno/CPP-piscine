@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:57:22 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/19 12:58:03 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:07:56 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int main()
 
 	std::cout << m2stack.top() << std::endl;
 	
-	MutantStack<int>::iterator it;
-	// (void) it;
+	for (MutantStack<int>::iterator it = mstack.begin();it != mstack.end(); it++)
+		std::cout << *it << std::endl;
 }

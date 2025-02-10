@@ -6,7 +6,7 @@
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:19:14 by noda              #+#    #+#             */
-/*   Updated: 2025/02/01 12:54:55 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/05 16:48:39 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ static void	swap(std::list<unsigned int>::iterator iter1, size_t ksize)
 	}
 }
 
-void	PmergeMeList::pairSort(size_t ksize)
+void	PmergeMeList::pairSort(size_t &ksize)
 {
 	if (ksize > m_list.size() / 2)
+	{
+		ksize / 2;
 		return ;
+	}
 	std::list<unsigned int>::iterator iter1 = m_list.begin();
 	size_t i1 = 0;
 	std::list<unsigned int>::iterator iter2 = iter1;
@@ -73,7 +76,8 @@ void	PmergeMeList::pairSort(size_t ksize)
 		std::advance(iter2, ksize * 2);
 		i2 += ksize * 2;
 	}
-	pairSort(ksize * 2);
+	ksize *= 2;
+	pairSort(ksize);
 }
 
 /*

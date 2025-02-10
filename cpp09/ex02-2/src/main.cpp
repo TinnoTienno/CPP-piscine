@@ -5,15 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 15:13:37 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/01 14:44:13 by noda             ###   ########.fr       */
+/*   Created: 2025/02/05 16:49:45 by noda              #+#    #+#             */
+/*   Updated: 2025/02/07 19:25:50 by noda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include "PmergeMeList.hpp"
+#include "PmergeMeVec.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 std::string buildString(char **args)
 {
@@ -22,26 +24,29 @@ std::string buildString(char **args)
 		tmp += (std::string) " " + args[i];
 	return tmp;
 }
+
 int main(int argc, char** argv)
 {
-	try
-	{
+		PmergeMe *algoVec;
 		PmergeMe *algoList;
+		if (argc == 1)
+		{
+			std::cout << "format > ./PmergeMe.bin value1 valueN... || ./PmergeMe.bin \"value1 valueN...\"" << std::endl;
+			return 1;
+		}
+		std::string values;
 		if (argc == 2)
-			algoList = new PmergeMeList((std::string) argv[1]);
+			values = (std::string) argv[1];
 		else
-			algoList = new PmergeMeList(buildString(&argv[1]));
-		std::cout << *algoList << std::endl;
-		size_t ksize = 1;
-		algoList->pairSort(ksize);
-		std::cout << "time since start : " << algoList->getDuration() << "s" << std::endl;
-		std::cout << *algoList << std::endl;
-
+			values = buildString(&argv[1]);
+		std::cout << "Before: " << values << std::endl;
+		algoList = new PmergeMeList(values);
+		algoList->sort();
+		algoVec = new PmergeMevec(values);
+		algoVec->sort();
+		std::cout << "After: " << *algoVec << std::endl;
+		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
+		std::cout << "Time to process a range of " << algoVec->getSize() <<" elements with std::vector : " << algoVec->getDuration() << std::endl;
 		delete algoList;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
+		delete algoVec;
 }
