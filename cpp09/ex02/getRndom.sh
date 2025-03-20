@@ -31,4 +31,4 @@ if [[ ! -e "list" ]]; then
 fi
 
 new_line="\"${!numbers[@]}\""
-sed -i "/)/i $new_line" list
+sed -i "/)/i $new_line" list~

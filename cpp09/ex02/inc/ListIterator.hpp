@@ -35,6 +35,5 @@ class ListIterator
 		void								swap(ListIterator &obj);
 }	;
 
-std::ostream &operator<<(std::ostream &os, const ListIterator &obj);
 
 #endif

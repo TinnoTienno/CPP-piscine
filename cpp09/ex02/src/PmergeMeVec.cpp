@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeVec.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 07:40:11 by noda              #+#    #+#             */
-/*   Updated: 2025/02/07 19:12:00 by noda             ###   ########.fr       */
+/*   Updated: 2025/03/20 15:46:21 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void		PmergeMevec::binaryInsertionSort(size_t &level)
 	Insertion(odd, level);
 	m_vector.insert(m_vector.end(), odd.begin(), odd.end());
 	odd.erase(odd.begin(), odd.end());
-	// std::cout << "vector" << std::endl << *this ;
 	binaryInsertionSort(level);
 }
 
@@ -99,10 +98,8 @@ void		PmergeMevec::pendFill(std::vector<unsigned int> &pend, size_t level)
 }
 std::vector<unsigned int>::iterator PmergeMevec::binarySearch(unsigned int value, size_t lowerbound, size_t higherbound, size_t level)
 {
-	// std::cout << " | " << "binarySearch with value : " << value << std::endl;
 	while (lowerbound < higherbound)
 	{
-		// std::cout << "lowerbound " << m_vector[lowerbound] << " higherbound " << m_vector[higherbound] << std::endl;
 		size_t mid = lowerbound + ((higherbound - lowerbound) / level / 2 * level);
 		if (value > m_vector[higherbound])
 			return m_vector.begin() + higherbound + 1;
@@ -126,25 +123,16 @@ std::vector<unsigned int>::iterator PmergeMevec::binarySearch(unsigned int value
 void 		PmergeMevec::jacobsthalSort(std::vector<unsigned int> &pend, size_t level)
 {
 	unsigned int NbofInsert = (getJacob(3) - getJacob(3 - 1));
-	// std::cout << std::endl << "Jacobsthal : " << std::endl;
-	// std::cout << "pend :" << std::endl;
-	// printVec(pend);
-	// std::cout << "vector :" << std::endl << *this;
 	for (unsigned int i = 3; (getJacob(i) - getJacob(i - 1)) * level <= pend.size(); i++)
 	{
 		NbofInsert = (getJacob(i) - getJacob(i - 1));
-		// std::cout << "NbofInsert : " << NbofInsert << std::endl;
 		for (;NbofInsert > 0; NbofInsert--)
 		{
 			size_t higherbound = higherBound(i, level);
 			std::vector<unsigned int>::iterator position = binarySearch(pend[(NbofInsert) * level - 1], level - 1, higherbound, level);
-			// std::cout << "Inserting from " << *(pend.begin() + (NbofInsert - 1) * level) << std::cout << " to " << *(pend.begin() + (NbofInsert) * level - 1) << " at " << *position << std::endl;
 			m_vector.insert(position, pend.begin() + (NbofInsert - 1) * level, pend.begin() + ((NbofInsert) * level));
 			pend.erase(pend.begin() + (NbofInsert - 1) * level, pend.begin() + (NbofInsert) * level);
-			// std::cout << "Jacobsthal : " << std::endl;
-			// std::cout << "pend :" << std::endl;
-			// printVec(pend);
-			// std::cout << "vector :" << std::endl << *this;
+
 		}
 	}
 }
@@ -156,21 +144,11 @@ size_t PmergeMevec::higherBound(unsigned int i, size_t level)
 
 void		PmergeMevec::Insertion(std::vector<unsigned int> &vector, size_t level)
 {
-	// std::cout << std::endl << "classic insertion : " << std::endl;
-	// std::cout << "source :" << std::endl;
-	// printVec(vector);
-	// std::cout << "vector :" << std::endl << *this;
 	while (vector.size() >= level)
 	{	
 		std::vector<unsigned int>::iterator position = binarySearch(vector[level - 1], level - 1, m_vector.size() - 1, level);
-		// std::cout << "Inserting normally from " << *(vector.begin()) << " to " << *(vector.begin() + level - 1) << std::endl;
-		// std::cout << "Position in m_vector " << *position << std::endl;
 		m_vector.insert(position, vector.begin(), vector.begin() + level);
 		vector.erase(vector.begin(), vector.begin() + level);
-		// std::cout << "classic insertion : " << std::endl;
-		// std::cout << "source :" << std::endl;
-		// printVec(vector);
-		// std::cout << "vector :" << std::endl << *this;
 	}
 }
 

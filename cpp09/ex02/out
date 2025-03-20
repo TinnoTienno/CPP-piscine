@@ -1,54 +1,5 @@
-LIST --> 
- | 19 | 11 | 14 | 18 | 13 | 2 | 16 | 15 | 12 | 26 | 8 | 22 | 25 | 20 | 21 | 24 | 4 | 9 | 23 | 3 | 6 | 10 | 17 | 5 | 1 | 7 |
+Before: 19 11 14 18 13 2 16 15 12 26 8 22 25 20 21 24 4 9 23 3 6 10 17 5 1 7
+After:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
 
-swapping 19 & 11. swapping 13 & 2. swapping 16 & 15. swapping 25 & 20. swapping 23 & 3. swapping 17 & 5. LIST --> 
- | 11 | 19 | 14 | 18 | 2 | 13 | 15 | 16 | 12 | 26 | 8 | 22 | 20 | 25 | 21 | 24 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 |
-
-swapping 19 & 18. swapping 11 & 14. swapping 26 & 22. swapping 12 & 8. swapping 25 & 24. swapping 20 & 21. LIST --> 
- | 14 | 18 | 11 | 19 | 2 | 13 | 15 | 16 | 8 | 22 | 12 | 26 | 21 | 24 | 20 | 25 | 4 | 9 | 3 | 23 | 6 | 10 | 5 | 17 | 1 | 7 |
-
-swapping 19 & 16. swapping 11 & 15. swapping 18 & 13. swapping 14 & 2. swapping 26 & 25. swapping 12 & 20. swapping 22 & 24. swapping 8 & 21. swapping 23 & 17. swapping 3 & 5. swapping 9 & 10. swapping 4 & 6. LIST --> 
- | 2 | 13 | 15 | 16 | 14 | 18 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 1 | 7 |
-
-LIST --> 
- | 2 | 13 | 15 | 16 | 14 | 18 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 1 | 7 |
-
-Done with pairSort
-time since start : 0.022431s
-LIST --> 
- | 2 | 13 | 15 | 16 | 14 | 18 | 11 | 19 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 1 | 7 |
-
-Inserting 23 from pend. Pend (2) 23 ipend :23
- Insertings values : 23 before 21
- Insertings values : 3 before 23
- Insertings values : 9 before 3
- Insertings values : 4 before 9
- Insertings values : 17 before 4
- Insertings values : 5 before 17
- Insertings values : 10 before 5
- Insertings values : 6 before 10
-LIST --> 
- | 2 | 13 | 15 | 16 | 14 | 18 | 11 | 19 | 6 | 10 | 5 | 17 | 4 | 9 | 3 | 23 | 21 | 24 | 20 | 25 | 8 | 22 | 12 | 26 | 1 | 7 |
-
-Inserting 17 from pend. Pend (2) 17 ipend :11
- Insertings values : 17 before 14
- Insertings values : 5 before 17
- Insertings values : 10 before 5
- Insertings values : 6 before 10
-Inserting 25 from pend. Pend (2) 25 ipend :19
- Insertings values : 25 before 6
- Insertings values : 20 before 25
- Insertings values : 24 before 20
- Insertings values : 21 before 24
-LIST --> 
- | 2 | 13 | 15 | 16 | 21 | 24 | 20 | 25 | 6 | 10 | 5 | 17 | 14 | 18 | 11 | 19 | 4 | 9 | 3 | 23 | 8 | 22 | 12 | 26 | 1 | 7 |
-
-Inserting 24 from pend. Pend (2) 24 ipend :5
- Insertings values : 24 before 15
- Insertings values : 21 before 24
-Inserting 10 from pend. Pend (2) 10 ipend :9
- Insertings values : 10 before 21
- Insertings values : 6 before 10
-Inserting 18 from pend. Pend (2) 18 ipend :13
- Insertings values : 18 before 14
- Insertings values : 14 before 18
+Time to process a range of 26 elements with std::list : 0.023646s
+Time to process a range of 26 elements with std::vector : 0.030655s
