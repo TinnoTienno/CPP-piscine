@@ -6,7 +6,7 @@
 #    By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:05:09 by eschussl          #+#    #+#              #
-#    Updated: 2024/11/21 12:24:40 by eschussl         ###   ########.fr        #
+#    Updated: 2025/03/20 14:44:03 by eschussl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	RPN
 
 CC 			=	c++ 
 CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -g
-SRCS		=	main.cpp RPN.cpp\
+SRCS		=	main.cpp RPN.cpp
 				
 OBJS		=	$(addprefix .obj/,$(SRCS:.cpp=.o))
 

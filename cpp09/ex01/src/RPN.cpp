@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:24:53 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/21 14:42:40 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:41:54 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-RPN::RPN()
-{
-	// std::cout << "RPN default constructor called" << std::endl;
-}
+RPN::RPN() { }
 
 
 static e_token findToken(char arg)
@@ -62,7 +59,6 @@ RPN::RPN(char *args)
 				break ;
 			case UNDEFINED:
 				throw (WrongInputException(&args[i]));
-				break ;
 		}
 		if (args[i + 1])
 			i++;
@@ -70,21 +66,17 @@ RPN::RPN(char *args)
 	if (m_vals.size() != 1)
 		throw (std::runtime_error("format : ./RPN number number operator"));
 	m_res = m_vals.top();
-	m_vals.pop();
-	// std::cout << "RPN tab constructor called" << std::endl;
 }
 
 RPN::RPN(const RPN &obj)
 {
 	*this = obj;
-	// std::cout << "RPN copy constructor called" << std::endl;
 }
 
 RPN& RPN::operator=(const RPN &obj)
 {
 	this->m_vals = obj.m_vals;
 	this->m_res = obj.m_res;
-	// std::cout << "RPN copy assignement operator called" << std::endl;
 	return (*this);
 }
 

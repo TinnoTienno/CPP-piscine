@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:49:45 by noda              #+#    #+#             */
-/*   Updated: 2025/02/07 19:25:50 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/13 16:57:18 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int main(int argc, char** argv)
 		algoVec = new PmergeMevec(values);
 		algoVec->sort();
 		std::cout << "After: " << *algoVec << std::endl;
-		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
 		std::cout << "Time to process a range of " << algoVec->getSize() <<" elements with std::vector : " << algoVec->getDuration() << std::endl;
+		std::cout << "Time to process a range of " << algoList->getSize() <<" elements with std::list : " << algoList->getDuration() << std::endl;
 		delete algoList;
 		delete algoVec;
 }

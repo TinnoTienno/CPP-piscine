@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:12:32 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/07 15:19:53 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/13 14:30:50 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 #include "Utils.hpp"
 #include <iomanip>
 
-PmergeMe::PmergeMe() { m_starttime = clock(); }
+#include <unistd.h>
+PmergeMe::PmergeMe() { 
+}
 
 // PmergeMe::PmergeMe(const std::string& str) { }
 
@@ -38,25 +40,27 @@ PmergeMe::~PmergeMe()
 std::string			PmergeMe::getDuration() const
 {
 	std::stringstream ss;
-	ss << std::fixed << std::setprecision(6) << m_duration << "s"; ;
+	ss << std::fixed << std::setprecision(6) << static_cast<double>(m_endtime - m_starttime) / CLOCKS_PER_SEC<< "s"; ;
 	return ss.str();
 }
 
-#include <unistd.h>
 void				PmergeMe::setDuration()
 {
 	clock_t current_time = clock();
-	m_duration = static_cast<double>(current_time - m_starttime) / CLOCKS_PER_SEC;
+	m_endtime = current_time;
 }
 std::ostream &operator<<(std::ostream &os, const PmergeMe &obj)
 {
 	os << obj.print();
 	return os;
 }
+#include <unistd.h>
 
 void		PmergeMe::sort()
 {
 	size_t level = 1;
+	m_starttime = clock();
+	std::cout << m_starttime << std::endl;
 	mergeSort(level);
 	binaryInsertionSort(level);
 	setDuration();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noda <noda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:53:45 by eschussl          #+#    #+#             */
-/*   Updated: 2025/02/07 15:06:23 by noda             ###   ########.fr       */
+/*   Updated: 2025/02/13 13:54:14 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class PmergeMe
 {
 	protected :
 		clock_t m_starttime;
-		float m_duration;
+		float m_endtime;
 		// std::clock_t m_list_compute_time;
 	public :
 		PmergeMe();

@@ -6,7 +6,7 @@
 /*   By: eschussl <eschussl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:25:39 by eschussl          #+#    #+#             */
-/*   Updated: 2024/11/21 14:35:18 by eschussl         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:39:55 by eschussl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ class RPN
 	}	;
 		float getRes() const;
 	private :
-		std::stack<float> m_vals;
+		std::stack<float> m_vals; // SECOND TYPE OF CONTAINER
 		float m_res;
 		void compute(const e_operator&);
-	
 }	;
 
 #endif
